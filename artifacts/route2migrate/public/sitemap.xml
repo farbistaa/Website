@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://www.route2migrate.ca/</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/services</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/about</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/contact</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/express-entry-2025-guide</loc>
+    <lastmod>2025-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/pnp-best-streams-2025</loc>
+    <lastmod>2025-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/spouse-sponsorship-guide</loc>
+    <lastmod>2025-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/canada-study-permit-guide</loc>
+    <lastmod>2025-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/celpip-vs-ielts</loc>
+    <lastmod>2025-05-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/common-immigration-mistakes</loc>
+    <lastmod>2025-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/work-permit-pathways</loc>
+    <lastmod>2025-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/super-visa-parents-guide</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/pgwp-guide-2025</loc>
+    <lastmod>2025-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/canada-bangladesh-immigration</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/f1-rejection-to-canada-study</loc>
+    <lastmod>2025-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/wes-eca-guide</loc>
+    <lastmod>2025-01-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.route2migrate.ca/blog/business-immigration-startup-visa</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

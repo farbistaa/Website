@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.route2migrate.ca/sitemap.xml
+
+# Crawl-delay for responsible crawling
+Crawl-delay: 1
+
+# Disallow admin or private paths
+Disallow: /api/
+Disallow: /.env

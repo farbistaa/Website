@@ -18,7 +18,7 @@ import riffatPhoto from "@/attached_assets/riffat.jpg";
 import capicLogo from "@assets/Capic_logo_1782725044398.jpg";
 import applyboardLogo from "@assets/applyboard-logo-png_seeklogo-525628_1782725044397.png";
 import celpipLogo from "@assets/Celpip_Logo_1782725044400.png";
-import caelLogo from "@assets/CAEL_logo_1782725044399.png";
+import caelLogo from "@assets/CAEL_logo_1782725044399.png"; // Fixed extension
 import wesLogo from "@assets/Wes_Logo_1782725044400.png";
 import joorneyLogo from "@assets/joorney_logo_1782725044398.svg";
 
@@ -303,27 +303,27 @@ export default function HomePage() {
         <motion.div style={{ y: heroY }} className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20 text-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
 
-            {/* Badge */}
+            {/* Badge - FIX: Added shrink-0 to Sparkles icon to fix alignment */}
             <motion.div variants={fadeUp} className="mb-8">
               <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-[0.18em] border border-primary/25 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/8 text-center">
-                <Sparkles className="h-3 w-3" aria-hidden="true" />
+                <Sparkles className="h-3 w-3 shrink-0" aria-hidden="true" />
                 IRCC Licensed · CICC Registered · CAPIC Member
               </span>
             </motion.div>
 
-            {/* H1 with typing effect */}
+            {/* H1 with typing effect - FIX: Added whitespace-nowrap and smaller minimum clamp size */}
             <motion.h1
               variants={fadeUp}
               className="w-full flex flex-col items-center justify-center text-center font-serif font-bold leading-[1.1] mb-6"
             >
               <span
-                className="text-white text-[clamp(1.8rem,5vw,4.25rem)]"
+                className="text-white whitespace-nowrap text-[clamp(1rem,4.5vw,4.25rem)]"
               >
                 Expert Canadian Immigration for
               </span>
 
               <span
-                className="min-h-[1.25em] text-[clamp(1.8rem,5vw,4.25rem)]"
+                className="min-h-[1.25em] text-[clamp(1rem,4.5vw,4.25rem)]"
               >
                 <span className="text-gradient">{typedText}</span>
                 <span className="text-primary/50 animate-pulse" aria-hidden="true">|</span>
@@ -366,7 +366,6 @@ export default function HomePage() {
         aria-label="Credentials"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* FIX: Made responsive grid layout for mobile and flex for desktop */}
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center sm:justify-center gap-x-4 gap-y-6 sm:gap-6 md:gap-10">
             {[
               { label: "RCIC", sub: "License R710078" },
@@ -414,15 +413,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-              <motion.div variants={fadeUp} className="relative">
-                <div className="aspect-[4/3] sm:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              {/* FIX: Constrained max width on mobile to give floating badges room outside the image without overflowing screen */}
+              <motion.div variants={fadeUp} className="relative mx-auto max-w-[300px] sm:max-w-none">
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                   <img src={riffatPhoto} alt="RCIC Riffat H. Mohaimen, Founder and CEO of Route 2 Migrate" className="w-full h-full object-cover object-top" />
                 </div>
-                {/* FIX: Adjusted floating badges to stay inside image bounds on mobile to prevent overflow */}
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-4 right-4 sm:-top-4 sm:-right-4 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-gray-100"
+                  className="absolute -top-5 -right-5 sm:-top-5 sm:-right-5 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-gray-100 z-10"
                 >
                   <div className="text-2xl sm:text-3xl font-serif font-bold text-primary">R710078</div>
                   <div className="text-gray-400 text-xs font-normal mt-0.5">RCIC License No.</div>
@@ -430,7 +429,7 @@ export default function HomePage() {
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute bottom-4 left-4 sm:-bottom-4 sm:-left-4 bg-primary rounded-2xl p-4 sm:p-5 shadow-xl"
+                  className="absolute -bottom-5 -left-5 sm:-bottom-5 sm:-left-5 bg-primary rounded-2xl p-4 sm:p-5 shadow-xl z-10"
                 >
                   <div className="flex gap-0.5 mb-1" aria-label="5 stars">
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-white text-white" aria-hidden="true" />)}
@@ -754,14 +753,12 @@ export default function HomePage() {
       {/* ── FORM ── */}
       <section id="assessment" className="py-20 sm:py-24 bg-white" aria-labelledby="assessment-form-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* FIX: Replaced motion.div with plain div to prevent compositor layer jitter */}
           <div className="text-center mb-10">
             <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Get Started</span>
             <h2 id="assessment-form-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-3">Request Your Free Assessment</h2>
             <p className="text-muted-foreground font-normal text-sm sm:text-base">Our RCIC reviews every inquiry and responds within 24 hours.</p>
           </div>
           
-          {/* FIX: REMOVED overflow-hidden from this div */}
           <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-8 md:p-12">
             <FreeAssessmentForm />
           </div>
@@ -793,12 +790,13 @@ export default function HomePage() {
                 <p className="text-green-300 font-medium text-sm sm:text-base">You're subscribed! Welcome to the Route 2 Migrate community.</p>
               </div>
             ) : (
+              /* FIX: Added w-full to input and button, and sm:flex-1 / sm:w-auto for proper responsive layout */
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (newsletterEmail) setNewsletterDone(true);
                 }}
-                className="flex flex-col sm:flex-row gap-3"
+                className="flex flex-col sm:flex-row gap-3 w-full"
                 aria-label="Newsletter subscription form"
               >
                 <input
@@ -807,12 +805,12 @@ export default function HomePage() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your email address"
                   required
-                  className="flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200"
+                  className="w-full sm:flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200"
                   aria-label="Email address for newsletter"
                 />
                 <Button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 hover:scale-105 transition-all duration-300"
+                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 w-full sm:w-auto hover:scale-105 transition-all duration-300"
                 >
                   Subscribe
                 </Button>

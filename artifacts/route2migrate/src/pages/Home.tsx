@@ -317,13 +317,13 @@ export default function HomePage() {
               className="w-full flex flex-col items-center justify-center text-center font-serif font-bold leading-[1.1] mb-6"
             >
               <span
-                className="text-white whitespace-nowrap text-[clamp(1rem,4.5vw,4.25rem)]"
+                className="text-white whitespace-nowrap text-[clamp(1.4rem,4.5vw,4.25rem)]"
               >
                 Expert Canadian Immigration for
               </span>
 
               <span
-                className="min-h-[1.25em] text-[clamp(1rem,4.5vw,4.25rem)]"
+                className="min-h-[1.25em] text-[clamp(1.4rem,4.5vw,4.25rem)]"
               >
                 <span className="text-gradient">{typedText}</span>
                 <span className="text-primary/50 animate-pulse" aria-hidden="true">|</span>

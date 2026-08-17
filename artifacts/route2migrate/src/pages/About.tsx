@@ -11,7 +11,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import riffatPhoto from "@assets/RCIC_Riffat_H_Mohaimen_1785319025735.jpeg";
-import zubairPhoto from "@assets/Syed_Mohd._Zubair_Huda_Adel_1782727934629.avif";
+import zubairPhoto from "@assets/Syed_Mohd._Zubair_Huda_Adel_1782727934629.jfif";
 import tamimPhoto from "@assets/Tamim_Ahmed_Chowdury_1782727934628.png";
 import farabiPhoto from "@assets/Foyaj Ahmmad Farabi.png";
 

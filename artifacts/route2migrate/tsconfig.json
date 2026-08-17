@@ -26,5 +26,5 @@
   "@/*": ["./src/*"]
 }
   },
-  "include": ["src", "server.ts", "../../attached_assets"]
+  "include": ["src", "server.ts", "@/attached_assets"]
 }

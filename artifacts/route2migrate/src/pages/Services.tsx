@@ -17,58 +17,58 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 // Schengen Image Imports
-import AustriaImg from "../attached_assets/Schengen/Austria.jpg";
-import BelgiumImg from "../attached_assets/Schengen/Belgium.jpg";
-import BulgariaImg from "../attached_assets/Schengen/Bulgaria.jpg";
-import CroatiaImg from "../attached_assets/Schengen/Croatia.jpg";
-import CzechRepublicImg from "../attached_assets/Schengen/Czech Republic.jpg";
-import DenmarkImg from "../attached_assets/Schengen/Denmark.jpg";
-import EstoniaImg from "../attached_assets/Schengen/Estonia.jpg";
-import FinlandImg from "../attached_assets/Schengen/Finland.jpg";
-import FranceImg from "../attached_assets/Schengen/France.jpg";
-import GermanyImg from "../attached_assets/Schengen/Germany.jpg";
-import GreeceImg from "../attached_assets/Schengen/Greece.jpg";
-import HungaryImg from "../attached_assets/Schengen/Hungary.jpg";
-import IcelandImg from "../attached_assets/Schengen/Iceland.jpg";
-import ItalyImg from "../attached_assets/Schengen/Italy.jpg";
-import LatviaImg from "../attached_assets/Schengen/Latvia.jpg";
-import LiechtensteinImg from "../attached_assets/Schengen/Liechtenstein.jpg";
-import LithuaniaImg from "../attached_assets/Schengen/Lithuania.jpg";
-import LuxembourgImg from "../attached_assets/Schengen/Luxembourg.jpg";
-import MaltaImg from "../attached_assets/Schengen/Malta.jpg";
-import NetherlandsImg from "../attached_assets/Schengen/Netherlands.jpg";
-import NorwayImg from "../attached_assets/Schengen/Norway.jpg";
-import PolandImg from "../attached_assets/Schengen/Poland.jpg";
-import PortugalImg from "../attached_assets/Schengen/Portugal.jpg";
-import RomaniaImg from "../attached_assets/Schengen/Romania.jpg";
-import SlovakiaImg from "../attached_assets/Schengen/Slovakia.jpg";
-import SloveniaImg from "../attached_assets/Schengen/Slovenia.jpg";
-import SpainImg from "../attached_assets/Schengen/Spain.jpg";
-import SwedenImg from "../attached_assets/Schengen/Sweden.jpg";
-import SwitzerlandImg from "../attached_assets/Schengen/Switzerland.jpg";
+import AustriaImg from "@/attached_assets/Schengen/Austria.jpg";
+import BelgiumImg from "@/attached_assets/Schengen/Belgium.jpg";
+import BulgariaImg from "@/attached_assets/Schengen/Bulgaria.jpg";
+import CroatiaImg from "@/attached_assets/Schengen/Croatia.jpg";
+import CzechRepublicImg from "@/attached_assets/Schengen/Czech Republic.jpg";
+import DenmarkImg from "@/attached_assets/Schengen/Denmark.jpg";
+import EstoniaImg from "@/attached_assets/Schengen/Estonia.jpg";
+import FinlandImg from "@/attached_assets/Schengen/Finland.jpg";
+import FranceImg from "@/attached_assets/Schengen/France.jpg";
+import GermanyImg from "@/attached_assets/Schengen/Germany.jpg";
+import GreeceImg from "@/attached_assets/Schengen/Greece.jpg";
+import HungaryImg from "@/attached_assets/Schengen/Hungary.jpg";
+import IcelandImg from "@/attached_assets/Schengen/Iceland.jpg";
+import ItalyImg from "@/attached_assets/Schengen/Italy.jpg";
+import LatviaImg from "@/attached_assets/Schengen/Latvia.jpg";
+import LiechtensteinImg from "@/attached_assets/Schengen/Liechtenstein.jpg";
+import LithuaniaImg from "@/attached_assets/Schengen/Lithuania.jpg";
+import LuxembourgImg from "@/attached_assets/Schengen/Luxembourg.jpg";
+import MaltaImg from "@/attached_assets/Schengen/Malta.jpg";
+import NetherlandsImg from "@/attached_assets/Schengen/Netherlands.jpg";
+import NorwayImg from "@/attached_assets/Schengen/Norway.jpg";
+import PolandImg from "@/attached_assets/Schengen/Poland.jpg";
+import PortugalImg from "@/attached_assets/Schengen/Portugal.jpg";
+import RomaniaImg from "@/attached_assets/Schengen/Romania.jpg";
+import SlovakiaImg from "@/attached_assets/Schengen/Slovakia.jpg";
+import SloveniaImg from "@/attached_assets/Schengen/Slovenia.jpg";
+import SpainImg from "@/attached_assets/Schengen/Spain.jpg";
+import SwedenImg from "@/attached_assets/Schengen/Sweden.jpg";
+import SwitzerlandImg from "@/attached_assets/Schengen/Switzerland.jpg";
 
 // Canada Services Image Imports
-import BusinessMigrationImg from "../attached_assets/Services/Business Migration.png";
-import CELPIPImg from "../attached_assets/Services/CELPIP.png";
-import ECAImg from "../attached_assets/Services/ECA.png";
-import ExpressEntryImg from "../attached_assets/Services/Express Entry.jpg";
-import FamilySponsorshipImg from "../attached_assets/Services/Family Sponsorship.jpg";
-import PNPImg from "../attached_assets/Services/PNP.jpg";
-import StudyPermitImg from "../attached_assets/Services/Study Permit.png";
-import SuperVisaImg from "../attached_assets/Services/Super Visa.png";
-import VisitVisaImg from "../attached_assets/Services/Visit Visa.jpg";
-import WorkPermitImg from "../attached_assets/Services/Work Permit.png";
+import BusinessMigrationImg from "@/attached_assets/Services/Business Migration.png";
+import CELPIPImg from "@/attached_assets/Services/CELPIP.png";
+import ECAImg from "@/attached_assets/Services/ECA.png";
+import ExpressEntryImg from "@/attached_assets/Services/Express Entry.jpg";
+import FamilySponsorshipImg from "@/attached_assets/Services/Family Sponsorship.jpg";
+import PNPImg from "@/attached_assets/Services/PNP.jpg";
+import StudyPermitImg from "@/attached_assets/Services/Study Permit.png";
+import SuperVisaImg from "@/attached_assets/Services/Super Visa.png";
+import VisitVisaImg from "@/attached_assets/Services/Visit Visa.jpg";
+import WorkPermitImg from "@/attached_assets/Services/Work Permit.png";
 
 // NEW: Added the 3 new service images
-import ApplicationReviewImg from "../attached_assets/Services/application review.jpg";
-import ConsultationImg from "../attached_assets/Services/Consultation.png";
-import SOWPImg from "../attached_assets/Services/SOWP.png";
+import ApplicationReviewImg from "@/attached_assets/Services/application review.jpg";
+import ConsultationImg from "@/attached_assets/Services/Consultation.png";
+import SOWPImg from "@/attached_assets/Services/SOWP.png";
 
 // Flag Icon Imports
-import CanadaFlag from "../attached_assets/Icon/canada.png";
-import EUFlag from "../attached_assets/Icon/european-union.png";
-import UKFlag from "../attached_assets/Icon/uk.png";
-import USFlag from "../attached_assets/Icon/united-states.png";
+import CanadaFlag from "@/attached_assets/Icon/canada.png";
+import EUFlag from "@/attached_assets/Icon/european-union.png";
+import UKFlag from "@/attached_assets/Icon/uk.png";
+import USFlag from "@/attached_assets/Icon/united-states.png";
 
 // ── Types & Interfaces ──
 type Region = "canada" | "usa" | "uk" | "schengen";

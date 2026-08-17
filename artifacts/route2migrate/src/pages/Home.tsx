@@ -236,7 +236,7 @@ export default function HomePage() {
   }, [resetTimer]);
 
   // ── Typing effect ──
-  const TYPING_PHRASES = ["Express Entry","PNP Applications", "PR Applications", "C10/C11 Work Permits","Business Migration", "Study Permits", "Family Sponsorship", "Visitor Visas","Super Visas", "B1/B2 Visas", "Spousal Open Work Permits", ];
+  const TYPING_PHRASES = ["Express Entry","PNP Applications", "PR Applications", "C10/C11 Work Permits","Business Migration", "Study Permits", "Family Sponsorship", "Visitor Visas","Super Visas", "Spousal Open Work Permits", ];
   const [typedText, setTypedText] = useState("");
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -303,13 +303,13 @@ export default function HomePage() {
         <motion.div style={{ y: heroY }} className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
 
-            {/* Badge */}
-            <motion.div variants={fadeUp} className="mb-8">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary/90 uppercase tracking-[0.18em] border border-primary/25 px-4 py-2 rounded-full bg-primary/8">
-                <Sparkles className="h-3 w-3" aria-hidden="true" />
-                IRCC Licensed · CICC Registered · CAPIC Member
-              </span>
-            </motion.div>
+        {/* Badge */}
+<motion.div variants={fadeUp} className="mb-8">
+  <span className="inline-flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-[0.18em] border border-primary/25 px-4 py-2 rounded-full bg-primary/8">
+    <Sparkles className="h-3 w-3" aria-hidden="true" />
+    IRCC Licensed · CICC Registered · CAPIC Member
+  </span>
+</motion.div>
 
             {/* H1 with typing effect */}
             <motion.h1

@@ -18,7 +18,7 @@ import riffatPhoto from "@/attached_assets/riffat.jpg";
 import capicLogo from "@assets/Capic_logo_1782725044398.jpg";
 import applyboardLogo from "@assets/applyboard-logo-png_seeklogo-525628_1782725044397.png";
 import celpipLogo from "@assets/Celpip_Logo_1782725044400.png";
-import caelLogo from "@assets/CAEL_logo_1782725044399.png"; // Fixed extension
+import caelLogo from "@assets/CAEL_logo_1782725044399.png";
 import wesLogo from "@assets/Wes_Logo_1782725044400.png";
 import joorneyLogo from "@assets/joorney_logo_1782725044398.svg";
 
@@ -300,30 +300,30 @@ export default function HomePage() {
         </div>
 
         {/* Centered content */}
-        <motion.div style={{ y: heroY }} className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20 text-center">
+        <motion.div style={{ y: heroY }} className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 text-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
 
-            {/* Badge - FIX: Added shrink-0 to Sparkles icon to fix alignment */}
-            <motion.div variants={fadeUp} className="mb-8">
-              <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-semibold text-white uppercase tracking-[0.15em] sm:tracking-[0.18em] border border-primary/25 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-primary/8 text-center">
-                <Sparkles className="h-3 w-3 shrink-0" aria-hidden="true" />
-                IRCC Licensed · CICC Registered · CAPIC Member
-              </span>
-            </motion.div>
+        {/* Badge */}
+<motion.div variants={fadeUp} className="mb-8">
+  <span className="inline-flex items-center gap-2 text-xs font-semibold text-white uppercase tracking-[0.18em] border border-primary/25 px-4 py-2 rounded-full bg-primary/8">
+    <Sparkles className="h-3 w-3" aria-hidden="true" />
+    IRCC Licensed · CICC Registered · CAPIC Member
+  </span>
+</motion.div>
 
-            {/* H1 with typing effect - FIX: Added whitespace-nowrap and smaller minimum clamp size */}
+            {/* H1 with typing effect */}
             <motion.h1
               variants={fadeUp}
-              className="w-full flex flex-col items-center justify-center text-center font-serif font-bold leading-[1.1] mb-6"
+              className="w-full flex flex-col items-center justify-center text-center font-serif font-bold leading-[1.06] mb-6"
             >
               <span
-                className="text-white whitespace-nowrap text-[clamp(1rem,4.5vw,4.25rem)]"
+                className="text-white whitespace-nowrap text-[clamp(1.8rem,5vw,4.25rem)]"
               >
                 Expert Canadian Immigration for
               </span>
 
               <span
-                className="min-h-[1.25em] text-[clamp(1rem,4.5vw,4.25rem)]"
+                className="min-h-[1.25em] text-[clamp(1.8rem,5vw,4.25rem)]"
               >
                 <span className="text-gradient">{typedText}</span>
                 <span className="text-primary/50 animate-pulse" aria-hidden="true">|</span>
@@ -336,20 +336,19 @@ export default function HomePage() {
             </motion.p>
 
             {/* Buttons */}
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-12 sm:mb-16 justify-center">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-16 justify-center">
               <a
                 href="https://riffathmohaimen.setmore.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Book a consultation via Setmore"
-                className="w-full sm:w-auto"
               >
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 text-sm font-semibold glow-primary hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 text-sm font-semibold glow-primary hover:scale-105 transition-all duration-300">
                   Book Consultation <ArrowRight aria-hidden="true" />
                 </Button>
               </a>
-              <Link href="/services" aria-label="Explore all immigration services" className="w-full sm:w-auto">
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/8 rounded-full px-8 h-13 text-sm bg-white/5 backdrop-blur-sm w-full sm:w-auto">
+              <Link href="/services" aria-label="Explore all immigration services">
+                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/8 rounded-full px-8 h-13 text-sm bg-white/5 backdrop-blur-sm">
                   Explore Services
                 </Button>
               </Link>
@@ -357,44 +356,43 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />
-      </section>
+<div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-black to-transparent pointer-events-none" aria-hidden="true" />      </section>
 
-      {/* ── CREDENTIAL STRIP ── */}
-      <section 
-        className="relative bg-white border-y border-gray-100/80 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.06),0_2px_4px_-2px_rgba(0,0,0,0.04)] py-6 z-10" 
-        aria-label="Credentials"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center sm:justify-center gap-x-4 gap-y-6 sm:gap-6 md:gap-10">
-            {[
-              { label: "RCIC", sub: "License R710078" },
-              { label: "CICC", sub: "Member in Good Standing" },
-              { label: "CAPIC", sub: "Member" },
-              { label: "10+ Years", sub: "US & Canadian Immigration" },
-              { label: "500+", sub: "Successful Applications" },
-            ].map((c) => (
-              <div key={c.label} className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 text-center sm:text-left">
-                <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/15 flex items-center justify-center shrink-0 shadow-sm">
-                  <BadgeCheck className="h-4.5 w-4.5 text-primary" aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <div className="text-sm font-semibold text-foreground">{c.label}</div>
-                  <div className="text-xs text-muted-foreground font-normal">{c.sub}</div>
-                </div>
-              </div>
-            ))}
+{/* ── CREDENTIAL STRIP ── */}
+<section 
+  className="relative bg-white border-y border-gray-100/80 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.06),0_2px_4px_-2px_rgba(0,0,0,0.04)] py-6 z-10" 
+  aria-label="Credentials"
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+      {[
+        { label: "RCIC", sub: "License R710078" },
+        { label: "CICC", sub: "Member in Good Standing" },
+        { label: "CAPIC", sub: "Member" },
+        { label: "10+ Years", sub: "US & Canadian Immigration" },
+        { label: "500+", sub: "Successful Applications" },
+      ].map((c) => (
+        <div key={c.label} className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/15 flex items-center justify-center shrink-0 shadow-sm">
+            <BadgeCheck className="h-4.5 w-4.5 text-primary" aria-hidden="true" />
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-foreground">{c.label}</div>
+            <div className="text-xs text-muted-foreground font-normal">{c.sub}</div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ── SERVICES CAROUSEL ── */}
-      <section id="services" className="py-20 sm:py-24 bg-gray-50" aria-labelledby="services-heading">
+      <section id="services" className="py-24 bg-gray-50" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Our Services</span>
-              <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
+              <h2 id="services-heading" className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-4">
                 Every Pathway to Canada
               </h2>
               <p className="text-muted-foreground leading-relaxed font-normal">
@@ -409,27 +407,26 @@ export default function HomePage() {
       </section>
 
       {/* ── ABOUT RIFFAT ── */}
-      <section className="py-20 sm:py-24 bg-white" aria-labelledby="about-preview-heading">
+      <section className="py-24 bg-white" aria-labelledby="about-preview-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-              {/* FIX: Constrained max width on mobile to give floating badges room outside the image without overflowing screen */}
-              <motion.div variants={fadeUp} className="relative mx-auto max-w-[300px] sm:max-w-none">
+              <motion.div variants={fadeUp} className="relative">
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
                   <img src={riffatPhoto} alt="RCIC Riffat H. Mohaimen, Founder and CEO of Route 2 Migrate" className="w-full h-full object-cover object-top" />
                 </div>
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-5 -right-5 sm:-top-5 sm:-right-5 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-gray-100 z-10"
+                  className="absolute -top-4 -right-4 bg-white rounded-2xl p-5 shadow-xl border border-gray-100"
                 >
-                  <div className="text-2xl sm:text-3xl font-serif font-bold text-primary">R710078</div>
+                  <div className="text-3xl font-serif font-bold text-primary">R710078</div>
                   <div className="text-gray-400 text-xs font-normal mt-0.5">RCIC License No.</div>
                 </motion.div>
                 <motion.div
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                  className="absolute -bottom-5 -left-5 sm:-bottom-5 sm:-left-5 bg-primary rounded-2xl p-4 sm:p-5 shadow-xl z-10"
+                  className="absolute -bottom-4 -left-4 bg-primary rounded-2xl p-5 shadow-xl"
                 >
                   <div className="flex gap-0.5 mb-1" aria-label="5 stars">
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-white text-white" aria-hidden="true" />)}
@@ -441,7 +438,7 @@ export default function HomePage() {
 
               <motion.div variants={fadeUp}>
                 <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Meet Your RCIC</span>
-                <h2 id="about-preview-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-2">
+                <h2 id="about-preview-heading" className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-2">
                   Riffat H. Mohaimen
                 </h2>
                 <p className="text-primary font-medium mb-5 text-sm">Owner & CEO · RCIC R710078 · CICC & CAPIC Member</p>
@@ -479,18 +476,18 @@ export default function HomePage() {
 
       {/* ── STATS ── */}
       <section
-        className="py-16 sm:py-20 relative overflow-hidden"
+        className="py-20 relative overflow-hidden"
         style={{ background: "linear-gradient(135deg, hsl(12 75% 38%) 0%, hsl(17 100% 22%) 100%)" }}
         aria-label="Key statistics"
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center text-white">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-white">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-2">
+                <div className="text-5xl font-serif font-bold mb-2">
                   <AnimatedCounter target={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-white/60 text-[10px] sm:text-xs uppercase tracking-widest font-medium">{s.label}</div>
+                <div className="text-white/60 text-sm uppercase tracking-widest font-medium">{s.label}</div>
               </div>
             ))}
           </div>
@@ -498,12 +495,12 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY US ── */}
-      <section id="why-us" className="py-20 sm:py-24 bg-gray-50" aria-labelledby="why-us-heading">
+      <section id="why-us" className="py-24 bg-gray-50" aria-labelledby="why-us-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-14">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Why Choose Us</span>
-              <h2 id="why-us-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
+              <h2 id="why-us-heading" className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-4">
                 The Advantage of Expert Representation
               </h2>
               <p className="text-muted-foreground leading-relaxed font-normal">Immigration is a high-stakes decision. Working with a licensed RCIC who has seen both sides of the process is a different level of advantage.</p>
@@ -513,11 +510,11 @@ export default function HomePage() {
               {whyUs.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <motion.div key={item.title} variants={fadeUp} className="bg-white rounded-2xl p-5 sm:p-7 border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5">
+                  <motion.div key={item.title} variants={fadeUp} className="bg-white rounded-2xl p-7 border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-0.5">
                     <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center mb-4">
                       <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
                     </div>
-                    <h3 className="font-serif font-bold text-foreground mb-2 text-lg">{item.title}</h3>
+                    <h3 className="font-serif font-bold text-foreground mb-2">{item.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed font-normal">{item.desc}</p>
                   </motion.div>
                 );
@@ -528,12 +525,12 @@ export default function HomePage() {
       </section>
 
       {/* ── PROCESS ── */}
-      <section className="py-20 sm:py-24 bg-white" aria-labelledby="process-heading">
+      <section className="py-24 bg-white" aria-labelledby="process-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-14">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">How It Works</span>
-              <h2 id="process-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
+              <h2 id="process-heading" className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-4">
                 From First Call to Canadian Soil
               </h2>
             </motion.div>
@@ -541,9 +538,9 @@ export default function HomePage() {
             <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
               {processSteps.map((step, i) => (
                 <motion.div key={step.n} variants={fadeUp} className="relative">
-                  <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 sm:p-7 h-full hover:border-primary/20 hover:shadow-lg transition-all duration-300 group">
-                    <div className="text-4xl sm:text-5xl font-serif font-bold text-primary/15 group-hover:text-primary/25 transition-colors mb-5 leading-none">{step.n}</div>
-                    <h3 className="font-serif font-bold text-foreground mb-2 text-lg">{step.title}</h3>
+                  <div className="bg-gray-50 border border-gray-100 rounded-2xl p-7 h-full hover:border-primary/20 hover:shadow-lg transition-all duration-300 group">
+                    <div className="text-5xl font-serif font-bold text-primary/15 group-hover:text-primary/25 transition-colors mb-5 leading-none">{step.n}</div>
+                    <h3 className="font-serif font-bold text-foreground mb-2">{step.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed font-normal">{step.desc}</p>
                   </div>
                   {i < processSteps.length - 1 && (
@@ -559,12 +556,12 @@ export default function HomePage() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section id="testimonials" className="py-20 sm:py-24 bg-gray-50" aria-labelledby="testimonials-heading">
+      <section id="testimonials" className="py-24 bg-gray-50" aria-labelledby="testimonials-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-14">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Success Stories</span>
-              <h2 id="testimonials-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">
+              <h2 id="testimonials-heading" className="text-4xl sm:text-5xl font-serif font-bold text-foreground mb-4">
                 Lives Changed, Families United
               </h2>
             </motion.div>
@@ -585,22 +582,22 @@ export default function HomePage() {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.4, ease: EASING }}
-                    className="bg-white rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-lg"
+                    className="bg-white rounded-3xl p-10 border border-gray-100 shadow-lg"
                     aria-label={`Testimonial from ${testimonials[reviewIdx].name}`}
                   >
                     <div className="flex gap-0.5 mb-5" aria-label="5 stars">
                       {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" aria-hidden="true" />)}
                     </div>
                     <Quote className="h-8 w-8 text-primary/20 mb-4" aria-hidden="true" />
-                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base font-normal mb-8">
+                    <p className="text-gray-600 leading-relaxed text-base font-normal mb-8">
                       "{testimonials[reviewIdx].text}"
                     </p>
-                    <div className="flex items-center justify-between pt-5 border-t border-gray-100 gap-4">
+                    <div className="flex items-center justify-between pt-5 border-t border-gray-100">
                       <div>
                         <div className="font-semibold text-foreground">{testimonials[reviewIdx].name}</div>
-                        <div className="text-gray-400 text-xs sm:text-sm mt-0.5 font-normal">{testimonials[reviewIdx].from}</div>
+                        <div className="text-gray-400 text-sm mt-0.5 font-normal">{testimonials[reviewIdx].from}</div>
                       </div>
-                      <span className="text-xs border border-primary/20 text-primary px-3 py-1.5 rounded-full font-medium text-center">{testimonials[reviewIdx].program}</span>
+                      <span className="text-xs border border-primary/20 text-primary px-3 py-1.5 rounded-full font-medium">{testimonials[reviewIdx].program}</span>
                     </div>
                   </motion.div>
                 </AnimatePresence>
@@ -610,13 +607,13 @@ export default function HomePage() {
               <div className="flex items-center justify-between mt-6">
                 <button
                   onClick={() => { prevReview(); resetTimer(); }}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shrink-0"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-primary hover:text-white hover:border-primary transition-all duration-200"
                   aria-label="Previous review"
                 >
                   <ChevronLeft className="h-4 w-4" aria-hidden="true" />
                 </button>
 
-                <div className="flex gap-1.5 sm:gap-2 justify-center" role="tablist" aria-label="Review navigation">
+                <div className="flex gap-2" role="tablist" aria-label="Review navigation">
                   {testimonials.map((_, i) => (
                     <button
                       key={i}
@@ -631,7 +628,7 @@ export default function HomePage() {
 
                 <button
                   onClick={() => { nextReview(); resetTimer(); }}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 shrink-0"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-primary hover:text-white hover:border-primary transition-all duration-200"
                   aria-label="Next review"
                 >
                   <ChevronRight className="h-4 w-4" aria-hidden="true" />
@@ -644,13 +641,13 @@ export default function HomePage() {
       </section>
 
       {/* ── PARTNERS ── */}
-      <section className="py-16 sm:py-20 bg-white border-y border-gray-100" aria-label="Our partners and affiliations">
+      <section className="py-20 bg-white border-y border-gray-100" aria-label="Our partners and affiliations">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center mb-12">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Trusted Network</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-foreground mb-3">Our Partners & Affiliations</h2>
-              <p className="text-muted-foreground font-normal max-w-xl mx-auto text-sm sm:text-base">We work within a trusted network of regulated bodies, educational platforms, and credential authorities to provide end-to-end immigration support.</p>
+              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground mb-3">Our Partners & Affiliations</h2>
+              <p className="text-muted-foreground font-normal max-w-xl mx-auto">We work within a trusted network of regulated bodies, educational platforms, and credential authorities to provide end-to-end immigration support.</p>
             </motion.div>
 
             <motion.div variants={stagger} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -668,11 +665,11 @@ export default function HomePage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   variants={fadeUp}
-                  className="flex flex-col items-center justify-center gap-3 p-4 sm:p-6 rounded-2xl border-2 border-gray-100 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-200 hover:-translate-y-1 group cursor-pointer"
+                  className="flex flex-col items-center justify-center gap-3 p-6 rounded-2xl border-2 border-gray-100 bg-white hover:border-primary/20 hover:shadow-md transition-all duration-200 hover:-translate-y-1 group cursor-pointer"
                   title={p.full}
                   aria-label={`Visit ${p.name} — ${p.full}`}
                 >
-                  <img src={p.logo} alt={p.name} className="h-8 sm:h-10 w-auto object-contain max-w-full" />
+                  <img src={p.logo} alt={p.name} className="h-10 w-auto object-contain max-w-full" />
                   <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground text-center leading-tight group-hover:text-primary transition-colors">{p.name}</span>
                 </motion.a>
               ))}
@@ -682,21 +679,21 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 sm:py-24 bg-white" aria-label="Call to action">
+      <section className="py-24 bg-white" aria-label="Call to action">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <motion.div variants={fadeUp} className="relative rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden p-8 sm:p-12 md:p-20 text-center" style={{ background: "linear-gradient(135deg, #0a0510 0%, #150a1e 100%)" }}>
+            <motion.div variants={fadeUp} className="relative rounded-[2.5rem] overflow-hidden p-12 sm:p-20 text-center" style={{ background: "linear-gradient(135deg, #0a0510 0%, #150a1e 100%)" }}>
               <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-primary/15 rounded-full blur-[80px]" />
                 <div className="absolute bottom-0 left-0 w-60 h-60 bg-primary/10 rounded-full blur-[60px]" />
               </div>
               <div className="relative">
                 <span className="text-xs font-semibold text-primary/80 uppercase tracking-[0.2em] mb-4 block">Ready to Begin?</span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white mb-5 leading-tight">
+                <h2 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-5 leading-tight">
                   Your Canadian Dream
                   <span className="block text-gradient">Deserves an Expert.</span>
                 </h2>
-                <p className="text-white/50 max-w-xl mx-auto leading-relaxed mb-10 font-normal text-sm sm:text-base">
+                <p className="text-white/50 max-w-xl mx-auto leading-relaxed mb-10 font-normal">
                   Book your complimentary consultation today. Honest, expert guidance from a licensed RCIC with 10+ years of real-world immigration experience.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -705,14 +702,13 @@ export default function HomePage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Book a consultation via Setmore"
-                    className="w-full sm:w-auto"
                   >
-                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 sm:px-10 h-14 text-sm font-semibold glow-primary hover:scale-105 transition-all duration-300 w-full sm:w-auto">
+                    <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 h-14 text-sm font-semibold glow-primary hover:scale-105 transition-all duration-300">
                       Book Consultation <ArrowRight aria-hidden="true" />
                     </Button>
                   </a>
-                  <a href="tel:+14373328242" aria-label="Call our Canadian office" className="w-full sm:w-auto">
-                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/8 rounded-full px-6 sm:px-10 h-14 text-sm bg-white/5 w-full sm:w-auto">
+                  <a href="tel:+14373328242" aria-label="Call our Canadian office">
+                    <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/8 rounded-full px-10 h-14 text-sm bg-white/5">
                       <Phone aria-hidden="true" /> +1 437 332 8242
                     </Button>
                   </a>
@@ -724,19 +720,19 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section id="faq" className="py-20 sm:py-24 bg-gray-50" aria-labelledby="faq-heading">
+      <section id="faq" className="py-24 bg-gray-50" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal>
             <motion.div variants={fadeUp} className="text-center mb-12">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">FAQ</span>
-              <h2 id="faq-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-3">Common Questions</h2>
-              <p className="text-muted-foreground font-normal text-sm sm:text-base">Everything you need to know before getting started.</p>
+              <h2 id="faq-heading" className="text-4xl font-serif font-bold text-foreground mb-3">Common Questions</h2>
+              <p className="text-muted-foreground font-normal">Everything you need to know before getting started.</p>
             </motion.div>
             <motion.div variants={fadeUp}>
               <Accordion type="single" collapsible className="space-y-3">
                 {faqs.map((faq, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-gray-100 rounded-2xl px-4 sm:px-6 data-[state=open]:border-primary/25 transition-colors shadow-sm">
-                    <AccordionTrigger className="text-left font-medium text-foreground hover:text-primary hover:no-underline py-5 text-sm sm:text-base">
+                  <AccordionItem key={i} value={`faq-${i}`} className="bg-white border border-gray-100 rounded-2xl px-6 data-[state=open]:border-primary/25 transition-colors shadow-sm">
+                    <AccordionTrigger className="text-left font-medium text-foreground hover:text-primary hover:no-underline py-5 text-sm">
                       {faq.q}
                     </AccordionTrigger>
                     <AccordionContent className="text-muted-foreground leading-relaxed pb-5 text-sm font-normal">
@@ -751,22 +747,24 @@ export default function HomePage() {
       </section>
 
       {/* ── FORM ── */}
-      <section id="assessment" className="py-20 sm:py-24 bg-white" aria-labelledby="assessment-form-heading">
+      <section id="assessment" className="py-24 bg-white" aria-labelledby="assessment-form-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* FIX: Replaced motion.div with plain div to prevent compositor layer jitter */}
           <div className="text-center mb-10">
             <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Get Started</span>
-            <h2 id="assessment-form-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-3">Request Your Free Assessment</h2>
-            <p className="text-muted-foreground font-normal text-sm sm:text-base">Our RCIC reviews every inquiry and responds within 24 hours.</p>
+            <h2 id="assessment-form-heading" className="text-4xl font-serif font-bold text-foreground mb-3">Request Your Free Assessment</h2>
+            <p className="text-muted-foreground font-normal">Our RCIC reviews every inquiry and responds within 24 hours.</p>
           </div>
           
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-6 sm:p-8 md:p-12">
+          {/* FIX: REMOVED overflow-hidden from this div */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 sm:p-12">
             <FreeAssessmentForm />
           </div>
         </div>
       </section>
 
       {/* ── NEWSLETTER ── */}
-      <section className="py-16 sm:py-20 bg-[#08080f] relative overflow-hidden" aria-labelledby="newsletter-heading">
+      <section className="py-20 bg-[#08080f] relative overflow-hidden" aria-labelledby="newsletter-heading">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/4 w-[400px] h-[300px] bg-primary/8 rounded-full blur-[90px] -translate-y-1/2" />
           <div className="absolute top-1/2 right-1/4 w-[300px] h-[200px] bg-secondary/6 rounded-full blur-[70px] -translate-y-1/2" />
@@ -776,27 +774,26 @@ export default function HomePage() {
             <Mail className="h-3 w-3" aria-hidden="true" />
             Stay Informed
           </motion.div>
-          <motion.h2 id="newsletter-heading" variants={fadeUp} className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-4 leading-tight">
+          <motion.h2 id="newsletter-heading" variants={fadeUp} className="text-3xl sm:text-4xl font-serif font-bold text-white mb-4 leading-tight">
             Immigration Updates,<br />
             <span className="text-gradient">Straight to Your Inbox</span>
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-white/50 text-sm sm:text-base mb-8 font-normal leading-relaxed">
+          <motion.p variants={fadeUp} className="text-white/50 text-base mb-8 font-normal leading-relaxed">
             Get the latest Express Entry draws, IRCC policy changes, and expert immigration tips from RCIC Riffat H. Mohaimen — no spam, unsubscribe anytime.
           </motion.p>
           <motion.div variants={fadeUp}>
             {newsletterDone ? (
               <div className="flex items-center justify-center gap-3 bg-green-500/10 border border-green-500/30 rounded-2xl px-6 py-4">
                 <CheckCircle className="h-5 w-5 text-green-400 shrink-0" aria-hidden="true" />
-                <p className="text-green-300 font-medium text-sm sm:text-base">You're subscribed! Welcome to the Route 2 Migrate community.</p>
+                <p className="text-green-300 font-medium">You're subscribed! Welcome to the Route 2 Migrate community.</p>
               </div>
             ) : (
-              /* FIX: Added w-full to input and button, and sm:flex-1 / sm:w-auto for proper responsive layout */
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (newsletterEmail) setNewsletterDone(true);
                 }}
-                className="flex flex-col sm:flex-row gap-3 w-full"
+                className="flex flex-col sm:flex-row gap-3"
                 aria-label="Newsletter subscription form"
               >
                 <input
@@ -805,12 +802,12 @@ export default function HomePage() {
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your email address"
                   required
-                  className="w-full sm:flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200"
+                  className="flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200"
                   aria-label="Email address for newsletter"
                 />
                 <Button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 w-full sm:w-auto hover:scale-105 transition-all duration-300"
+                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 hover:scale-105 transition-all duration-300"
                 >
                   Subscribe
                 </Button>

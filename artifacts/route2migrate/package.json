@@ -81,7 +81,6 @@
     "@clerk/clerk-sdk-node": "^5.1.6",
     "@clerk/react": "^6.12.10",
     "@neondatabase/serverless": "^1.1.0",
-    "@vercel/analytics": "^2.0.1",
     "@vercel/node": "^5.9.8",
     "clerk": "^2.3.1",
     "clerk-react": "^0.1.9",

@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { Analytics } from "@vercel/analytics/react"
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/Home";
 import ServicesPage from "@/pages/Services";

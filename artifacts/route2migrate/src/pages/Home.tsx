@@ -14,7 +14,7 @@ import { Footer } from "@/components/Footer";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { FreeAssessmentForm } from "@/components/FreeAssessmentForm";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
-import riffatPhoto from "@/attached_assets/Riffat_H._Mohaimen_1785319025734.jpg";
+import riffatPhoto from "@/attached_assets/Riffat_H._Mohaimen_rm.jpg";
 import capicLogo from "@assets/Capic_logo_1782725044398.jpg";
 import applyboardLogo from "@assets/applyboard-logo-png_seeklogo-525628_1782725044397.png";
 import celpipLogo from "@assets/Celpip_Logo_1782725044400.png";

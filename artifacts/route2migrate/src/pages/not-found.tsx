@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import { useState, useEffect } from "react";
 import { AlertCircle, Wrench, Cpu, GitBranch } from "lucide-react";
 

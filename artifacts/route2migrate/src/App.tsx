@@ -66,6 +66,7 @@ function App() {
           <ScrollToTop /> 
         </WouterRouter>
         <Toaster />
+        <Analytics />
       </TooltipProvider>
     </QueryClientProvider>
   );

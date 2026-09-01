@@ -351,6 +351,11 @@ type FormValues = z.infer<typeof formSchema>;
 export function FreeAssessmentForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Empty string locally (relative /api → Vite proxy).
+  // On Vercel, set VITE_API_URL to the api-server domain.
+  const API_BASE = import.meta.env.VITE_API_URL ?? "";
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -367,8 +372,9 @@ export function FreeAssessmentForm() {
 
   async function onSubmit(data: FormValues) {
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
-      const res = await fetch("/api/assessment/submit", {
+      const res = await fetch(`${API_BASE}/api/assessment/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -381,12 +387,21 @@ export function FreeAssessmentForm() {
           description: data.description ?? "",
         }),
       });
-      if (!res.ok) throw new Error("Server error");
-    } catch {
-      // Graceful degradation — still show success to avoid blocking the user
+
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(body?.error ?? `Request failed (${res.status})`);
+      }
+
+      setIsSuccess(true); // success ONLY on a real 200 response
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
-      setIsSuccess(true);
     }
   }
 
@@ -536,6 +551,15 @@ export function FreeAssessmentForm() {
             </FormItem>
           )}
         />
+
+        {submitError && (
+          <div
+            role="alert"
+            className="rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+          >
+            {submitError}
+          </div>
+        )}
 
         <Button type="submit" className="w-full text-lg h-12" disabled={isSubmitting}>
           {isSubmitting && <Loader2 className="mr-2 h-5 w-5 animate-spin" />}

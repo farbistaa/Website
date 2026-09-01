@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "set NODE_ENV=development && set PORT=3000 && set \"DATABASE_URL=postgresql://neondb_owner:npg_0tlb8FhvnkSY@ep-super-pine-azvvo9uy-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require\" && pnpm run build && node --enable-source-maps ./dist/index.mjs",
+    "dev": "set NODE_ENV=development && set PORT=3000 && set ,NODE_OPTIONS=--enable-source-maps && node --enable-source-maps ./dist/index.mjs",
     "build": "node ./build.mjs",
     "start": "node --enable-source-maps ./dist/index.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit"

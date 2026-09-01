@@ -327,13 +327,13 @@ export default function ContactPage() {
                 <div className="mb-8 text-center">
                   <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary uppercase tracking-[0.18em] mb-3">
                     <Globe className="h-3.5 w-3.5" aria-hidden="true" />
-                    Free Assessment
+                     Assessment
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
-                    Request Your Free Immigration Assessment
+                    Request Your Immigration Assessment
                   </h2>
                   <p className="text-muted-foreground text-sm leading-relaxed max-w-xl mx-auto">
-                    RCIC Riffat H. Mohaimen reviews every inquiry personally and responds within 24 hours — completely free, no commitment required.
+                    RCIC Riffat H. Mohaimen reviews every inquiry personally and responds within 48 hours, no commitment required.
                   </p>
                 </div>
 

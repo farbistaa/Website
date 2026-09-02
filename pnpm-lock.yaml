@@ -98,6 +98,9 @@ importers:
       cors:
         specifier: ^2.8.6
         version: 2.8.6
+      disposable-email-domains:
+        specifier: ^1.0.62
+        version: 1.0.62
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
@@ -162,6 +165,9 @@ importers:
       cors:
         specifier: ^2.8.6
         version: 2.8.6
+      disposable-email-domains:
+        specifier: ^1.0.62
+        version: 1.0.62
       express:
         specifier: ^5.2.1
         version: 5.2.1
@@ -2919,6 +2925,9 @@ packages:
 
   detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
+
+  disposable-email-domains@1.0.62:
+    resolution: {integrity: sha512-LBQvhRw7mznQTPoyZbsmYeNOZt1pN5aCsx4BAU/3siVFuiM9f2oyKzUaB8v1jbxFjE3aYqYiMo63kAL4pHgfWQ==}
 
   dom-helpers@5.2.1:
     resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
@@ -6653,6 +6662,8 @@ snapshots:
   detect-libc@2.1.2: {}
 
   detect-node-es@1.1.0: {}
+
+  disposable-email-domains@1.0.62: {}
 
   dom-helpers@5.2.1:
     dependencies:

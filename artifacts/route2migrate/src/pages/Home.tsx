@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+// artifacts/route2migrate/src/pages/Home.tsx
+import { useState, useRef, useEffect, useCallback, type FormEvent } from "react"; // FIX: added type FormEvent
 import { Link } from "wouter";
 import { motion, AnimatePresence, useInView, useScroll, useTransform, type Variants } from "framer-motion";
 import {
-  ArrowRight, Shield, Award, Clock, Users, Star, CheckCircle,
+  ArrowRight, Shield, Award, Clock, Users, Star, CheckCircle, Loader2, // FIX: added Loader2
   Globe, Heart, Briefcase, GraduationCap, Home as HomeIcon,
   Building2, FileText, BadgeCheck, MapPin, Quote, ChevronRight, ChevronLeft,
   Sparkles, TrendingUp, Scale, Phone, Languages, BookOpen, Mail
@@ -205,8 +206,15 @@ export default function HomePage() {
 
   const [reviewIdx, setReviewIdx] = useState(0);
   const [reviewDir, setReviewDir] = useState(1);
+
+  // FIX: newsletter state — real API submission with proper status handling
   const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterDone, setNewsletterDone] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<
+    "idle" | "submitting" | "success" | "duplicate" | "error"
+  >("idle");
+  const [newsletterError, setNewsletterError] = useState("");
+  const [newsletterHoneypot, setNewsletterHoneypot] = useState("");
+
   const reviewTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goToReview = useCallback((idx: number, dir: number) => {
@@ -234,6 +242,38 @@ export default function HomePage() {
     resetTimer();
     return () => { if (reviewTimerRef.current) clearInterval(reviewTimerRef.current); };
   }, [resetTimer]);
+
+  // FIX: newsletter submit handler — POSTs to /api/newsletter/subscribe,
+  // shows success only on a real 200, handles duplicate + errors
+  async function handleNewsletterSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!newsletterEmail || newsletterStatus === "submitting") return;
+    setNewsletterStatus("submitting");
+    setNewsletterError("");
+    try {
+      const res = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          company: newsletterHoneypot, // honeypot — humans never fill this
+        }),
+      });
+      const data = (await res.json().catch(() => null)) as
+        | { success?: boolean; alreadySubscribed?: boolean; error?: string }
+        | null;
+
+      if (res.ok && data?.success) {
+        setNewsletterStatus(data.alreadySubscribed ? "duplicate" : "success");
+        return;
+      }
+      setNewsletterError(data?.error ?? "Something went wrong. Please try again.");
+      setNewsletterStatus("error");
+    } catch {
+      setNewsletterError("Network error. Please check your connection and try again.");
+      setNewsletterStatus("error");
+    }
+  }
 
   // ── Typing effect ──
   const TYPING_PHRASES = ["Express Entry","PNP Applications", "PR Applications", "C10/C11 Work Permits","Business Migration", "Study Permits", "Family Sponsorship", "Visitor Visas","Super Visas", "Spousal Open Work Permits", ];
@@ -765,7 +805,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── NEWSLETTER ── */}
+      {/* ── NEWSLETTER ── (FIX: rewired to /api/newsletter/subscribe with real states) */}
       <section className="py-16 sm:py-20 bg-[#08080f] relative overflow-hidden" aria-labelledby="newsletter-heading">
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 left-1/4 w-[400px] h-[300px] bg-primary/8 rounded-full blur-[90px] -translate-y-1/2" />
@@ -783,40 +823,93 @@ export default function HomePage() {
           <motion.p variants={fadeUp} className="text-white/50 text-sm sm:text-base mb-8 font-normal leading-relaxed">
             Get the latest Express Entry draws, IRCC policy changes, and expert immigration tips from RCIC Riffat H. Mohaimen — no spam, unsubscribe anytime.
           </motion.p>
+
           <motion.div variants={fadeUp}>
-            {newsletterDone ? (
+            {newsletterStatus === "success" && (
               <div className="flex items-center justify-center gap-3 bg-green-500/10 border border-green-500/30 rounded-2xl px-6 py-4">
                 <CheckCircle className="h-5 w-5 text-green-400 shrink-0" aria-hidden="true" />
-                <p className="text-green-300 font-medium text-sm sm:text-base">You're subscribed! Welcome to the Route 2 Migrate community.</p>
+                <p className="text-green-300 font-medium text-sm sm:text-base">
+                  You're subscribed! Welcome to the Route 2 Migrate community.
+                </p>
               </div>
-            ) : (
-              /* FIX: Added w-full to input and button, and sm:flex-1 / sm:w-auto for proper responsive layout */
+            )}
+
+            {newsletterStatus === "duplicate" && (
+              <div className="flex flex-col items-center gap-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl px-6 py-4">
+                <p className="text-amber-300 font-medium text-sm sm:text-base">
+                  You're already subscribed — no need to sign up twice!
+                </p>
+                <button
+                  type="button"
+                  onClick={() => { setNewsletterEmail(""); setNewsletterStatus("idle"); }}
+                  className="text-amber-300/80 underline underline-offset-4 hover:text-amber-200 text-sm"
+                >
+                  Use a different email
+                </button>
+              </div>
+            )}
+
+            {newsletterStatus === "error" && (
+              <div className="flex flex-col items-center gap-3 bg-red-500/10 border border-red-500/30 rounded-2xl px-6 py-4">
+                <p className="text-red-300 font-medium text-sm sm:text-base">{newsletterError}</p>
+                <button
+                  type="button"
+                  onClick={() => setNewsletterStatus("idle")}
+                  className="text-red-300/80 underline underline-offset-4 hover:text-red-200 text-sm"
+                >
+                  Try again
+                </button>
+              </div>
+            )}
+
+            {(newsletterStatus === "idle" || newsletterStatus === "submitting") && (
               <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (newsletterEmail) setNewsletterDone(true);
-                }}
+                onSubmit={handleNewsletterSubmit}
                 className="flex flex-col sm:flex-row gap-3 w-full"
                 aria-label="Newsletter subscription form"
               >
+                {/* Honeypot — invisible to humans; bots fill it and get silently ignored */}
+                <input
+                  type="text"
+                  name="company"
+                  value={newsletterHoneypot}
+                  onChange={(e) => setNewsletterHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 <input
                   type="email"
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   placeholder="Enter your email address"
                   required
-                  className="w-full sm:flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200"
+                  maxLength={254}
+                  disabled={newsletterStatus === "submitting"}
+                  className="w-full sm:flex-1 rounded-full px-5 h-13 bg-white/8 border border-white/15 text-white placeholder:text-white/35 text-sm focus:outline-none focus:border-primary/60 focus:bg-white/12 transition-all duration-200 disabled:opacity-60"
                   aria-label="Email address for newsletter"
                 />
                 <Button
                   type="submit"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 w-full sm:w-auto hover:scale-105 transition-all duration-300"
+                  disabled={newsletterStatus === "submitting"}
+                  className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 h-13 font-semibold shrink-0 w-full sm:w-auto hover:scale-105 transition-all duration-300 disabled:opacity-70"
                 >
-                  Subscribe
+                  {newsletterStatus === "submitting" ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                      Subscribing…
+                    </>
+                  ) : (
+                    "Subscribe"
+                  )}
                 </Button>
               </form>
             )}
-            <p className="text-white/25 text-xs mt-4">By subscribing, you agree to receive email updates from Route 2 Migrate. We respect your privacy.</p>
+
+            <p className="text-white/25 text-xs mt-4">
+              By subscribing, you agree to receive email updates from Route 2 Migrate. We respect your privacy.
+            </p>
           </motion.div>
         </Reveal>
       </section>

@@ -1,11 +1,10 @@
-// artifacts/api-server/src/routes/newsletter.ts
-import { Router } from "express";
+// artifacts/route2migrate/api/newsletter/subscribe.ts
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import disposableDomains from "disposable-email-domains";
 
-const router = Router();
-
+// ── Config ─────────────────────────────────────────────────────────
 const MAX_ATTEMPTS_PER_HOUR = 10;
 
 // Well-known disposable domains missing from (or added later than) the npm blocklist.
@@ -37,13 +36,24 @@ const TYPO_DOMAINS: Record<string, string> = {
   "iclod.com": "icloud.com", "icloud.co": "icloud.com",
 };
 
+// ── Helpers ────────────────────────────────────────────────────────
+function getClientIp(req: VercelRequest): string {
+  const fwd = req.headers["x-forwarded-for"];
+  if (typeof fwd === "string" && fwd.length > 0) return fwd.split(",")[0].trim();
+  return req.socket?.remoteAddress ?? "unknown";
+}
+
+/**
+ * Lowercase/trim. For Gmail only: strip dots and +tags
+ * (Gmail ignores them — same inbox). NEVER touch other providers:
+ * dots/+ are real characters there (john.smith@yahoo.com ≠ johnsmith@).
+ */
 function normalizeEmail(raw: string): string {
   const email = raw.trim().toLowerCase();
   const at = email.lastIndexOf("@");
   const local = email.slice(0, at);
   const domain = email.slice(at + 1);
-  // Gmail only: strip dots and +tags (same inbox). Other providers keep as-is —
-  // dots/+ are real characters there (john.smith@yahoo.com ≠ johnsmith@yahoo.com).
+
   if (domain === "gmail.com" || domain === "googlemail.com") {
     const cleaned = local.split("+")[0].replace(/\./g, "");
     return `${cleaned}@gmail.com`;
@@ -85,25 +95,30 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
   }
 }
 
-router.post("/subscribe", async (req, res) => {
+// ── Handler ────────────────────────────────────────────────────────
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
-    const databaseUrl = process.env.DATABASE_URL || process.env.NEON_DATABASE_URL;
+    const databaseUrl = process.env.DATABASE_URL;
     if (!databaseUrl) {
-      res.status(500).json({ error: "DATABASE_URL is not set" });
-      return;
+      return res.status(500).json({ error: "DATABASE_URL is not set" });
     }
+
+    const sql = neon(databaseUrl);
 
     // 1) Honeypot — hidden field humans never fill. If filled → bot.
     //    Return fake success so bots move on, without touching the DB.
-    const honeypot = typeof req.body?.company === "string" ? req.body.company.trim() : "";
+    const honeypot =
+      typeof req.body?.company === "string" ? req.body.company.trim() : "";
     if (honeypot) {
-      res.status(200).json({ success: true });
-      return;
+      return res.status(200).json({ success: true });
     }
 
     const rawEmail = typeof req.body?.email === "string" ? req.body.email : "";
-    const ip = req.ip ?? "unknown";
-    const sql = neon(databaseUrl);
+    const ip = getClientIp(req);
 
     // Occasional cleanup of old attempt rows (keeps table small, 7-day window)
     if (Math.random() < 0.1) {
@@ -117,8 +132,7 @@ router.post("/subscribe", async (req, res) => {
       WHERE ip = ${ip} AND created_at > now() - interval '1 hour'
     `;
     if ((rateRows[0]?.count ?? 0) >= MAX_ATTEMPTS_PER_HOUR) {
-      res.status(429).json({ error: "Too many attempts. Please try again later." });
-      return;
+      return res.status(429).json({ error: "Too many attempts. Please try again later." });
     }
 
     const logAttempt = (email: string, outcome: string) =>
@@ -127,15 +141,13 @@ router.post("/subscribe", async (req, res) => {
     // 3) Format validation
     if (!rawEmail) {
       await logAttempt("", "invalid");
-      res.status(400).json({ error: "Please enter your email address." });
-      return;
+      return res.status(400).json({ error: "Please enter your email address." });
     }
     const email = rawEmail.trim().toLowerCase();
     const formatError = basicValidate(email);
     if (formatError) {
       await logAttempt(email, "invalid");
-      res.status(400).json({ error: formatError });
-      return;
+      return res.status(400).json({ error: formatError });
     }
 
     const domain = email.slice(email.lastIndexOf("@") + 1);
@@ -144,46 +156,42 @@ router.post("/subscribe", async (req, res) => {
     const typo = TYPO_DOMAINS[domain];
     if (typo) {
       await logAttempt(email, "invalid");
-      res.status(400).json({ error: `Did you mean @${typo}? Please check the spelling.` });
-      return;
+      return res.status(400).json({ error: `Did you mean @${typo}? Please check the spelling.` });
     }
 
     // 5) Disposable/temporary domain blocklist (npm list + custom list)
     if (disposableSet.has(domain)) {
       await logAttempt(email, "blocked");
-      res.status(400).json({ error: "Temporary or disposable email addresses are not allowed." });
-      return;
+      return res.status(400).json({ error: "Temporary or disposable email addresses are not allowed." });
     }
 
     // 6) MX check — domain must be able to receive mail
     const canReceive = await domainCanReceiveMail(domain);
     if (!canReceive) {
       await logAttempt(email, "invalid");
-      res.status(400).json({ error: "This email domain can't receive mail. Please check for typos." });
-      return;
+      return res.status(400).json({ error: "This email domain can't receive mail. Please check for typos." });
     }
 
     // 7) Normalize (Gmail only) and insert
     const normalized = normalizeEmail(email);
     try {
-      await sql`INSERT INTO newsletter (email, source) VALUES (${normalized}, 'website')`;
+      await sql`
+        INSERT INTO newsletter (email, source) VALUES (${normalized}, 'website')
+      `;
       await logAttempt(normalized, "success");
-      res.status(200).json({ success: true });
+      return res.status(200).json({ success: true });
     } catch (err: unknown) {
       const e = err as { code?: string; message?: string };
       const isUniqueViolation =
         e?.code === "23505" || /duplicate key|unique constraint/i.test(e?.message ?? "");
       if (isUniqueViolation) {
         await logAttempt(normalized, "duplicate");
-        res.status(200).json({ success: true, alreadySubscribed: true });
-        return;
+        return res.status(200).json({ success: true, alreadySubscribed: true });
       }
       throw err;
     }
   } catch (error) {
-    console.error("Newsletter Error:", error);
-    res.status(500).json({ error: "Something went wrong. Please try again." });
+    console.error("Newsletter Subscribe Error:", error);
+    return res.status(500).json({ error: "Something went wrong. Please try again." });
   }
-});
-
-export default router;
+}

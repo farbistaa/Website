@@ -2,7 +2,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
-import disposableDomains from "disposable-email-domains";
+import { createRequire } from "module";
 
 // ── Config ─────────────────────────────────────────────────────────
 const MAX_ATTEMPTS_PER_HOUR = 10;
@@ -19,11 +19,28 @@ const CUSTOM_DISPOSABLE = [
   "yopmail.com", "yopmail.net", "cool.fr.nf", "jetable.org", "nospam.ze.tc",
 ];
 
+// The disposable-email-domains package's entry point is a raw .json file.
+// Node's ESM loader refuses to import JSON without `with { type: "json" }`
+// (ERR_IMPORT_ATTRIBUTE_MISSING), which crashes the function on Vercel.
+// Loading it via CJS require handles JSON natively and works regardless of
+// how the function is bundled. Wrapped in try/catch so the function stays
+// alive even if the list fails to load (CUSTOM_DISPOSABLE still applies).
+const require = createRequire(import.meta.url);
+
+let disposableList: string[] = [];
+try {
+  const loaded: unknown = require("disposable-email-domains");
+  const unwrapped = (loaded as { default?: unknown })?.default ?? loaded;
+  if (Array.isArray(unwrapped)) disposableList = unwrapped as string[];
+} catch (err) {
+  console.error("Failed to load disposable-email-domains list:", err);
+}
+
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
 // npm blocklist (121k+ domains) + our custom list, deduped by the Set
 const disposableSet = new Set(
-  [...disposableDomains, ...CUSTOM_DISPOSABLE].map((d) => d.toLowerCase())
+  [...disposableList, ...CUSTOM_DISPOSABLE].map((d) => d.toLowerCase())
 );
 
 // Common misspelled domains → suggested correction

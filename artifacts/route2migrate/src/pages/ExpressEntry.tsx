@@ -296,7 +296,7 @@ export default function ExpressEntryBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 18, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 18, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 12 min read</span>
             </motion.div>
           </motion.div>
@@ -385,7 +385,7 @@ export default function ExpressEntryBlogPostPage() {
               </ol>
 
               <h2>Is Express Entry the Right Pathway for You?</h2>
-              <p>Express Entry is an excellent immigration pathway for many skilled workers, but it is not the right option for everyone. Factors such as age, education, occupation, language proficiency, work experience, and long-term immigration goals all influence whether Express Entry is the most suitable choice. For some applicants, improving their CRS score before entering the pool may significantly increase their chances of success. Others may benefit from exploring additional pathways such as <Link href="/blog/pnp-best-streams-2025" className="text-primary font-semibold">Provincial Nominee Programs (PNP)</Link> that align with their occupation.</p>
+              <p>Express Entry is an excellent immigration pathway for many skilled workers, but it is not the right option for everyone. Factors such as age, education, occupation, language proficiency, work experience, and long-term immigration goals all influence whether Express Entry is the most suitable choice. For some applicants, improving their CRS score before entering the pool may significantly increase their chances of success. Others may benefit from exploring additional pathways such as <Link href="/blog/pnp-best-streams-2026" className="text-primary font-semibold">Provincial Nominee Programs (PNP)</Link> that align with their occupation.</p>
 
               <h2>Our Consultancy Services for Express Entry</h2>
               <p>Navigating the Express Entry pool requires strategic planning. We are a professional immigration consultancy firm led by a Licensed Regulated Canadian Immigration Consultant (RCIC), Riffat H. Mohaimen (R710078). When you choose Route 2 Migrate, your application is backed by legal expertise. Here is how we help:</p>
@@ -404,7 +404,7 @@ export default function ExpressEntryBlogPostPage() {
               <h2>Express Entry FAQ (Search & AI Queries Answered)</h2>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">What is the minimum CRS score for Express Entry in 2025?</h3>
+                  <h3 className="text-xl font-semibold mb-2">What is the minimum CRS score for Express Entry in 2026?</h3>
                   <p>There is no fixed minimum score. General program draws typically require CRS scores in the 500+ range, but category-based selection draws (like Healthcare or STEM) often have lower cut-offs. Program-specific draws (like CEC only) also vary.</p>
                 </div>
                 <div>
@@ -421,7 +421,7 @@ export default function ExpressEntryBlogPostPage() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">What is the difference between Express Entry and a PNP?</h3>
-                  <p>Express Entry is the federal system. PNP is provincial. You can have an Express Entry profile and also apply to a province. If a province nominates you via an "Enhanced" PNP stream, you get 600 extra points in your Express Entry profile, guaranteeing an ITA. Read more in our <Link href="/blog/pnp-best-streams-2025" className="text-primary font-semibold">PNP Guide</Link>.</p>
+                  <p>Express Entry is the federal system. PNP is provincial. You can have an Express Entry profile and also apply to a province. If a province nominates you via an "Enhanced" PNP stream, you get 600 extra points in your Express Entry profile, guaranteeing an ITA. Read more in our <Link href="/blog/pnp-best-streams-2026" className="text-primary font-semibold">PNP Guide</Link>.</p>
                 </div>
               </div>
             </div>

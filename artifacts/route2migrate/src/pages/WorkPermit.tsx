@@ -69,7 +69,7 @@ export default function WorkPermitBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 8, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 8, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 9 min read</span>
             </motion.div>
           </motion.div>
@@ -115,7 +115,7 @@ export default function WorkPermitBlogPostPage() {
               <ul className="list-disc pl-6 mb-6 space-y-2">
                 <li><strong>Flexibility:</strong> You can change employers and industries without needing prior government approval.</li>
                 <li><strong>No LMIA Required:</strong> Employers do not need to perform a labor market test to hire you.</li>
-                <li><strong>Who Qualifies:</strong> Only specific groups are eligible, including international graduates via the <Link href="/blog/pgwp-guide-2025" className="text-primary font-semibold">Post-Graduation Work Permit (PGWP)</Link> program, spouses of certain skilled workers (like those applying for a <Link href="/blog/sowp-guide" className="text-primary font-semibold">Spousal Open Work Permit</Link>), and youth participating in programs like International Experience Canada (IEC).</li>
+                <li><strong>Who Qualifies:</strong> Only specific groups are eligible, including international graduates via the <Link href="/blog/pgwp-guide-2026" className="text-primary font-semibold">Post-Graduation Work Permit (PGWP)</Link> program, spouses of certain skilled workers (like those applying for a <Link href="/blog/sowp-guide" className="text-primary font-semibold">Spousal Open Work Permit</Link>), and youth participating in programs like International Experience Canada (IEC).</li>
               </ul>
 
               <h2>Applying from Inside Canada</h2>

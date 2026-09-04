@@ -296,7 +296,7 @@ export default function BusinessMigrationBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 25, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> July 25, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 10 min read</span>
             </motion.div>
           </motion.div>

@@ -60,7 +60,7 @@ export default function StudyPermitBlogPostPage() {
               </span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-snug">
-              Study in Canada from Bangladesh: The Ultimate 2025 Guide
+              Study in Canada from Bangladesh: The Ultimate 2026 Guide
             </motion.h1>
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-5 text-sm text-white/50">
               <span className="flex items-center gap-1.5">
@@ -69,7 +69,7 @@ export default function StudyPermitBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 28, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 28, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 12 min read</span>
             </motion.div>
           </motion.div>
@@ -86,12 +86,12 @@ export default function StudyPermitBlogPostPage() {
             className="prose prose-lg max-w-none text-justify prose-headings:font-serif prose-headings:text-foreground prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted-foreground prose-p:leading-[1.8] prose-p:mb-6 prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:font-semibold hover:prose-a:underline"
           >
             <div className="prose prose-lg max-w-none text-justify">
-              <p className="lead text-lg text-foreground font-medium mb-8">Canada remains one of the world's top destinations for international students, offering world-class education, a safe multicultural environment, and a clear pathway to permanent residence. If you are looking to study in Canada from Bangladesh, understanding the updated 2025 requirements, costs, and study permit processing times is crucial for a successful application.</p>
+              <p className="lead text-lg text-foreground font-medium mb-8">Canada remains one of the world's top destinations for international students, offering world-class education, a safe multicultural environment, and a clear pathway to permanent residence. If you are looking to study in Canada from Bangladesh, understanding the updated 2026 requirements, costs, and study permit processing times is crucial for a successful application.</p>
               
               <div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
                 <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
                 <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                  <li><strong>Provincial Attestation Letter (PAL):</strong> As of 2024/2025, most study permit applications now require a PAL from the destination province.</li>
+                  <li><strong>Provincial Attestation Letter (PAL):</strong> As of 2024/2026, most study permit applications now require a PAL from the destination province.</li>
                   <li><strong>Proof of Funds:</strong> You must show financial capacity covering first-year tuition plus $20,635 CAD for living expenses.</li>
                   <li><strong>Work While Studying:</strong> Students can work off-campus up to 24 hours per week during academic sessions.</li>
                   <li><strong>Post-Graduation Work Permit (PGWP):</strong> A direct bridge to gaining Canadian work experience and PR.</li>
@@ -127,13 +127,13 @@ export default function StudyPermitBlogPostPage() {
               <p>Regarding bringing family, recent updates to immigration rules state that only international students pursuing Master’s degrees, PhDs, or select professional programs (like Medicine or Law) are eligible to bring their spouse on an Open Work Permit. Minor children can accompany you and attend Canadian public schools for free.</p>
 
               <h2>Work Permit After Study in Canada (PGWP)</h2>
-              <p>Upon graduation, you can apply for the Post-Graduation Work Permit (PGWP), which allows you to work in Canada for up to 3 years. This open work permit is a vital stepping stone, allowing you to gain the Canadian work experience needed to apply for permanent residence through programs like the Canadian Experience Class (CEC) under <Link href="/blog/express-entry-2026-guide" className="text-primary font-semibold">Express Entry</Link>. Learn more about this bridge in our <Link href="/blog/pgwp-guide-2025" className="text-primary font-semibold">PGWP Guide</Link>.</p>
+              <p>Upon graduation, you can apply for the Post-Graduation Work Permit (PGWP), which allows you to work in Canada for up to 3 years. This open work permit is a vital stepping stone, allowing you to gain the Canadian work experience needed to apply for permanent residence through programs like the Canadian Experience Class (CEC) under <Link href="/blog/express-entry-2026-guide" className="text-primary font-semibold">Express Entry</Link>. Learn more about this bridge in our <Link href="/blog/pgwp-guide-2026" className="text-primary font-semibold">PGWP Guide</Link>.</p>
 
               <h2>What is the Study Permit Processing Time in Canada?</h2>
               <p>The study permit processing time for applicants from Bangladesh generally ranges from 8 to 12 weeks for the standard stream. If you apply through the Student Direct Stream (SDS) by providing upfront medicals, proof of funds via a Guaranteed Investment Certificate (GIC), and a valid IELTS score, processing can be as fast as 20 calendar days. Always apply at least 3-4 months before your program starts to avoid delays. Check out our guide on <Link href="/blog/canada-bangladesh-immigration" className="text-primary font-semibold">Canada Immigration for Bangladeshi Nationals</Link> for more regional insights.</p>
 
               <h2>Which Course is Best to Study in Canada?</h2>
-              <p>Choosing what to study in Canada to get a good job or PR is critical. Some of the best courses to study in Canada for 2025 include:</p>
+              <p>Choosing what to study in Canada to get a good job or PR is critical. Some of the best courses to study in Canada for 2026 include:</p>
               <ul className="list-disc pl-6 mb-6 space-y-2">
                 <li><strong>Computer Science & IT:</strong> High demand for software developers, data analysts, and cybersecurity experts.</li>
                 <li><strong>Engineering:</strong> Mechanical, Civil, and Electrical engineering remain evergreen fields.</li>

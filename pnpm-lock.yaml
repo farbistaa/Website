@@ -530,7 +530,7 @@ packages:
   '@clerk/clerk-sdk-node@5.1.6':
     resolution: {integrity: sha512-KeF5p0XP0gNoCx+YIHrfrkNNADBz8ZabwPAhOiJZ9Wo14r93WlzRA51IE0Qgteej8IpWwnvKu4/MpiV7FFoLqA==}
     engines: {node: '>=18.17.0'}
-    deprecated: 'January 10 2025 marks the end of support for @clerk/clerk-sdk-node as previously announced in our October 2024 deprecation notice. Express users can migrate to the @clerk/express package. For more information, you can find our changelog here: https://clerk.com/changelog/2025-01-10-node-sdk-eol'
+    deprecated: 'January 10 2026 marks the end of support for @clerk/clerk-sdk-node as previously announced in our October 2024 deprecation notice. Express users can migrate to the @clerk/express package. For more information, you can find our changelog here: https://clerk.com/changelog/2026-01-10-node-sdk-eol'
 
   '@clerk/cli-darwin-arm64@2.3.1':
     resolution: {integrity: sha512-jZoa+cMyTpOXV3TB5JR32+TwgwpcTfT6Md3mOiwoSMxXv5pJEQgoFnfslVknbvnbcxuvSETLt19gOJRHQLanzQ==}

@@ -60,7 +60,7 @@ export default function SchengenBlogPostPage() {
               </span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-snug">
-              Schengen Visa Application Services: Your 2025 Guide to Exploring Europe
+              Schengen Visa Application Services: Your 2026 Guide to Exploring Europe
             </motion.h1>
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-5 text-sm text-white/50">
               <span className="flex items-center gap-1.5">
@@ -69,7 +69,7 @@ export default function SchengenBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 25, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 25, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 12 min read</span>
             </motion.div>
           </motion.div>

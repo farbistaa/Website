@@ -352,9 +352,10 @@ export function FreeAssessmentForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState(""); // FIX: honeypot — humans never fill this
 
   // Empty string locally (relative /api → Vite proxy).
-  // On Vercel, set VITE_API_URL to the api-server domain.
+  // On Vercel, the function lives on the same origin so this stays "".
   const API_BASE = import.meta.env.VITE_API_URL ?? "";
 
   const form = useForm<FormValues>({
@@ -385,6 +386,7 @@ export function FreeAssessmentForm() {
           immigrationStatus: data.status,
           service: data.pathway,
           description: data.description ?? "",
+          company: honeypot, // FIX: honeypot — bots fill it, server silently ignores them
         }),
       });
 
@@ -426,6 +428,7 @@ export function FreeAssessmentForm() {
           className="mt-8"
           onClick={() => {
             form.reset();
+            setHoneypot(""); // FIX: clear honeypot too on reset
             setIsSuccess(false);
           }}
         >
@@ -438,6 +441,19 @@ export function FreeAssessmentForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* FIX: Honeypot — invisible to humans; bots fill it and get silently ignored.
+            Deliberately NOT part of the Zod schema / react-hook-form. */}
+        <input
+          type="text"
+          name="company"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute -left-[9999px] h-0 w-0 opacity-0"
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
@@ -446,7 +462,7 @@ export function FreeAssessmentForm() {
               <FormItem>
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder="John Doe" maxLength={100} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -459,7 +475,8 @@ export function FreeAssessmentForm() {
               <FormItem>
                 <FormLabel>Email Address</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@example.com" {...field} />
+                  {/* FIX: maxLength={254} matches server-side limit */}
+                  <Input type="email" placeholder="john@example.com" maxLength={254} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -475,7 +492,8 @@ export function FreeAssessmentForm() {
               <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="+1 (555) 000-0000" {...field} />
+                  {/* FIX: maxLength={30} matches server-side limit */}
+                  <Input type="tel" placeholder="+1 (555) 000-0000" maxLength={30} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -544,6 +562,7 @@ export function FreeAssessmentForm() {
                 <Textarea
                   placeholder="Tell us about your background, goals, and any previous applications or refusals..."
                   className="resize-none min-h-[120px]"
+                  maxLength={2000}
                   {...field}
                 />
               </FormControl>

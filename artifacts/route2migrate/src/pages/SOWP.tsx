@@ -60,7 +60,7 @@ export default function SOWPBlogPostPage() {
               </span>
             </motion.div>
             <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white leading-snug">
-              Canada Spousal Open Work Permit (SOWP): 2025 Eligibility & Application Guide
+              Canada Spousal Open Work Permit (SOWP): 2026 Eligibility & Application Guide
             </motion.h1>
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-5 text-sm text-white/50">
               <span className="flex items-center gap-1.5">
@@ -69,7 +69,7 @@ export default function SOWPBlogPostPage() {
                   Foyaj Ahmmad Farabi
                 </a>
               </span>
-              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 30, 2025</span>
+              <span className="flex items-center gap-1.5"><Calendar className="h-4 w-4" aria-hidden="true" /> June 30, 2026</span>
               <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" aria-hidden="true" /> 8 min read</span>
             </motion.div>
           </motion.div>
@@ -86,7 +86,7 @@ export default function SOWPBlogPostPage() {
             className="prose prose-lg max-w-none text-justify prose-headings:font-serif prose-headings:text-foreground prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted-foreground prose-p:leading-[1.8] prose-p:mb-6 prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:font-semibold hover:prose-a:underline"
           >
             <div className="prose prose-lg max-w-none text-justify">
-              <p className="lead text-lg text-foreground font-medium mb-8">The Canada Spousal Open Work Permit (SOWP) allows the legally married spouse or common-law partner of an eligible foreign worker, international student, or permanent residency applicant to work for almost any employer in Canada. Navigating the recent 2025 updates to IRCC eligibility rules can be complex, but understanding the specific streams is vital for a successful application.</p>
+              <p className="lead text-lg text-foreground font-medium mb-8">The Canada Spousal Open Work Permit (SOWP) allows the legally married spouse or common-law partner of an eligible foreign worker, international student, or permanent residency applicant to work for almost any employer in Canada. Navigating the recent 2026 updates to IRCC eligibility rules can be complex, but understanding the specific streams is vital for a successful application.</p>
               
               <div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
                 <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>

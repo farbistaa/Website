@@ -20,13 +20,13 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Express Entry",
     categoryColor: "bg-primary/10 text-primary",
     title: "Express Entry 2026: What You Need to Know Before You Apply",
-    excerpt: "Canada's Express Entry system continues to evolve. From Comprehensive Ranking System (CRS) cutoffs to new category-based selection rounds, here's a complete guide to maximizing your Express Entry profile in 2025.",
+    excerpt: "Canada's Express Entry system continues to evolve. From Comprehensive Ranking System (CRS) cutoffs to new category-based selection rounds, here's a complete guide to maximizing your Express Entry profile in 2026.",
     readTime: "7 min read",
-    date: "June 15, 2025",
+    date: "September 5, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
-        <p className="lead text-lg text-foreground font-medium mb-8">Express Entry remains Canada's most sought-after immigration pathway for skilled workers. In 2025, significant changes to the Comprehensive Ranking System (CRS) and category-based selection draws have reshaped how candidates are invited to apply for permanent residence (PR).</p>
+        <p className="lead text-lg text-foreground font-medium mb-8">Express Entry remains Canada's most sought-after immigration pathway for skilled workers. In 2026, significant changes to the Comprehensive Ranking System (CRS) and category-based selection draws have reshaped how candidates are invited to apply for permanent residence (PR).</p>
         
         <div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
           <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
@@ -41,8 +41,8 @@ export const BLOG_POSTS: BlogPost[] = [
         <h2>What is the Comprehensive Ranking System (CRS)?</h2>
         <p>The CRS is a points-based system used to evaluate and rank candidates in the Express Entry pool. It scores candidates on core human capital factors: <strong>age, education, language proficiency, and work experience</strong>. Additional points are awarded for a valid job offer, provincial nomination, or Canadian education. Your CRS score determines your rank, and IRCC regularly invites the highest-ranking candidates to apply for PR.</p>
 
-        <h2>Category-Based Selection Draws in 2025</h2>
-        <p>Introduced in 2023 and expanded in 2025, category-based selection allows IRCC to target specific professions to address labor market shortages. Instead of only conducting general draws for the highest CRS scores, IRCC now conducts targeted draws for:</p>
+        <h2>Category-Based Selection Draws in 2026</h2>
+        <p>Introduced in 2023 and expanded in 2026, category-based selection allows IRCC to target specific professions to address labor market shortages. Instead of only conducting general draws for the highest CRS scores, IRCC now conducts targeted draws for:</p>
         <ul className="list-disc pl-6 mb-6 space-y-2">
           <li>Healthcare occupations</li>
           <li>STEM (Science, Technology, Engineering, Math) professions</li>
@@ -58,14 +58,14 @@ export const BLOG_POSTS: BlogPost[] = [
         <ol className="list-decimal pl-6 mb-6 space-y-2">
           <li><strong>Language Scores:</strong> This is the highest-impact factor. Achieving CLB 9 in all four abilities in English or French can add over 50 points. Consider taking <Link href="/blog/celpip-vs-ielts" className="text-primary font-semibold">CELPIP or IELTS preparation</Link> to maximize your score.</li>
           <li><strong>Provincial Nomination (PNP):</strong> Receiving a nomination from a province adds 600 points to your CRS, virtually guaranteeing an ITA.</li>
-          <li><strong>Canadian Work Experience:</strong> If you are already in Canada on a work permit (like the <Link href="/blog/pgwp-guide-2025" className="text-primary font-semibold">PGWP</Link>), gaining skilled work experience boosts your score significantly.</li>
+          <li><strong>Canadian Work Experience:</strong> If you are already in Canada on a work permit (like the <Link href="/blog/pgwp-guide-2026" className="text-primary font-semibold">PGWP</Link>), gaining skilled work experience boosts your score significantly.</li>
           <li><strong>Education:</strong> Earning a Canadian degree or completing an <Link href="/blog/wes-eca-guide" className="text-primary font-semibold">Educational Credential Assessment (ECA)</Link> for your foreign degree is mandatory.</li>
         </ol>
 
         <h2>Express Entry FAQ</h2>
         <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold mb-2">What is the minimum CRS score for Express Entry in 2025?</h3>
+            <h3 className="text-xl font-semibold mb-2">What is the minimum CRS score for Express Entry in 2026?</h3>
             <p>There is no fixed minimum. The cutoff score varies with each draw. General program draws typically require scores in the 500+ range, while category-based selection draws often have lower cutoffs for targeted occupations.</p>
           </div>
           <div>
@@ -79,18 +79,18 @@ export const BLOG_POSTS: BlogPost[] = [
         </div>
 
         <h2>Is Express Entry Right for You?</h2>
-        <p>While Express Entry is the flagship program, it's not the only route. Depending on your profile, <Link href="/blog/pnp-best-streams-2025" className="text-primary font-semibold">Provincial Nominee Programs (PNP)</Link> or family sponsorship might offer a faster path to permanent residence. A professional assessment can clarify your best options.</p>
+        <p>While Express Entry is the flagship program, it's not the only route. Depending on your profile, <Link href="/blog/pnp-best-streams-2026" className="text-primary font-semibold">Provincial Nominee Programs (PNP)</Link> or family sponsorship might offer a faster path to permanent residence. A professional assessment can clarify your best options.</p>
       </div>
     ),
   },
   {
-    slug: "pnp-best-streams-2025",
+    slug: "pnp-best-streams-2026",
     category: "Provincial Nominee",
     categoryColor: "bg-emerald-100 text-emerald-700",
     title: "Top PNP Streams for Skilled Workers: Province-by-Province Breakdown",
     excerpt: "With over 80 provincial streams available across Canada, finding the right PNP pathway can feel overwhelming. We break down the most accessible streams by occupation, education, and work experience.",
     readTime: "9 min read",
-    date: "June 8, 2025",
+    date: "June 8, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -150,7 +150,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How to Sponsor Your Spouse to Canada: A Step-by-Step Guide",
     excerpt: "Spousal sponsorship is one of the most emotionally significant applications you'll ever file. Understanding the inland vs. outland process, proof of relationship requirements, and common pitfalls can make the difference between approval and delay.",
     readTime: "8 min read",
-    date: "May 28, 2025",
+    date: "May 28, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -208,14 +208,14 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "canada-study-permit-guide",
     category: "Study Permits",
     categoryColor: "bg-blue-100 text-blue-700",
-    title: "Canada Study Permit 2025: Complete Guide for International Students",
+    title: "Canada Study Permit 2026: Complete Guide for International Students",
     excerpt: "Canada remains one of the world's top destinations for international students. This comprehensive guide covers Student Direct Stream eligibility, DLI selection, proof of funds, and your post-graduation immigration strategy.",
     readTime: "10 min read",
-    date: "May 19, 2025",
+    date: "May 19, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
-        <p className="lead text-lg text-foreground font-medium mb-8">Canada is consistently ranked among the top three destinations for international students. Offering world-class education and a clear pathway to permanent residence, securing a study permit in 2025 requires strategic preparation.</p>
+        <p className="lead text-lg text-foreground font-medium mb-8">Canada is consistently ranked among the top three destinations for international students. Offering world-class education and a clear pathway to permanent residence, securing a study permit in 2026 requires strategic preparation.</p>
 
         <div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
           <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
@@ -227,7 +227,7 @@ export const BLOG_POSTS: BlogPost[] = [
         </div>
 
         <h2>Choosing a Designated Learning Institution (DLI)</h2>
-        <p>You can only study in Canada at a DLI — a school approved by the provincial government to host international students. Choosing a DLI that offers programs eligible for the <Link href="/blog/pgwp-guide-2025" className="text-primary font-semibold">Post-Graduation Work Permit (PGWP)</Link> is critical if you plan to immigrate after graduation.</p>
+        <p>You can only study in Canada at a DLI — a school approved by the provincial government to host international students. Choosing a DLI that offers programs eligible for the <Link href="/blog/pgwp-guide-2026" className="text-primary font-semibold">Post-Graduation Work Permit (PGWP)</Link> is critical if you plan to immigrate after graduation.</p>
 
         <h2>Student Direct Stream (SDS)</h2>
         <p>Citizens of certain countries (e.g., India, China, Philippines, Pakistan) can apply via the SDS for faster processing (typically 20 days). Requirements include:</p>
@@ -241,7 +241,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <div className="space-y-6">
           <div>
             <h3 className="text-xl font-semibold mb-2">How much bank balance is required for a Canada study permit?</h3>
-            <p>As of 2024/2025, applicants must show proof of funds covering first-year tuition plus $20,635 CAD for living expenses, and return transportation.</p>
+            <p>As of 2024/2026, applicants must show proof of funds covering first-year tuition plus $20,635 CAD for living expenses, and return transportation.</p>
           </div>
           <div>
             <h3 className="text-xl font-semibold mb-2">Can I work while studying in Canada?</h3>
@@ -258,7 +258,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "CELPIP vs IELTS: Which English Test Is Right for Your Canadian Immigration Journey?",
     excerpt: "Both CELPIP and IELTS are accepted for Express Entry, but they differ significantly in format, scoring, and difficulty by module. Learn which test plays to your strengths and how to maximize your language score for CRS points.",
     readTime: "6 min read",
-    date: "May 10, 2025",
+    date: "May 10, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -303,7 +303,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "10 Common Immigration Mistakes — and How to Avoid Them",
     excerpt: "From misrepresentation issues to missing documentation and expired permits — the same errors appear again and again in rejected applications. An experienced RCIC shares the mistakes she sees most often and how to avoid them.",
     readTime: "7 min read",
-    date: "April 30, 2025",
+    date: "April 30, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -350,7 +350,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Open Work Permits vs Employer-Specific Permits: What's the Difference?",
     excerpt: "Understanding which work permit category applies to you is essential before you apply. We explain LMIA-based, LMIA-exempt, and open work permits — including the Bridging Open Work Permit (BOWP) for those on the path to PR.",
     readTime: "6 min read",
-    date: "April 18, 2025",
+    date: "April 18, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -369,7 +369,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>A closed work permit authorizes you to work only for the specific employer named on the permit. Most require a Labour Market Impact Assessment (LMIA) confirming no Canadian was available for the job.</p>
 
         <h2>Open Work Permits</h2>
-        <p>Open work permits allow you to work for any employer in Canada. They are typically available to spouses of skilled workers, <Link href="/blog/pgwp-guide-2025" className="text-primary font-semibold">PGWP</Link> holders, and refugees.</p>
+        <p>Open work permits allow you to work for any employer in Canada. They are typically available to spouses of skilled workers, <Link href="/blog/pgwp-guide-2026" className="text-primary font-semibold">PGWP</Link> holders, and refugees.</p>
 
         <h2>The Bridging Open Work Permit (BOWP)</h2>
         <p>If you have applied for permanent residence and your current work permit is expiring, you may qualify for a BOWP. This allows you to continue working while your PR application is processed.</p>
@@ -391,7 +391,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Super Visa for Parents & Grandparents: 10-Year Multi-Entry Explained",
     excerpt: "The Super Visa allows parents and grandparents of Canadian citizens and permanent residents to stay for up to 5 years per visit. We walk through the income requirements, insurance, and application process in detail.",
     readTime: "5 min read",
-    date: "April 5, 2025",
+    date: "April 5, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -423,13 +423,13 @@ export const BLOG_POSTS: BlogPost[] = [
     ),
   },
   {
-    slug: "pgwp-guide-2025",
+    slug: "pgwp-guide-2026",
     category: "Work Permits",
     categoryColor: "bg-violet-100 text-violet-700",
     title: "Post-Graduation Work Permit (PGWP): Your Bridge to Canadian PR",
     excerpt: "The PGWP is one of Canada's most valuable immigration tools — giving international graduates up to 3 years of open work authorization and a direct path to permanent residence through the Canadian Experience Class.",
     readTime: "8 min read",
-    date: "March 20, 2025",
+    date: "March 20, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -467,7 +467,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Canada Immigration for Bangladeshi Nationals: Your Complete Pathway Guide",
     excerpt: "Bangladesh is one of the top source countries for Canadian immigration. Whether you're a skilled professional, student, or family member, here's a detailed guide to the pathways available to Bangladeshi nationals.",
     readTime: "9 min read",
-    date: "March 5, 2025",
+    date: "March 5, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -504,7 +504,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "USA F-1 Visa Rejected? Here's Your Path to a Canadian Study Permit",
     excerpt: "A US F-1 visa refusal doesn't mean the end of your international education dreams. Many students who were refused US student visas have gone on to successfully study in Canada. Here's how to approach your Canadian application strategically.",
     readTime: "7 min read",
-    date: "February 14, 2025",
+    date: "February 14, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -541,7 +541,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "WES vs MCC ECA: Which Educational Credential Assessment Do You Need?",
     excerpt: "An Educational Credential Assessment (ECA) is required for Express Entry if your education was obtained outside Canada. Learn the difference between WES and MCC, which programs accept which body, and how to get it done efficiently.",
     readTime: "6 min read",
-    date: "January 22, 2025",
+    date: "January 22, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">
@@ -578,7 +578,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Start-Up Visa Program: Canada's PR Pathway for Entrepreneurs",
     excerpt: "Canada's Start-Up Visa (SUV) program offers permanent residence to innovative entrepreneurs who can secure the backing of a designated Canadian organization. Here's how the program works and whether you might qualify.",
     readTime: "8 min read",
-    date: "January 8, 2025",
+    date: "January 8, 2026",
     author: " RCIC Riffat H. Mohaimen",
     content: (
       <div className="prose prose-lg max-w-none text-justify">

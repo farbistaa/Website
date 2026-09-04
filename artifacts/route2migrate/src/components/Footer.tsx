@@ -157,6 +157,7 @@ export function Footer() {
                     <a href="tel:+14373328242" className="text-white/55 hover:text-primary text-sm transition-colors block">+1 (437) 332-8242 (CA)</a>
                     <a href="tel:+8801896060701" className="text-white/55 hover:text-primary text-sm transition-colors block">+880 1896 060701 (BD)</a>
                     <a href="tel:+8801896060702" className="text-white/55 hover:text-primary text-sm transition-colors block">+880 1896 060702 (BD)</a>
+                    <a href="tel:+8801896060703" className="text-white/55 hover:text-primary text-sm transition-colors block">+880 1896 060703 (BD)</a>
                   </div>
                 </div>
               </li>

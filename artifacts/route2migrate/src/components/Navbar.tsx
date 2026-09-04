@@ -113,12 +113,12 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center gap-1.5">
             <a
-              href="tel:+8801896060702"
+              href="tel:+8801896060702-3"
               className="flex items-center gap-1.5 text-xs text-white/50 hover:text-white/80 transition-colors duration-200 px-2.5 py-1.5 rounded-full hover:bg-white/5"
-              aria-label="Call Route 2 Migrate: +8801896060702"
+              aria-label="Call Route 2 Migrate: +8801896060702-3"
             >
               <Phone className="h-3 w-3 text-primary shrink-0" aria-hidden="true" />
-              <span>+8801896060702</span>
+              <span>+8801896060702-3</span>
             </a>
             <a
               href="https://riffathmohaimen.setmore.com/"

@@ -14,6 +14,7 @@ import riffatPhoto from "@assets/RCIC_Riffat_H_Mohaimen_1785319025735.jpeg";
 import zubairPhoto from "@assets/Syed_Mohd._Zubair_Huda_Adel_1782727934629.jfif";
 import tamimPhoto from "@assets/Tamim_Ahmed_Chowdury_1782727934628.png";
 import farabiPhoto from "@assets/Foyaj Ahmmad Farabi.png";
+import juhayerPhoto from "@assets/SM Juhayer Alam.png";
 
 // Fix TS error: cast ease array as const so it satisfies Easing type
 const easeOut = { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const };
@@ -406,15 +407,16 @@ export default function AboutPage() {
               <p className="text-muted-foreground leading-relaxed">A dedicated team of immigration professionals committed to providing exceptional client service at every step.</p>
             </motion.div>
 
-            <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {[
                 { name: "Syed Mohd. Zubair Huda Adel", role: "Operations Manager", phone: "+8801896060700", email: "zubair@rmigrate.ca", linkedin: "https://www.linkedin.com/in/zubairhuda/", photo: zubairPhoto },
                 { name: "Tamim Ahmed Chowdhury", role: "Executive — Accounts & Client Service", phone: "+8801896060701", email: "tamim@rmigrate.ca", linkedin: "https://www.linkedin.com/company/route2migrateca", photo: tamimPhoto },
                 { name: "Foyaj Ahmmad Farabi", role: "Client Service Executive", phone: "+8801896060702", email: "farabi@rmigrate.ca", linkedin: "https://www.linkedin.com/in/farbista/", photo: farabiPhoto },
+                { name: "S M Juhayer Alam", role: "Education Consultant", phone: "+8801896060703", email: "juhayer@rmigrate.ca", linkedin: "https://www.linkedin.com/company/route2migrateca", photo: juhayerPhoto },
               ].map((member) => (
-                <motion.div key={member.name} variants={fadeUp} className="bg-white border border-gray-100 rounded-3xl overflow-hidden hover:border-primary/15 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group hover:-translate-y-1">
+                <motion.div key={member.name} variants={fadeUp} className="bg-white border border-gray-100 rounded-3xl overflow-hidden hover:border-primary/15 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group hover:-translate-y-1 flex flex-col">
                   {/* Photo with hover overlay */}
-                  <div className="relative h-72 overflow-hidden">
+                  <div className="relative h-64 overflow-hidden">
                     <img
                       src={member.photo}
                       alt={`${member.name} — ${member.role}`}
@@ -436,9 +438,9 @@ export default function AboutPage() {
                   </div>
 
                   {/* Card body */}
-                  <div className="p-6">
-                    <h3 className="font-serif font-bold text-foreground text-lg mb-0.5 leading-snug">{member.name}</h3>
-                    <p className="text-primary text-sm font-semibold mb-4">{member.role}</p>
+                  <div className="p-5 flex-1">
+                    <h3 className="font-serif font-bold text-foreground text-[15px] tracking-tight leading-snug mb-0.5 whitespace-nowrap">{member.name}</h3>
+                    <p className="text-primary text-sm font-semibold mb-3">{member.role}</p>
 
                     {/* Always-visible contact row — LinkedIn hover uses primary (red) */}
                     <div className="flex flex-col gap-2">

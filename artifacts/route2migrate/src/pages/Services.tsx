@@ -1,7 +1,6 @@
-//artifacts/route2migrate/src/pages/Services.tsx
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, memo } from "react";
 import type { ReactNode } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import type { Variants, Transition } from "framer-motion";
@@ -152,6 +151,9 @@ const stagger: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.07 } }
 };
+
+// Hoisted so the string isn't re-created on every card render
+const CARD_TRANSITION = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
 
 // WCAG-compliant flag border colors (3:1+ contrast against white)
 const flagBorderColors = {
@@ -450,6 +452,32 @@ const schengenCompactService: IntlService = {
 
 const allIntlServices: IntlService[] = [...usaServices, ...ukServices, schengenCompactService];
 
+// ── Image warm-up (page-wide) ──
+// Every image used by either carousel, deduped into one preload list.
+const carouselImageUrls: string[] = Array.from(
+  new Set([...canadaServices, ...schengenServices].map((s) => s.image))
+);
+
+// Tracks images that have been fetched AND decoded, shared between the
+// page-level warmer and the card components so a card never re-fades or
+// re-decodes an image the browser already prepared.
+const decodedImages = new Set<string>();
+
+function preloadImage(src: string, priority: "high" | "low" = "low") {
+  if (decodedImages.has(src)) return;
+  const img = new Image();
+  img.decoding = "async";
+  try {
+    // Low priority: warm everything without competing with the page's
+    // critical resources (supported in Chromium; harmless elsewhere).
+    (img as HTMLImageElement & { fetchPriority?: "high" | "low" }).fetchPriority = priority;
+  } catch { /* older browsers ignore this */ }
+  const mark = () => { decodedImages.add(src); };
+  img.onload = mark;                 // fallback: fetched
+  img.decode?.().then(mark, mark);   // preferred: fetched + decoded off-thread
+  img.src = src;
+}
+
 // ── Utility & Hooks ──
 function useMediaQuery(query: string): boolean {
   const [matches, setMatches] = useState(() => {
@@ -529,7 +557,9 @@ function SecondaryServicesSection({ badgeText, title, subtitle, children, classN
   );
 }
 
-function InternationalServiceCard({ svc }: { svc: IntlService }) {
+// memo: props (svc = module-level const object) never change, so these cards
+// are skipped entirely when the parent page re-renders (e.g. typewriter ticks).
+const InternationalServiceCard = memo(function InternationalServiceCard({ svc }: { svc: IntlService }) {
   const [_, navigate] = useLocation();
   return (
     <motion.article
@@ -574,9 +604,9 @@ function InternationalServiceCard({ svc }: { svc: IntlService }) {
       </div>
     </motion.article>
   );
-}
+});
 
-function CompactServiceCard({ svc }: { svc: CanadaService | IntlService }) {
+const CompactServiceCard = memo(function CompactServiceCard({ svc }: { svc: CanadaService | IntlService }) {
   const [_, navigate] = useLocation();
   const Icon = svc.icon;
   const isCanadaService = 'color' in svc;
@@ -599,22 +629,52 @@ function CompactServiceCard({ svc }: { svc: CanadaService | IntlService }) {
       </div>
     </motion.div>
   );
+});
+
+// Card background as a real <img>: participates in the browser's image
+// decode cache (shared with the preloader), never hard-pops — if an image
+// somehow isn't ready it fades in over the black card instead.
+function CardImage({ src }: { src: string }) {
+  const [ready, setReady] = useState(() => decodedImages.has(src));
+  return (
+    <img
+      src={src}
+      alt=""
+      aria-hidden="true"
+      draggable={false}
+      decoding="async"
+      onLoad={() => { decodedImages.add(src); setReady(true); }}
+      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${ready ? "opacity-100" : "opacity-0"}`}
+    />
+  );
 }
 
 // ── High-Performance Premium 3D Carousel ──
-function PremiumCarousel3D({ services, initialIndex = 0 }: { services: CarouselService[]; initialIndex?: number }) {
+// memo: services/initialIndex are stable module-level values, so the carousel
+// is fully isolated from unrelated parent re-renders (typewriter, region tabs).
+const PremiumCarousel3D = memo(function PremiumCarousel3D({ services, initialIndex = 0 }: { services: CarouselService[]; initialIndex?: number }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
-  const [isPaused, setIsPaused] = useState(false);
   const length = services.length;
-  const dragRef = useRef({ startX: 0, active: false });
+
+  const rootRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const dragRef = useRef({ startX: 0, startT: 0, active: false, dragging: false, pointerId: -1 });
+  const pendingF = useRef(0);
+  const rafRef = useRef(0);
+  const movedRef = useRef(false);
+  // Pause state lives in a ref (not useState): hovering/dragging no longer
+  // triggers a full carousel re-render. The autoplay timer reads it directly.
+  const pausedRef = useRef(false);
   const [_, navigate] = useLocation();
 
   const isMobile = useMediaQuery("(max-width: 639px)");
-  const isTablet = useMediaQuery("(min-width: 640px) and (max-width: 1023px)");
-  
+  // Only renders while the carousel is (near) the viewport — used to stop the
+  // autoplay timer for carousels that are mounted but scrolled offscreen.
+  const inView = useInView(rootRef, { margin: "150px" });
+
   const cardW = isMobile ? 300 : 340;
-  const cardH = isMobile ? 450 : 540;
-  
+  const cardH = isMobile ? 440 : 520;
+
   const maxOffset = isMobile ? 1 : 2;
   const maxRenderOffset = maxOffset + 1;
 
@@ -622,54 +682,126 @@ function PremiumCarousel3D({ services, initialIndex = 0 }: { services: CarouselS
   const handleNext = useCallback(() => goTo(1), [goTo]);
   const handlePrev = useCallback(() => goTo(-1), [goTo]);
 
+  // Autoplay: single persistent interval that reads pause/in-view refs and
+  // idles while the tab is hidden — no timer churn, no re-renders on hover/drag,
+  // and offscreen carousels (both are mounted on most regions) cost nothing.
   useEffect(() => {
-    if (isPaused) return;
-    const t = setInterval(handleNext, 5000);
+    const t = setInterval(() => {
+      if (!pausedRef.current && inView && !document.hidden) setCurrentIndex(p => (p + 1) % length);
+    }, 5000);
     return () => clearInterval(t);
-  }, [isPaused, handleNext]);
+  }, [length, inView]);
 
-  const getOffset = (idx: number) => {
+  // Immediately warm the initially visible card window at high priority.
+  // (All remaining images are warmed page-wide in ServicesPage at low
+  // priority — see carouselImageUrls — so nothing is ever left unloaded.)
+  useEffect(() => {
+    const n = services.length;
+    if (!n) return;
+    const wrap = (i: number) => ((i % n) + n) % n;
+    for (let o = -maxRenderOffset; o <= maxRenderOffset; o++) {
+      preloadImage(services[wrap(initialIndex + o)].image, "high");
+    }
+  }, [services, initialIndex, maxRenderOffset]);
+
+  useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
+
+  const getOffset = useCallback((idx: number) => {
     let o = idx - currentIndex;
     if (o > length / 2) o -= length;
     if (o < -length / 2) o += length;
     return o;
+  }, [currentIndex, length]);
+
+  // Continuous position function — identical values at integer offsets as the
+  // step function, but interpolates smoothly between them while dragging.
+  const posFor = useCallback((off: number) => {
+    const abs = Math.abs(off);
+    const o1 = isMobile ? 0.3 : 0.5;
+    const o2 = isMobile ? 0 : 0.2;
+    const opacity = abs <= 1
+      ? 1 + (o1 - 1) * abs
+      : abs <= 2
+        ? o1 + (o2 - o1) * (abs - 1)
+        : 0;
+    return {
+      x: off * cardW * 0.65,
+      s: 1 - abs * 0.1,
+      o: Math.max(0, opacity),
+      r: off * -15,
+    };
+  }, [cardW, isMobile]);
+
+  // Writes card transforms directly to the DOM — used during drags so the
+  // gesture never triggers React re-renders (zero main-thread style recalc
+  // of the whole carousel per frame).
+  const writeDrag = useCallback((f: number) => {
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const eff = getOffset(i) + f;
+      const abs = Math.abs(eff);
+      if (abs > maxRenderOffset) { el.style.opacity = "0"; return; }
+      const { x, s, o, r } = posFor(eff);
+      el.style.transform = `translate3d(${x.toFixed(2)}px,0,0) scale3d(${s.toFixed(4)},${s.toFixed(4)},1) rotateY(${r.toFixed(2)}deg)`;
+      el.style.opacity = o.toFixed(3);
+    });
+  }, [getOffset, posFor, maxRenderOffset]);
+
+  const onDown = (e: React.PointerEvent) => {
+    dragRef.current = { startX: e.clientX, startT: performance.now(), active: true, dragging: false, pointerId: e.pointerId };
+    movedRef.current = false;
+    pausedRef.current = true;
   };
 
-  const getPos = (offset: number) => {
-    const abs = Math.abs(offset);
-    if (abs > maxRenderOffset) return null;
-    
-    const x = offset * cardW * 0.65;
-    const scale = 1 - abs * 0.1;
-    let opacity = 0;
-    if (abs === 0) opacity = 1;
-    else if (abs === 1) opacity = isMobile ? 0.3 : 0.5;
-    else if (abs === 2) opacity = isMobile ? 0 : 0.2;
-    
-    const z = 30 - abs * 10;
-    const rotateY = offset * -15;
-    
-    return { x, s: scale, o: opacity, z, r: rotateY };
+  const onMove = (e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (!d.active) return;
+    const delta = e.clientX - d.startX;
+    if (!d.dragging) {
+      // Only become a "drag" after 8px — plain taps/clicks stay untouched.
+      if (Math.abs(delta) < 8) return;
+      d.dragging = true;
+      (e.currentTarget as HTMLElement).setPointerCapture?.(d.pointerId);
+      cardRefs.current.forEach((el) => { if (el) el.style.transition = "none"; });
+    }
+    pendingF.current = delta / (cardW * 0.65);
+    if (!rafRef.current) {
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = 0;
+        writeDrag(pendingF.current);
+      });
+    }
   };
 
-  const onDown = (e: React.PointerEvent) => { 
-    dragRef.current = { startX: e.clientX, active: true }; 
-    setIsPaused(true); 
-  };
-  const onUp = (e: React.PointerEvent) => {
-    if (!dragRef.current.active) return;
-    const d = e.clientX - dragRef.current.startX;
-    dragRef.current.active = false;
-    setIsPaused(false);
-    if (Math.abs(d) > 50) (d > 0 ? handlePrev : handleNext)();
+  const endDrag = (e: React.PointerEvent) => {
+    const d = dragRef.current;
+    if (!d.active) return;
+    d.active = false;
+    pausedRef.current = false;
+    cancelAnimationFrame(rafRef.current);
+    rafRef.current = 0;
+    if (!d.dragging) return;
+    d.dragging = false;
+    const delta = e.clientX - d.startX;
+    const dt = performance.now() - d.startT;
+    const flick = Math.abs(delta) > 20 && dt < 250;
+    movedRef.current = true;
+    (e.currentTarget as HTMLElement).releasePointerCapture?.(d.pointerId);
+    // Restore transitions BEFORE committing the final index so the CSS
+    // transition animates from the current dragged position.
+    cardRefs.current.forEach((el) => { if (el) el.style.transition = CARD_TRANSITION; });
+    const step = Math.abs(delta) > 50 || flick ? (delta < 0 ? 1 : -1) : 0;
+    if (step) goTo(step);
+    else writeDrag(0); // spring back — no re-render needed
   };
 
   return (
     <div
+      ref={rootRef}
       className="relative w-full flex items-center justify-center overflow-hidden focus:outline-none rounded-2xl select-none py-8"
       style={{ minHeight: cardH + 60 }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => { pausedRef.current = true; }}
+      onMouseLeave={() => { pausedRef.current = false; }}
       onKeyDown={(e) => { if (e.key === "ArrowLeft") { e.preventDefault(); handlePrev(); } if (e.key === "ArrowRight") { e.preventDefault(); handleNext(); } }}
       tabIndex={0}
       role="region"
@@ -680,39 +812,48 @@ function PremiumCarousel3D({ services, initialIndex = 0 }: { services: CarouselS
         <div 
           className="relative" 
           style={{ width: cardW, height: cardH }} 
-          onPointerDown={onDown} 
-          onPointerUp={onUp} 
-          onPointerCancel={() => { dragRef.current.active = false; setIsPaused(false); }}
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
         >
           {services.map((service, index) => {
             const offset = getOffset(index);
-            const pos = getPos(offset);
-            if (!pos) return null;
+            const abs = Math.abs(offset);
+            if (abs > maxRenderOffset) return null;
+            const { x, s, o, r } = posFor(offset);
             const active = offset === 0;
             return (
               <div
                 key={service.title}
+                ref={(el) => { cardRefs.current[index] = el; }}
                 className="absolute top-1/2 left-1/2"
                 style={{
                   width: cardW, 
                   height: cardH, 
                   marginTop: -cardH / 2, 
                   marginLeft: -cardW / 2, 
-                  zIndex: pos.z,
-                  transform: `translateX(${pos.x}px) scale(${pos.s}) rotateY(${pos.r}deg)`,
-                  opacity: pos.o,
-                  transition: "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+                  zIndex: 30 - abs * 10,
+                  // translate3d/scale3d hint the GPU compositor; no
+                  // `preserve-3d` (no 3D children — it only forced expensive
+                  // per-card 3D rendering contexts).
+                  transform: `translate3d(${x.toFixed(2)}px,0,0) scale3d(${s.toFixed(4)},${s.toFixed(4)},1) rotateY(${r.toFixed(2)}deg)`,
+                  opacity: o,
+                  transition: CARD_TRANSITION,
                   willChange: "transform, opacity",
                   backfaceVisibility: "hidden",
-                  transformStyle: "preserve-3d",
                   cursor: active ? "pointer" : "default",
                   pointerEvents: active ? "auto" : "none",
                   touchAction: "pan-y",
                 }}
-                onClick={() => active && service.slug && navigate(`/${service.slug}`)}
+                onClick={() => {
+                  // Suppress the click that follows a drag gesture.
+                  if (movedRef.current) { movedRef.current = false; return; }
+                  if (active && service.slug) navigate(`/${service.slug}`);
+                }}
               >
                 <div className={`relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black ${active ? "group" : ""}`}>
-                  <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${service.image})` }} />
+                  <CardImage src={service.image} />
                   {!active && <div className="absolute inset-0 bg-black/30" />}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
                   {active && <div className="absolute inset-0 rounded-3xl ring-1 ring-white/20 pointer-events-none transition-all duration-500 group-hover:ring-white/40" />}
@@ -759,78 +900,84 @@ function PremiumCarousel3D({ services, initialIndex = 0 }: { services: CarouselS
       </button>
     </div>
   );
-}
+});
 
-const SchengenSectionBlock = () => (
-  <section className="py-12 sm:py-16 bg-white border-t border-gray-100" aria-labelledby="schengen-persistent-heading">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Reveal>
-        <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-semibold px-4 py-2 rounded-full mb-4">
-            <img src={EUFlag} alt="European Union" className="h-4 w-4 object-contain" aria-hidden="true" />
-            Schengen Tourist Visa
-          </div>
-          <h2 id="schengen-persistent-heading" className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-3">
-            Schengen Tourist Visa Application
-          </h2>
-          <p className="text-muted-foreground font-normal leading-relaxed line-clamp-2 text-sm sm:text-base">
-            We process Schengen Tourist Visa applications for all 29 member countries. Browse each destination — swipe or use arrows to explore.
-          </p>
-        </motion.div>
-        <motion.div variants={fadeUp}>
-          <PremiumCarousel3D services={schengenServices} />
-        </motion.div>
-      </Reveal>
-    </div>
-  </section>
-);
-
-const CanadaProgramsSectionBlock = () => (
-  <section className="py-12 sm:py-16 bg-white border-t border-gray-100" aria-labelledby="canada-programs-heading">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Reveal>
-        <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold px-4 py-2 rounded-full mb-4">
-            <img src={CanadaFlag} alt="Canada" className="h-4 w-4 object-contain" aria-hidden="true" />
-            Canadian Immigration Programs
-          </div>
-          <h2 id="canada-programs-heading" className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-3">
-            Federal, Provincial & Specialized Services
-          </h2>
-          <p className="text-muted-foreground font-normal leading-relaxed line-clamp-2 text-sm sm:text-base">
-            Browse each service — swipe or use arrows to explore. We assess your full profile and recommend the highest-probability pathway.
-          </p>
-        </motion.div>
-        <motion.div variants={fadeUp}>
-          <PremiumCarousel3D services={canadaServices} initialIndex={6} />
-        </motion.div>
-      </Reveal>
-    </div>
-  </section>
-);
-
-const UsaUkServicesSectionBlock = () => (
-  <SecondaryServicesSection badgeText="Also Available" title="Our USA & UK Visa Services" subtitle="Backed by Riffat's 6+ years at the US Consulate and specialist UK visitor visa expertise." className="bg-gray-50 border-t border-gray-100">
-    <div className="mb-10">
-      <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6">
-        <img src={USFlag} alt="United States" className="h-4 w-4 object-contain" aria-hidden="true" />
-        USA Visa Services
+const SchengenSectionBlock = memo(function SchengenSectionBlock() {
+  return (
+    <section className="py-12 sm:py-16 bg-white border-t border-gray-100" aria-labelledby="schengen-persistent-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-semibold px-4 py-2 rounded-full mb-4">
+              <img src={EUFlag} alt="European Union" className="h-4 w-4 object-contain" aria-hidden="true" />
+              Schengen Tourist Visa
+            </div>
+            <h2 id="schengen-persistent-heading" className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-3">
+              Schengen Tourist Visa Application
+            </h2>
+            <p className="text-muted-foreground font-normal leading-relaxed line-clamp-2 text-sm sm:text-base">
+              We process Schengen Tourist Visa applications for all 29 member countries. Browse each destination — swipe or use arrows to explore.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <PremiumCarousel3D services={schengenServices} />
+          </motion.div>
+        </Reveal>
       </div>
-      <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        {usaServices.map((svc) => <InternationalServiceCard key={svc.title} svc={svc} />)}
-      </motion.div>
-    </div>
-    <div className="mt-10">
-      <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold px-4 py-2 rounded-full mb-6">
-        <img src={UKFlag} alt="United Kingdom" className="h-4 w-4 object-contain" aria-hidden="true" />
-        UK Visa Services
+    </section>
+  );
+});
+
+const CanadaProgramsSectionBlock = memo(function CanadaProgramsSectionBlock() {
+  return (
+    <section className="py-12 sm:py-16 bg-white border-t border-gray-100" aria-labelledby="canada-programs-heading">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <motion.div variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center gap-2 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold px-4 py-2 rounded-full mb-4">
+              <img src={CanadaFlag} alt="Canada" className="h-4 w-4 object-contain" aria-hidden="true" />
+              Canadian Immigration Programs
+            </div>
+            <h2 id="canada-programs-heading" className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-3">
+              Federal, Provincial & Specialized Services
+            </h2>
+            <p className="text-muted-foreground font-normal leading-relaxed line-clamp-2 text-sm sm:text-base">
+              Browse each service — swipe or use arrows to explore. We assess your full profile and recommend the highest-probability pathway.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <PremiumCarousel3D services={canadaServices} initialIndex={6} />
+          </motion.div>
+        </Reveal>
       </div>
-      <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-lg mx-auto">
-        {ukServices.map((svc) => <InternationalServiceCard key={svc.title} svc={svc} />)}
-      </motion.div>
-    </div>
-  </SecondaryServicesSection>
-);
+    </section>
+  );
+});
+
+const UsaUkServicesSectionBlock = memo(function UsaUkServicesSectionBlock() {
+  return (
+    <SecondaryServicesSection badgeText="Also Available" title="Our USA & UK Visa Services" subtitle="Backed by Riffat's 6+ years at the US Consulate and specialist UK visitor visa expertise." className="bg-gray-50 border-t border-gray-100">
+      <div className="mb-10">
+        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6">
+          <img src={USFlag} alt="United States" className="h-4 w-4 object-contain" aria-hidden="true" />
+          USA Visa Services
+        </div>
+        <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {usaServices.map((svc) => <InternationalServiceCard key={svc.title} svc={svc} />)}
+        </motion.div>
+      </div>
+      <div className="mt-10">
+        <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-semibold px-4 py-2 rounded-full mb-6">
+          <img src={UKFlag} alt="United Kingdom" className="h-4 w-4 object-contain" aria-hidden="true" />
+          UK Visa Services
+        </div>
+        <motion.div variants={stagger} className="grid grid-cols-1 md:grid-cols-1 gap-6 max-w-lg mx-auto">
+          {ukServices.map((svc) => <InternationalServiceCard key={svc.title} svc={svc} />)}
+        </motion.div>
+      </div>
+    </SecondaryServicesSection>
+  );
+});
 
 const typingText = "All Of Our Services";
 
@@ -843,10 +990,11 @@ function useTypewriterEffect(text: string, speed: number = 100, startDelay: numb
   useEffect(() => {
     if (!inView) return;
     let i = 0;
-    
+    let interval: ReturnType<typeof setInterval> | undefined;
+
     const startTimeout = setTimeout(() => {
       setIsTyping(true);
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (i < text.length) {
           setDisplayText(text.substring(0, i + 1));
           i++;
@@ -855,12 +1003,12 @@ function useTypewriterEffect(text: string, speed: number = 100, startDelay: numb
           setIsTyping(false);
         }
       }, speed);
-      
-      return () => clearInterval(interval);
     }, startDelay);
 
+    // Clear both timers on cleanup (prevents leaked interval after unmount).
     return () => {
       clearTimeout(startTimeout);
+      if (interval) clearInterval(interval);
     };
   }, [inView, text, speed, startDelay]);
 
@@ -870,6 +1018,15 @@ function useTypewriterEffect(text: string, speed: number = 100, startDelay: numb
 export default function ServicesPage() {
   const [activeRegion, setActiveRegion] = useState<Region>("canada");
   const { displayText, isTyping, ref: typingRef } = useTypewriterEffect(typingText);
+
+  // Page-wide image warm-up: the moment this page opens, EVERY card image
+  // from BOTH carousels (13 Canada + 29 Schengen) starts downloading at low
+  // network priority and is fully decoded. By the time a user scrolls to the
+  // Schengen section or swipes through any country, its image is already in
+  // memory and decoded — no first-visit pops, no mid-swipe decode hitches.
+  useEffect(() => {
+    carouselImageUrls.forEach((src) => preloadImage(src, "low"));
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

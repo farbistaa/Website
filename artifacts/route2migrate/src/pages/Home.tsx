@@ -770,7 +770,7 @@ export default function HomePage() {
             <motion.div variants={fadeUp} className="text-center mb-12">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">FAQ</span>
               <h2 id="faq-heading" className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-foreground mb-3">Common Questions</h2>
-              <p className="text-muted-foreground font-normal text-sm sm:text-base">Everything you need to know before getting started.</p>
+              <p className="text-muted-foreground font-normal text-sm sm:text-base">Everything you may need to know before getting started.</p>
             </motion.div>
             <motion.div variants={fadeUp}>
               <Accordion type="single" collapsible className="space-y-3">

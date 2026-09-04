@@ -141,7 +141,7 @@ export default function NotFound() {
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-medium text-red-600">
             <AlertCircle className="h-3.5 w-3.5" />
-            System Maintenance
+            System Is Under Maintenance
           </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-black">
             Page Under Maintenance

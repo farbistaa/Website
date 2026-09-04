@@ -118,7 +118,9 @@ const officeHours = [
 ];
 
 const quickFaqs = [
-  { q: "Is the initial consultation really free?", a: "Yes — the initial consultation with executive is completely free, no commitment, no hidden charges. But personalised immigration strategy session with RCIC is Paid Service.We use the consultation to understand your situation and provide honest guidance on your options." },
+  {
+  q: "Is the initial consultation really free?",
+  a: "Yes — the initial consultation with an executive is completely free, with no commitment or hidden charges. However, a personalised immigration strategy session with an RCIC is a paid service. We use the consultation to understand your situation and provide honest guidance on your options."},
   { q: "How quickly will I receive a response?", a: "All form submissions and email inquiries are reviewed within 24 business hours. For urgent matters, please call our Canadian office directly." },
   { q: "Can I consult via video call?", a: "Absolutely. We serve clients worldwide via Zoom, Google Meet, and phone. In-person meetings are also available at our North York and Dhaka offices." },
   { q: "Do you work with clients from outside Canada?", a: "Yes. Many of our clients have never visited Canada before their PR approval. We handle remote consultations and applications for clients worldwide." },

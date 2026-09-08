@@ -10,18 +10,18 @@ import AboutPage from "@/pages/About";
 import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
-import StudyPermit from "@/pages/StudyPermit";
-import ExpressEntry from "@/pages/ExpressEntry";
-import SchengenVisa from "@/pages/Schengen";
-import SOWP from "@/pages/SOWP";
-import SuperVisa from "@/pages/SuperVisa";
-import VisitorVisa from "@/pages/TRV";
-import WorkPermit from "@/pages/WorkPermit";
-import Application from "@/pages/Application";
-import Consultation from "@/pages/Consultation";
-import PNP from "@/pages/PNP";
-import LanguageTestPrep from "@/pages/LanguageCourse";
-import BusinessMigration from "@/pages/BusinessMigration";
+import StudyPermit from "@/pages/blogging/StudyPermit";
+import ExpressEntry from "@/pages/blogging/ExpressEntry";
+import SchengenVisa from "@/pages/blogging/Schengen";
+import SOWP from "@/pages/blogging/SOWP";
+import SuperVisa from "@/pages/blogging/SuperVisa";
+import VisitorVisa from "@/pages/blogging/TRV";
+import WorkPermit from "@/pages/blogging/WorkPermit";
+import Application from "@/pages/blogging/Application";
+import Consultation from "@/pages/blogging/Consultation";
+import PNP from "@/pages/blogging/PNP";
+import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
+import BusinessMigration from "@/pages/blogging/BusinessMigration";
 
 
 // import ExpressEntry from "@/pages/Article/ExpressEntry";
@@ -46,7 +46,7 @@ function Router() {
       <Route path="/sowp" component={SOWP} />
       <Route path="/visitor-visa" component={VisitorVisa} />
       <Route path="/work-permits" component={WorkPermit} />
-      <Route path="/application-review" component={Application} />
+     
       <Route path="/immigration-consultation" component={Consultation} />
       <Route path="/pnp" component={PNP} />
       <Route path="/language-course" component={LanguageTestPrep} />

@@ -1,4 +1,4 @@
-// src/pages/blogpost.tsx
+//artifacts/route2migrate/src/pages/BlogPost.tsx
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "wouter";
 import { motion, useInView, type Variants } from "framer-motion";
@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BLOG_POSTS } from "@/data/blogPosts";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw"; // <-- ADDED THIS IMPORT
+import { Helmet } from "react-helmet-async";
 
 const ease = { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] };
 const fadeUp: Variants = {
@@ -61,6 +64,24 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* SEO & AEO Injection */}
+      <Helmet>
+        <title>{post.seoTitle}</title>
+        <meta name="description" content={post.seoDescription} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": post.title,
+            "description": post.excerpt,
+            "author": { "@type": "Person", "name": post.author },
+            "datePublished": post.date
+          })}
+        </script>
+      </Helmet>
+
       <Navbar />
 
       {/* Hero */}
@@ -99,12 +120,14 @@ export default function BlogPostPage() {
       {/* Article content */}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16" aria-labelledby="article-title">
         <Reveal>
-          {/* Main content */}
+          {/* Main content - Rendering Markdown Safely with HTML support */}
           <motion.div 
             variants={fadeUp} 
             className="prose prose-lg max-w-none text-justify prose-headings:font-serif prose-headings:text-foreground prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-muted-foreground prose-p:leading-[1.8] prose-p:mb-6 prose-li:text-muted-foreground prose-strong:text-foreground prose-a:text-primary prose-a:font-semibold hover:prose-a:underline"
           >
-            {post.content}
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              {post.content}
+            </ReactMarkdown>
           </motion.div>
         </Reveal>
       </article>

@@ -1,3 +1,4 @@
+//artifacts/route2migrate/src/pages/Blog.tsx
 import { useState, useRef } from "react";
 import { Link } from "wouter";
 import { motion, useInView, type Variants } from "framer-motion";
@@ -5,6 +6,7 @@ import { ArrowRight, Clock, Calendar, Tag, BookOpen, Sparkles, Search, SlidersHo
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { BLOG_POSTS } from "@/data/blogPosts"; // <-- ADDED THIS IMPORT
 
 const ease = { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] };
 const fadeUp: Variants = {
@@ -28,141 +30,9 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 
 const ALL_CATEGORIES = ["All", "Express Entry", "Provincial Nominee", "Family Sponsorship", "Study Permits", "Language Tests", "Immigration Tips", "Work Permits", "Visitor Visas"];
 
-const posts = [
-  {
-    slug: "express-entry-2026-guide",
-    category: "Express Entry",
-    categoryColor: "bg-primary/10 text-primary",
-    title: "Express Entry 2026: What You Need to Know Before You Apply",
-    excerpt: "Canada's Express Entry system continues to evolve. From Comprehensive Ranking System (CRS) cutoffs to new category-based selection rounds, here's a complete guide to maximizing your Express Entry profile in 2026.",
-    readTime: "7 min read",
-    date: "September 5, 2026",
-    featured: true,
-  },
-  {
-    slug: "pnp-best-streams-2026",
-    category: "Provincial Nominee",
-    categoryColor: "bg-emerald-100 text-emerald-700",
-    title: "Top PNP Streams for Skilled Workers: Province-by-Province Breakdown",
-    excerpt: "With over 80 provincial streams available across Canada, finding the right PNP pathway can feel overwhelming. We break down the most accessible streams by occupation, education, and work experience.",
-    readTime: "9 min read",
-    date: "June 8, 2026",
-    featured: false,
-  },
-  {
-    slug: "spouse-sponsorship-guide",
-    category: "Family Sponsorship",
-    categoryColor: "bg-rose-100 text-rose-700",
-    title: "How to Sponsor Your Spouse to Canada: A Step-by-Step Guide",
-    excerpt: "Spousal sponsorship is one of the most emotionally significant applications you'll ever file. Understanding the inland vs. outland process, proof of relationship requirements, and common pitfalls can make the difference between approval and delay.",
-    readTime: "8 min read",
-    date: "May 28, 2026",
-    featured: false,
-  },
-  {
-    slug: "canada-study-permit-guide",
-    category: "Study Permits",
-    categoryColor: "bg-blue-100 text-blue-700",
-    title: "Canada Study Permit 2026: Complete Guide for International Students",
-    excerpt: "Canada remains one of the world's top destinations for international students. This comprehensive guide covers Student Direct Stream eligibility, DLI selection, proof of funds, and your post-graduation immigration strategy.",
-    readTime: "10 min read",
-    date: "May 19, 2026",
-    featured: false,
-  },
-  {
-    slug: "celpip-vs-ielts",
-    category: "Language Tests",
-    categoryColor: "bg-indigo-100 text-indigo-700",
-    title: "CELPIP vs IELTS: Which English Test Is Right for Your Canadian Immigration Journey?",
-    excerpt: "Both CELPIP and IELTS are accepted for Express Entry, but they differ significantly in format, scoring, and difficulty by module. Learn which test plays to your strengths and how to maximize your language score for CRS points.",
-    readTime: "6 min read",
-    date: "May 10, 2026",
-    featured: false,
-  },
-  {
-    slug: "common-immigration-mistakes",
-    category: "Immigration Tips",
-    categoryColor: "bg-amber-100 text-amber-700",
-    title: "10 Common Immigration Mistakes — and How to Avoid Them",
-    excerpt: "From misrepresentation issues to missing documentation and expired permits — the same errors appear again and again in rejected applications. An experienced RCIC shares the mistakes she sees most often and how to avoid them.",
-    readTime: "7 min read",
-    date: "April 30, 2026",
-    featured: false,
-  },
-  {
-    slug: "work-permit-pathways",
-    category: "Work Permits",
-    categoryColor: "bg-violet-100 text-violet-700",
-    title: "Open Work Permits vs Employer-Specific Permits: What's the Difference?",
-    excerpt: "Understanding which work permit category applies to you is essential before you apply. We explain LMIA-based, LMIA-exempt, and open work permits — including the Bridging Open Work Permit (BOWP) for those on the path to PR.",
-    readTime: "6 min read",
-    date: "April 18, 2026",
-    featured: false,
-  },
-  {
-    slug: "super-visa-parents-guide",
-    category: "Visitor Visas",
-    categoryColor: "bg-orange-100 text-orange-700",
-    title: "Super Visa for Parents & Grandparents: 10-Year Multi-Entry Explained",
-    excerpt: "The Super Visa allows parents and grandparents of Canadian citizens and permanent residents to stay for up to 5 years per visit. We walk through the income requirements, insurance, and application process in detail.",
-    readTime: "5 min read",
-    date: "April 5, 2026",
-    featured: false,
-  },
-  {
-    slug: "pgwp-guide-2026",
-    category: "Work Permits",
-    categoryColor: "bg-violet-100 text-violet-700",
-    title: "Post-Graduation Work Permit (PGWP): Your Bridge to Canadian PR",
-    excerpt: "The PGWP is one of Canada's most valuable immigration tools — giving international graduates up to 3 years of open work authorization and a direct path to permanent residence through the Canadian Experience Class.",
-    readTime: "8 min read",
-    date: "March 20, 2026",
-    featured: false,
-  },
-  {
-    slug: "canada-bangladesh-immigration",
-    category: "Immigration Tips",
-    categoryColor: "bg-amber-100 text-amber-700",
-    title: "Canada Immigration for Bangladeshi Nationals: Your Complete Pathway Guide",
-    excerpt: "Bangladesh is one of the top source countries for Canadian immigration. Whether you're a skilled professional, student, or family member, here's a detailed guide to the pathways available to Bangladeshi nationals.",
-    readTime: "9 min read",
-    date: "March 5, 2026",
-    featured: false,
-  },
-  {
-    slug: "f1-rejection-to-canada-study",
-    category: "Study Permits",
-    categoryColor: "bg-blue-100 text-blue-700",
-    title: "USA F-1 Visa Rejected? Here's Your Path to a Canadian Study Permit",
-    excerpt: "A US F-1 visa refusal doesn't mean the end of your international education dreams. Many students who were refused US student visas have gone on to successfully study in Canada — here's how to approach your application strategically.",
-    readTime: "7 min read",
-    date: "February 14, 2026",
-    featured: false,
-  },
-  {
-    slug: "wes-eca-guide",
-    category: "Immigration Tips",
-    categoryColor: "bg-amber-100 text-amber-700",
-    title: "WES vs MCC ECA: Which Educational Credential Assessment Do You Need?",
-    excerpt: "An Educational Credential Assessment (ECA) is required for Express Entry if your education was obtained outside Canada. Learn the difference between WES and MCC, and how to get it done efficiently.",
-    readTime: "6 min read",
-    date: "January 22, 2026",
-    featured: false,
-  },
-  {
-    slug: "business-immigration-startup-visa",
-    category: "Express Entry",
-    categoryColor: "bg-primary/10 text-primary",
-    title: "Start-Up Visa Program: Canada's PR Pathway for Entrepreneurs",
-    excerpt: "Canada's Start-Up Visa (SUV) program offers permanent residence to innovative entrepreneurs who can secure the backing of a designated Canadian organization. Here's how the program works and whether you might qualify.",
-    readTime: "8 min read",
-    date: "January 8, 2026",
-    featured: false,
-  },
-];
-
-const featured = posts.find((p) => p.featured)!;
-const regular = posts.filter((p) => !p.featured);
+// CHANGED: Using imported BLOG_POSTS instead of a hardcoded array
+const featured = BLOG_POSTS[0];
+const regular = BLOG_POSTS.slice(1);
 
 export default function BlogPage() {
   const [search, setSearch] = useState("");
@@ -172,7 +42,9 @@ export default function BlogPage() {
   const filteredRegular = regular.filter((p) => {
     const matchCat = activeCategory === "All" || p.category === activeCategory;
     const q = search.toLowerCase();
-    const matchSearch = !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q);
+    const matchSearch = !q || 
+      (p.title?.toLowerCase().includes(q) || "") || 
+      (p.excerpt?.toLowerCase().includes(q) || "");
     return matchCat && matchSearch;
   });
 

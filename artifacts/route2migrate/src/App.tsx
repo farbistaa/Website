@@ -10,23 +10,9 @@ import AboutPage from "@/pages/About";
 import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
-import StudyPermit from "@/pages/blogging/StudyPermit";
-import ExpressEntry from "@/pages/blogging/ExpressEntry";
-import SchengenVisa from "@/pages/blogging/Schengen";
-import SOWP from "@/pages/blogging/SOWP";
-import SuperVisa from "@/pages/blogging/SuperVisa";
-import VisitorVisa from "@/pages/blogging/TRV";
-import WorkPermit from "@/pages/blogging/WorkPermit";
-import Application from "@/pages/blogging/Application";
-import Consultation from "@/pages/blogging/Consultation";
-import PNP from "@/pages/blogging/PNP";
-import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
-import BusinessMigration from "@/pages/blogging/BusinessMigration";
 
-
-// import ExpressEntry from "@/pages/Article/ExpressEntry";
-// import WorkPermit from "@/pages/Article/WorkPermit";
-// ... import all other article pages
+// We do NOT import the individual blogging files here anymore!
+// They are automatically loaded by the import.meta.glob in blogPosts.tsx.
 
 const queryClient = new QueryClient();
 
@@ -38,7 +24,18 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/blog" component={BlogPage} />
+      
+      {/* This handles all standard blog URLs like /blog/sowp */}
       <Route path="/blog/:slug" component={BlogPostPage} />
+      
+      {/*
+        OPTIONALAL: Catch-all route for old service URLs.
+        If someone goes to yourwebsite.com/sowp, it will route to BlogPostPage.
+        BlogPostPage will read the URL ("sowp"), search the BLOG_POSTS array, 
+        and render the correct article!
+      */}
+      <Route path="/:slug" component={BlogPostPage} />
+
       <Route component={NotFound} />
     </Switch>
   );

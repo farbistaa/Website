@@ -11,9 +11,6 @@ import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
 
-// We do NOT import the individual blogging files here anymore!
-// They are automatically loaded by the import.meta.glob in blogPosts.tsx.
-
 const queryClient = new QueryClient();
 
 function Router() {
@@ -28,11 +25,9 @@ function Router() {
       {/* This handles all standard blog URLs like /blog/sowp */}
       <Route path="/blog/:slug" component={BlogPostPage} />
       
-      {/*
-        OPTIONALAL: Catch-all route for old service URLs.
-        If someone goes to yourwebsite.com/sowp, it will route to BlogPostPage.
-        BlogPostPage will read the URL ("sowp"), search the BLOG_POSTS array, 
-        and render the correct article!
+      {/* 
+        This catch-all route sends all your service URLs (like /sowp, /study-permits) 
+        to the BlogPostPage. BlogPostPage reads the URL and finds the matching slug.
       */}
       <Route path="/:slug" component={BlogPostPage} />
 

@@ -39,18 +39,6 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/blog" component={BlogPage} />
       <Route path="/blog/:slug" component={BlogPostPage} />
-      <Route path="/study-permits" component={StudyPermit} />
-      <Route path="/express-entry" component={ExpressEntry} />
-      <Route path="/schengen-visa" component={SchengenVisa} />
-      <Route path="/super-visa" component={SuperVisa} />
-      <Route path="/sowp" component={SOWP} />
-      <Route path="/visitor-visa" component={VisitorVisa} />
-      <Route path="/work-permits" component={WorkPermit} />
-     
-      <Route path="/immigration-consultation" component={Consultation} />
-      <Route path="/pnp" component={PNP} />
-      <Route path="/language-course" component={LanguageTestPrep} />
-      <Route path="/business-immigration" component={BusinessMigration} />
       <Route component={NotFound} />
     </Switch>
   );

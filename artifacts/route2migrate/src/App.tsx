@@ -10,6 +10,23 @@ import AboutPage from "@/pages/About";
 import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
+import StudyPermit from "@/pages/blogging/StudyPermit";
+import ExpressEntry from "@/pages/blogging/ExpressEntry";
+import SchengenVisa from "@/pages/blogging/Schengen";
+import SOWP from "@/pages/blogging/SOWP";
+import SuperVisa from "@/pages/blogging/SuperVisa";
+import VisitorVisa from "@/pages/blogging/TRV";
+import WorkPermit from "@/pages/blogging/WorkPermit";
+import Application from "@/pages/blogging/Application";
+import Consultation from "@/pages/blogging/Consultation";
+import PNP from "@/pages/blogging/PNP";
+import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
+import BusinessMigration from "@/pages/blogging/BusinessMigration";
+
+
+// import ExpressEntry from "@/pages/Article/ExpressEntry";
+// import WorkPermit from "@/pages/Article/WorkPermit";
+// ... import all other article pages
 
 const queryClient = new QueryClient();
 
@@ -21,16 +38,19 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/blog" component={BlogPage} />
-      
-      {/* This handles all standard blog URLs like /blog/sowp */}
       <Route path="/blog/:slug" component={BlogPostPage} />
-      
-      {/* 
-        This catch-all route sends all your service URLs (like /sowp, /study-permits) 
-        to the BlogPostPage. BlogPostPage reads the URL and finds the matching slug.
-      */}
-      <Route path="/:slug" component={BlogPostPage} />
-
+      <Route path="/study-permits" component={StudyPermit} />
+      <Route path="/express-entry" component={ExpressEntry} />
+      <Route path="/schengen-visa" component={SchengenVisa} />
+      <Route path="/super-visa" component={SuperVisa} />
+      <Route path="/sowp" component={SOWP} />
+      <Route path="/visitor-visa" component={VisitorVisa} />
+      <Route path="/work-permits" component={WorkPermit} />
+     
+      <Route path="/immigration-consultation" component={Consultation} />
+      <Route path="/pnp" component={PNP} />
+      <Route path="/language-course" component={LanguageTestPrep} />
+      <Route path="/business-immigration" component={BusinessMigration} />
       <Route component={NotFound} />
     </Switch>
   );

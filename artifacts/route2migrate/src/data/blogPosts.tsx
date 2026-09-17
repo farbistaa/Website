@@ -15,7 +15,7 @@ export type BlogPost = {
 };
 
 // 1. Your existing hardcoded blogs stay here
-const hardcodedBlogs: BlogPost[] = [
+export const hardcodedBlogs: BlogPost[] = [
   {
     slug: "express-entry-2026-guide",
     category: "Express Entry",

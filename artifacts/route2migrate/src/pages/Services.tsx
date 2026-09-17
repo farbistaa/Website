@@ -342,7 +342,7 @@ const usaServices: IntlService[] = [
     countryBorderColor: flagBorderColors.usa,
     desc: "With 6 years of direct US Consulate experience in Dhaka, Riffat understands exactly what officers look for. We handle B-1/B-2 visitor visa preparation and interview coaching with precision.",
     points: ["B-1 Business / B-2 Tourist Visa", "DS-160 application preparation", "Interview coaching & preparation", "Strong ties documentation", "Supporting letter & financial evidence"],
-    slug: "f1-rejection-to-canada-study"
+    slug: "usa-visitor-visa"
   },
   {
     icon: GraduationCap,
@@ -354,7 +354,7 @@ const usaServices: IntlService[] = [
     countryBorderColor: flagBorderColors.usa,
     desc: "Dreaming of studying in the United States? We guide you through the F-1 student visa process — from I-20 guidance to visa interview preparation — backed by insider knowledge from Riffat's US Consulate years.",
     points: ["F-1 Student Visa application", "SEVIS fee & DS-160 guidance", "University & program selection advice", "Financial documentation preparation", "Visa interview coaching & mock sessions"],
-    slug: "f1-rejection-to-canada-study"
+    slug: "usa-student-visa"
   },
 ];
 
@@ -369,7 +369,7 @@ const ukServices: IntlService[] = [
     countryBorderColor: flagBorderColors.uk,
     desc: "Planning to visit family, attend business meetings, or tourism in the United Kingdom? We prepare compelling UK Standard Visitor Visa applications with the right documentation strategy to maximize approval chances.",
     points: ["UK Standard Visitor Visa application", "Business visitor documentation", "Family visit & tourism applications", "Evidence of ties to home country", "Proof of funds & itinerary planning"],
-    slug: "canada-bangladesh-immigration"
+    slug: "uk-visitor-visa"
   },
 ];
 
@@ -557,8 +557,7 @@ function SecondaryServicesSection({ badgeText, title, subtitle, children, classN
   );
 }
 
-// memo: props (svc = module-level const object) never change, so these cards
-// are skipped entirely when the parent page re-renders (e.g. typewriter ticks).
+// Replace your existing InternationalServiceCard with this:
 const InternationalServiceCard = memo(function InternationalServiceCard({ svc }: { svc: IntlService }) {
   const [_, navigate] = useLocation();
   return (
@@ -586,8 +585,9 @@ const InternationalServiceCard = memo(function InternationalServiceCard({ svc }:
         ))}
       </ul>
       <div className="mt-auto flex flex-col sm:flex-row items-stretch gap-3">
+        {/* FIX: Navigating to /blog/ for international services */}
         <button 
-          onClick={() => svc.slug && navigate(`/${svc.slug}`)}
+          onClick={() => svc.slug && navigate(`/blog/${svc.slug}`)}
           className="sm:flex-1 bg-transparent hover:bg-gray-100 text-foreground border border-gray-200 hover:border-gray-300 rounded-xl py-3 px-4 text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap"
         >
           View details
@@ -606,6 +606,7 @@ const InternationalServiceCard = memo(function InternationalServiceCard({ svc }:
   );
 });
 
+// Replace your existing CompactServiceCard with this:
 const CompactServiceCard = memo(function CompactServiceCard({ svc }: { svc: CanadaService | IntlService }) {
   const [_, navigate] = useLocation();
   const Icon = svc.icon;
@@ -615,7 +616,12 @@ const CompactServiceCard = memo(function CompactServiceCard({ svc }: { svc: Cana
   return (
     <motion.div variants={fadeUp}>
       <div 
-        onClick={() => svc.slug && navigate(`/${svc.slug}`)}
+        onClick={() => {
+          if (!svc.slug) return;
+          // FIX: Canada services use dedicated routes, Intl services use /blog/ route
+          const path = isCanadaService ? `/${svc.slug}` : `/blog/${svc.slug}`;
+          navigate(path);
+        }}
         className="group bg-white hover:bg-gray-50 border border-gray-100 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 h-full flex flex-col"
       >
         <div className={`w-10 h-10 rounded-xl ${colorClass} flex items-center justify-center mb-3 shadow-sm`}>
@@ -631,9 +637,6 @@ const CompactServiceCard = memo(function CompactServiceCard({ svc }: { svc: Cana
   );
 });
 
-// Card background as a real <img>: participates in the browser's image
-// decode cache (shared with the preloader), never hard-pops — if an image
-// somehow isn't ready it fades in over the black card instead.
 function CardImage({ src }: { src: string }) {
   const [ready, setReady] = useState(() => decodedImages.has(src));
   return (

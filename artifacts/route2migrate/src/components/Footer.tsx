@@ -171,21 +171,18 @@ export function Footer() {
         <div className="border-t border-white/[0.06] pt-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
             <div className="text-center lg:text-left">
-              <p className="text-white/25 text-xs">
+              <p className="text-white text-xs">
                 &copy; {new Date().getFullYear()} All rights reserved RMohaimen Immigration Services (Route 2 Migrate).
               </p>
-              {/* Hidden intellectual property text - matching exact footer background color */}
               <a 
                 href="https://www.facebook.com/farbistaa/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="block text-xs text-[#08080f] selection:text-white"
+                className="text-white text-xs text-center lg:text-right max-w-md"
                 aria-label="This website is an intellectual Property of Foyaj Ahmmad Farabi"
               >
-                This website is an intellectual Property of Foyaj Ahmmad Farabi
+                Crafted with ❤️ by Foyaj Ahmmad Farabi
               </a>
             </div>
-            <p className="text-white/20 text-xs text-center lg:text-right max-w-md">
+            <p className="text-white text-xs text-center lg:text-right max-w-md">
               Immigration consulting services regulated by the College of Immigration and Citizenship Consultants (CICC).
             </p>
           </div>

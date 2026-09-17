@@ -1,23 +1,23 @@
 // src/pages/blogging/SOWP.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const SOWP: BlogPost = {
+export const postData = {
   slug: "sowp",
   category: "Work Permits",
   categoryColor: "bg-violet-100 text-violet-700",
   title: "Canada Spousal Open Work Permit (SOWP): 2026 Eligibility & Application Guide",
   excerpt: "The Canada Spousal Open Work Permit (SOWP) allows the legally married spouse or common-law partner of an eligible foreign worker, international student, or permanent residency applicant to work for almost any employer in Canada.",
   readTime: "8 min read",
-  date: "June 30, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Canada Spousal Open Work Permit (SOWP) Guide | Route 2 Migrate",
   seoDescription: "Complete 2026 guide to Canada Spousal Open Work Permit (SOWP) eligibility, requirements, and application process for spouses of students and workers.",
   content: `
 The Canada Spousal Open Work Permit (SOWP) allows the legally married spouse or common-law partner of an eligible foreign worker, international student, or permanent residency applicant to work for almost any employer in Canada. Navigating the recent 2026 updates to IRCC eligibility rules can be complex, but understanding the specific streams is vital for a successful application.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Streamlined Eligibility:</strong> SOWP eligibility is strictly tied to your partner's immigration status (Student, Worker, or PR Applicant).</li>
     <li><strong>Student Spouses:</strong> Only spouses of students in eligible Master's, PhD, or specific professional degree programs qualify. Regular college diplomas no longer qualify.</li>
     <li><strong>Worker Spouses:</strong> The principal worker must have at least 16 months of validity remaining on their work permit and fall under specific TEER categories.</li>
@@ -36,8 +36,8 @@ Your partner must be enrolled full-time at a Designated Learning Institution (DL
 * **Graduate Studies:** A master's degree program lasting at least 16 months, or a doctoral (PhD) program.
 * **Professional Programs:** Professional undergraduate degrees including Law (LLB/JD), Medicine (MD), Pharmacy, Nursing, Dentistry, Education, or Engineering.
 
-<div class="my-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg not-prose">
-  <p class="text-foreground text-sm font-medium m-0">Note: Spouses of students in regular college diplomas or standard undergraduate programs are generally not eligible for an SOWP under the updated rules.</p>
+<div className="my-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg not-prose">
+  <p className="text-foreground text-sm font-medium m-0">Note: Spouses of students in regular college diplomas or standard undergraduate programs are generally not eligible for an SOWP under the updated rules.</p>
 </div>
 
 ### 2. Spouses of Temporary Foreign Workers
@@ -53,7 +53,7 @@ Your partner must hold a valid Canadian work permit (or authorization) that has 
 You are eligible for an SOWP if you are currently inside Canada and fall into either of these categories:
 
 * **In-Canada Sponsorship:** Your Canadian spouse or PR partner is sponsoring you, you live together, and you have received an official Acknowledgement of Receipt (AOR) letter confirming your PR application is being processed.
-* **Bridging Open Work Permit (BOWP):** Your spouse applied for PR via <a href="/blog/express-entry-2026-guide" class="text-primary font-semibold">Express Entry</a> and is currently awaiting a final decision on their status.
+* **Bridging Open Work Permit (BOWP):** Your spouse applied for PR via <a href="/express-entry" className="text-primary font-semibold hover:underline">Express Entry</a> and is currently awaiting a final decision on their status.
 
 ### General Applicant Requirements
 
@@ -63,10 +63,10 @@ Beyond your partner’s status, you must meet the basic personal criteria:
 * Prove your relationship is genuine using documents like marriage certificates or shared financial records.
 * Meet standard Canadian security, criminal, and medical admissibility checkpoints.
 
-<div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 class="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
-  <p class="text-muted-foreground text-sm leading-relaxed m-0">
-    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
+<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
+  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
+  <p className="text-muted-foreground text-sm leading-relaxed m-0">
+    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
   </p>
 </div>
 
@@ -88,8 +88,10 @@ Yes. The SOWP is an open work permit, meaning you can work for almost any employ
 Your SOWP will typically be valid for the same duration as your partner's study permit or work permit. If your spouse is applying via Express Entry PR, the BOWP is usually valid for 2 years or until a decision is made on their PR application.
 
 ### Does an SOWP guarantee Permanent Residency?
-No. An SOWP is a temporary resident visa. While the Canadian work experience you gain can help you qualify for PR through programs like the Canadian Experience Class, you must apply for PR separately. You can learn more in our <a href="/blog/spouse-sponsorship-guide" class="text-primary font-semibold">Spousal Sponsorship Guide</a>.
+No. An SOWP is a temporary resident visa. While the Canadian work experience you gain can help you qualify for PR through programs like the Canadian Experience Class, you must apply for PR separately. You can learn more in our <a href="/blog/spouse-sponsorship-guide" className="text-primary font-semibold hover:underline">Spousal Sponsorship Guide</a>.
   `
 };
 
-export default SOWP;
+export default function SOWPPage() {
+  return <BlogLayout post={postData} />;
+}

@@ -1,23 +1,23 @@
 // src/pages/blogging/TRV.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const TRV: BlogPost = {
+export const postData = {
   slug: "canada-temporary-resident-visa-trv-guide",
   category: "Visitor Visas",
   categoryColor: "bg-orange-100 text-orange-700",
   title: "Canada Temporary Resident Visa (TRV): Eligibility & Application Guide",
   excerpt: "A Temporary Resident Visa (TRV), commonly known as a visitor visa, is an official travel document placed in your passport that allows you to enter or re-enter Canada.",
   readTime: "7 min read",
-  date: "July 5, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Canada Temporary Resident Visa (TRV) Guide | Route 2 Migrate",
   seoDescription: "Complete guide to Canada's Temporary Resident Visa (TRV). Learn about eligibility requirements, admissibility, and how to apply for a visitor visa.",
   content: `
 A Temporary Resident Visa (TRV), commonly known as a visitor visa, is an official travel document placed in your passport that allows you to enter or re-enter Canada. Whether you are visiting family, exploring the country as a tourist, or attending a business meeting, securing a TRV requires proving your intent to leave Canada at the end of your authorized stay.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Official Document:</strong> A TRV is a mandatory travel document placed in your passport for entry into Canada.</li>
     <li><strong>Ties to Home Country:</strong> You must convince an immigration officer that you have significant ties (job, home, family) that will ensure your return home.</li>
     <li><strong>Financial Solvency:</strong> You must have sufficient funds to cover your stay, including hotels and daily expenses.</li>
@@ -37,7 +37,7 @@ To get a Canadian visitor visa, you must meet some basic requirements set by Imm
 * Convince an immigration officer that you will leave Canada at the end of your visit.
 * Have enough money for your stay. (The amount of money you will need depends on how long you will stay and if you will stay in a hotel, or with friends or relatives).
 
-You may also need a medical exam and a letter of invitation from someone who lives in Canada depending on your specific situation. If you are planning to visit your children or grandchildren for an extended period, you might want to explore the <a href="/blog/super-visa-parents-guide" class="text-primary font-semibold">Super Visa for Parents & Grandparents</a>.
+You may also need a medical exam and a letter of invitation from someone who lives in Canada depending on your specific situation. If you are planning to visit your children or grandchildren for an extended period, you might want to explore the <a href="/super-visa" className="text-primary font-semibold hover:underline">Super Visa for Parents & Grandparents</a>.
 
 ### Health Restrictions: Ebola-Affected Regions
 
@@ -54,16 +54,16 @@ Some people are inadmissible to Canada, which means they are not allowed to ente
 * Human rights violations
 * Organized crime
 
-You can also be inadmissible for security, health, or financial reasons. If you have a past conviction, it is highly recommended to seek legal advice to determine if you are criminally inadmissible before applying. Avoid making the <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> by having your profile assessed professionally.
+You can also be inadmissible for security, health, or financial reasons. If you have a past conviction, it is highly recommended to seek legal advice to determine if you are criminally inadmissible before applying. Avoid making the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by having your profile assessed professionally.
 
 ## Minor Children Travelling to Canada
 
 Make sure you know what to do if your minor children (children under the age of 18) will be travelling with you, with someone else, or alone. Minor children travelling to Canada must meet the same basic requirements as adults, including having a valid visa. If a minor child is travelling alone or with only one parent, they must carry a consent letter from the non-accompanying parent(s) or legal guardian.
 
-<div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 class="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
-  <p class="text-muted-foreground text-sm leading-relaxed m-0">
-    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
+<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
+  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
+  <p className="text-muted-foreground text-sm leading-relaxed m-0">
+    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
   </p>
 </div>
 
@@ -82,11 +82,13 @@ Applying for a Temporary Resident Visa requires more than just filling out a for
 Most visitors are allowed to stay in Canada for up to 6 months. However, the border services officer at the port of entry may authorize a shorter or longer stay depending on your specific situation.
 
 ### Can I work or study on a TRV?
-No. A standard visitor visa does not allow you to work in Canada. You can attend short-term courses (less than 6 months) that do not require a study permit, but you cannot enroll in a full-degree program. For studying, read our <a href="/blog/canada-study-permit-guide" class="text-primary font-semibold">Canada Study Permit Guide</a>.
+No. A standard visitor visa does not allow you to work in Canada. You can attend short-term courses (less than 6 months) that do not require a study permit, but you cannot enroll in a full-degree program. For studying, read our <a href="/study-permits" className="text-primary font-semibold hover:underline">Canada Study Permit Guide</a>.
 
 ### Can I extend my stay as a visitor?
 Yes. If you want to stay longer than your authorized period, you must apply for a record of extension (visitor record) before your current status expires. You must continue to prove you have sufficient funds to support your extended stay.
   `
 };
 
-export default TRV;
+export default function TRVPage() {
+  return <BlogLayout post={postData} />;
+}

@@ -1,23 +1,23 @@
 // src/pages/blogging/Consultation.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const Consultation: BlogPost = {
+export const postData = {
   slug: "immigration-consultation-services",
   category: "Consulting Services",
   categoryColor: "bg-teal-100 text-teal-700",
   title: "Immigration Consultation Services: Strategize Your Canadian Journey",
   excerpt: "Choosing the right immigration pathway is the most critical decision you will make for your future. Our Immigration Consultation Services provide you with direct access to legal expertise.",
   readTime: "6 min read",
-  date: "July 15, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Immigration Consultation Services Canada | Route 2 Migrate",
   seoDescription: "Strategize your Canadian immigration journey with expert legal guidance. Explore our tailored consultation packages led by a licensed RCIC.",
   content: `
 Choosing the right immigration pathway is the most critical decision you will make for your future. A misplaced application or a misunderstood legal requirement can cost you thousands of dollars and years of your life. Our Immigration Consultation Services provide you with direct access to legal expertise, ensuring you have a clear, strategic roadmap before you invest your time and money.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Tailored Strategy:</strong> Receive personalized advice based on your unique education, work experience, and family situation.</li>
     <li><strong>Legal Clarity:</strong> Understand the complexities of the Immigration and Refugee Protection Act (IRPA) in simple terms.</li>
     <li><strong>Risk Mitigation:</strong> Identify and address potential red flags or inadmissibility issues before applying.</li>
@@ -29,7 +29,7 @@ Choosing the right immigration pathway is the most critical decision you will ma
 
 An immigration consultation with Route 2 Migrate is not a generic sales pitch; it is a focused, legally sound evaluation of your profile. During your session, we listen to your goals, assess your current credentials, and map out the most viable Canadian immigration pathways available to you. 
 
-Whether you are applying for an <a href="/blog/express-entry-2026-guide" class="text-primary font-semibold">Express Entry</a> profile, a <a href="/blog/canada-study-permit-guide" class="text-primary font-semibold">Study Permit</a>, or dealing with a complex refusal, we provide actionable insights that empower you to make informed decisions. We provide honest assessments—if you are not eligible for a specific program, we will tell you why and suggest alternatives.
+Whether you are applying for an <a href="/express-entry" className="text-primary font-semibold hover:underline">Express Entry</a> profile, a <a href="/study-permits" className="text-primary font-semibold hover:underline">Study Permit</a>, or dealing with a complex refusal, we provide actionable insights that empower you to make informed decisions. We provide honest assessments—if you are not eligible for a specific program, we will tell you why and suggest alternatives.
 
 ## Why Book a Consultation With Our RCIC?
 
@@ -44,12 +44,12 @@ In the age of online forums and unregulated "consultants," getting advice from a
 
 We offer four structured consultation packages to perfectly match the depth of support you require. Each tier is designed to address specific needs, from quick queries to complex refusal analysis.
 
-<div class="my-8 grid grid-cols-1 gap-6 not-prose">
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">15 Minute</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Initial Immigration Consultation</h3>
-    <p class="text-sm text-muted-foreground mb-4">A brief, focused session designed for quick, specific questions regarding Canadian immigration.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+<div className="my-8 grid grid-cols-1 gap-6 not-prose">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">15 Minute</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Initial Immigration Consultation</h3>
+    <p className="text-sm text-muted-foreground mb-4">A brief, focused session designed for quick, specific questions regarding Canadian immigration.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Verify your understanding of IRCC requirements</li>
       <li>Confirm basic eligibility for minor programs</li>
       <li>Get quick legal opinion on minor queries</li>
@@ -59,11 +59,11 @@ We offer four structured consultation packages to perfectly match the depth of s
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">30 Minute</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Case Specific Strategy Discussion</h3>
-    <p class="text-sm text-muted-foreground mb-4">An in-depth discussion tailored to a specific visa stream like Study Permit, Work Permit, or PR.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">30 Minute</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Case Specific Strategy Discussion</h3>
+    <p className="text-sm text-muted-foreground mb-4">An in-depth discussion tailored to a specific visa stream like Study Permit, Work Permit, or PR.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Step-by-step strategy mapping</li>
       <li>Document requirements checklist</li>
       <li>Strength and weakness evaluation</li>
@@ -73,11 +73,11 @@ We offer four structured consultation packages to perfectly match the depth of s
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">60 Minute</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Discussion on Application or Refusal</h3>
-    <p class="text-sm text-muted-foreground mb-4">A comprehensive session for complex cases, previous refusals, or applications in progress.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">60 Minute</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Discussion on Application or Refusal</h3>
+    <p className="text-sm text-muted-foreground mb-4">A comprehensive session for complex cases, previous refusals, or applications in progress.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Deep dive into refusal letters</li>
       <li>Identify root causes of application issues</li>
       <li>Detailed legal remedy strategy</li>
@@ -87,11 +87,11 @@ We offer four structured consultation packages to perfectly match the depth of s
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">60 Minute</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Detailed Immigration Assessment</h3>
-    <p class="text-sm text-muted-foreground mb-4">The ultimate profile evaluation to determine the absolute best permanent residence (PR) pathways.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">60 Minute</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Detailed Immigration Assessment</h3>
+    <p className="text-sm text-muted-foreground mb-4">The ultimate profile evaluation to determine the absolute best permanent residence (PR) pathways.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Multi-pathway roadmap for PR</li>
       <li>Assess education, experience & language</li>
       <li>Determine highest probability streams</li>
@@ -106,10 +106,10 @@ We offer four structured consultation packages to perfectly match the depth of s
 
 Ready to take the first step? You can secure your appointment directly through our online booking portal. Select your preferred package, choose a date and time, and secure your appointment with our RCIC. You will receive an immediate confirmation and a secure link for your virtual meeting.
 
-<div class="not-prose my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl shadow-lg text-center">
-  <h3 class="text-xl font-bold text-foreground mb-3">Secure your future with expert legal guidance.</h3>
-  <p class="text-sm text-muted-foreground mb-5">Don't leave your immigration journey to chance. Whether you are just starting out or dealing with a complex refusal, our RCIC, Riffat H. Mohaimen (R710078), is here to help.</p>
-  <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">
+<div className="not-prose my-8 p-6 bg-primary/5 border border-primary/20 rounded-2xl shadow-lg text-center">
+  <h3 className="text-xl font-bold text-foreground mb-3">Secure your future with expert legal guidance.</h3>
+  <p className="text-sm text-muted-foreground mb-5">Don't leave your immigration journey to chance. Whether you are just starting out or dealing with a complex refusal, our RCIC, Riffat H. Mohaimen (R710078), is here to help.</p>
+  <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">
     Book Consultation
   </a>
 </div>
@@ -127,4 +127,6 @@ While the consultation fee covers the legal time and expertise provided during t
   `
 };
 
-export default Consultation;
+export default function ConsultationPage() {
+  return <BlogLayout post={postData} />;
+}

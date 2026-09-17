@@ -10,6 +10,8 @@ import AboutPage from "@/pages/About";
 import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
+
+// Blogging pages imports
 import StudyPermit from "@/pages/blogging/StudyPermit";
 import ExpressEntry from "@/pages/blogging/ExpressEntry";
 import SchengenVisa from "@/pages/blogging/Schengen";
@@ -22,11 +24,6 @@ import Consultation from "@/pages/blogging/Consultation";
 import PNP from "@/pages/blogging/PNP";
 import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
 import BusinessMigration from "@/pages/blogging/BusinessMigration";
-
-
-// import ExpressEntry from "@/pages/Article/ExpressEntry";
-// import WorkPermit from "@/pages/Article/WorkPermit";
-// ... import all other article pages
 
 const queryClient = new QueryClient();
 
@@ -46,11 +43,12 @@ function Router() {
       <Route path="/sowp" component={SOWP} />
       <Route path="/visitor-visa" component={VisitorVisa} />
       <Route path="/work-permits" component={WorkPermit} />
-     
+      <Route path="/application" component={Application} />
       <Route path="/immigration-consultation" component={Consultation} />
       <Route path="/pnp" component={PNP} />
       <Route path="/language-course" component={LanguageTestPrep} />
       <Route path="/business-immigration" component={BusinessMigration} />
+      <Route path="/application-review" component={Application} />
       <Route component={NotFound} />
     </Switch>
   );

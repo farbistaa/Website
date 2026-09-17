@@ -1,23 +1,23 @@
 // src/pages/blogging/BusinessMigration.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const BusinessMigration: BlogPost = {
+export const postData = {
   slug: "canada-business-immigration-guide",
   category: "Business Immigration",
   categoryColor: "bg-amber-100 text-amber-700",
   title: "Canada Business Immigration: Entrepreneurs & Investors Guide",
   excerpt: "Canada offers several business immigration pathways for entrepreneurs, investors, and self-employed individuals to establish a business and obtain permanent residency.",
   readTime: "10 min read",
-  date: "July 25, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Canada Business Immigration Guide for Entrepreneurs | Route 2 Migrate",
   seoDescription: "Explore active Canada business immigration pathways for entrepreneurs, including PNP streams, Quebec programs, and the C11 work permit. Learn how to secure PR as an investor.",
   content: `
 Canada offers several business immigration pathways for entrepreneurs, investors, and self-employed individuals to establish a business and obtain permanent residency. However, due to recent regulatory updates by Immigration, Refugees and Citizenship Canada (IRCC), several popular paths have shifted. It is more critical than ever to align your business strategy with current Canadian immigration law.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Program Shifts:</strong> The federal Start-Up Visa was paused for new applications on June 30, 2026, and the federal Self-Employed Persons Program remains paused.</li>
     <li><strong>Provincial Pathways:</strong> PNP Entrepreneur streams are the most active route, requiring a temporary work permit and 12-24 months of business operation before PR.</li>
     <li><strong>C11 Work Permit:</strong> The LMIA-exempt C11 Significant Benefit permit is the primary legal pathway for foreign business owners to transition to Canada.</li>
@@ -34,12 +34,12 @@ Entrepreneurs must be aware of recent policy changes. Crucially, the federal Sta
 
 The primary active pathways available for business immigration are detailed below. Each route requires different levels of investment, net worth, and operational commitment.
 
-<div class="my-8 grid grid-cols-1 gap-6 not-prose">
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Provincial Pathway</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">PNP Entrepreneur Streams</h3>
-    <p class="text-sm text-muted-foreground mb-4">Most provinces run entrepreneur streams requiring a temporary work permit, business establishment, and transition to PR after 12-24 months.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+<div className="my-8 grid grid-cols-1 gap-6 not-prose">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Provincial Pathway</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">PNP Entrepreneur Streams</h3>
+    <p className="text-sm text-muted-foreground mb-4">Most provinces run entrepreneur streams requiring a temporary work permit, business establishment, and transition to PR after 12-24 months.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>BC: $600k net worth, $200k investment</li>
       <li>Ontario: Targets outside GTA or tech sector</li>
       <li>Alberta/Manitoba/Sask: Rural & farm pathways</li>
@@ -49,11 +49,11 @@ The primary active pathways available for business immigration are detailed belo
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">Independent System</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Quebec Business Immigration</h3>
-    <p class="text-sm text-muted-foreground mb-4">Quebec manages its own independent immigration selection system with dedicated streams for business applicants.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">Independent System</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Quebec Business Immigration</h3>
+    <p className="text-sm text-muted-foreground mb-4">Quebec manages its own independent immigration selection system with dedicated streams for business applicants.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Quebec Investor Program (QIIP): Passive investment</li>
       <li>Requires strong French language proficiency</li>
       <li>Quebec Entrepreneur Program: Create/acquire business</li>
@@ -63,11 +63,11 @@ The primary active pathways available for business immigration are detailed belo
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">LMIA-Exempt Strategy</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">C11 Entrepreneur Work Permit</h3>
-    <p class="text-sm text-muted-foreground mb-4">Secure an LMIA-exempt work permit by proving your business ownership (50%+) will generate significant economic benefit to Canada.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">LMIA-Exempt Strategy</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">C11 Entrepreneur Work Permit</h3>
+    <p className="text-sm text-muted-foreground mb-4">Secure an LMIA-exempt work permit by proving your business ownership (50%+) will generate significant economic benefit to Canada.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Owner-Operator loophole replacement</li>
       <li>Requires at least 50% ownership stake</li>
       <li>Must prove significant economic benefit</li>
@@ -109,7 +109,7 @@ Business immigration is one of the most complex areas of Canadian law. We are no
 
 ## Why Choose Route 2 Migrate?
 
-Applying for business immigration involves moving large sums of capital and making life-altering decisions. Working with an RCIC provides legal protection, accountability, and peace of mind. Riffat H. Mohaimen (R710078) is regulated by the College of Immigration and Citizenship Consultants (CICC). We provide honest, objective assessments—if a specific business stream is closed or paused, we will tell you and pivot to a viable strategy. We continuously track the latest IRCC policy changes, ensuring your investment is protected. Avoid making the <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> by having your business profile assessed professionally.
+Applying for business immigration involves moving large sums of capital and making life-altering decisions. Working with an RCIC provides legal protection, accountability, and peace of mind. Riffat H. Mohaimen (R710078) is regulated by the College of Immigration and Citizenship Consultants (CICC). We provide honest, objective assessments—if a specific business stream is closed or paused, we will tell you and pivot to a viable strategy. We continuously track the latest IRCC policy changes, ensuring your investment is protected. Avoid making the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by having your business profile assessed professionally.
 
 ## Business Immigration FAQ (Search & AI Queries Answered)
 
@@ -120,7 +120,7 @@ As of June 30, 2026, IRCC paused the intake of new applications for the federal 
 The minimum investment depends on the province. Rural or farm streams in provinces like Saskatchewan or Manitoba can start around $100,000 CAD. Popular provinces like British Columbia require a minimum investment of $200,000 CAD, while Ontario and the Maritimes generally require $150,000 to $200,000 CAD.
 
 ### Can I buy a business in Canada and get PR?
-Yes, but you cannot simply buy a business and wait. You must actively manage it. The most common route is the C11 Significant Benefit Work Permit, which requires you to hold at least 50% ownership, prove economic benefit to Canada, and gain Canadian work experience to later transition to PR via <a href="/blog/express-entry-2026-guide" class="text-primary font-semibold">Express Entry</a> or a PNP.
+Yes, but you cannot simply buy a business and wait. You must actively manage it. The most common route is the C11 Significant Benefit Work Permit, which requires you to hold at least 50% ownership, prove economic benefit to Canada, and gain Canadian work experience to later transition to PR via <a href="/express-entry" className="text-primary font-semibold hover:underline">Express Entry</a> or a PNP.
 
 ### Do I need to speak French or English to get a business visa?
 Yes. Most active business immigration streams require a minimum language proficiency of CLB 4 or CLB 5 in English or French. Quebec programs specifically require strong French language skills.
@@ -130,4 +130,6 @@ It is a multi-stage process. First, you apply for a temporary work permit (1-3 m
   `
 };
 
-export default BusinessMigration;
+export default function BusinessMigrationPage() {
+  return <BlogLayout post={postData} />;
+}

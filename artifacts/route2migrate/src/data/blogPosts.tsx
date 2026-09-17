@@ -600,8 +600,11 @@ No, you do not need to invest your own funds if you secure the minimum required 
 ];
 
 // 2. Auto-scan the src/pages/blogging/ folder for any .tsx files!
-const blogModules = import.meta.glob('../pages/blogging/*.tsx', { eager: true }) as Record<string, { default: BlogPost }>;
-const autoBlogs: BlogPost[] = Object.values(blogModules).map(mod => mod.default);
+// We are now looking for a named export `postData` instead of the default export.
+const blogModules = import.meta.glob('../pages/blogging/*.tsx', { eager: true }) as Record<string, { postData?: BlogPost }>;
+const autoBlogs: BlogPost[] = Object.values(blogModules)
+  .map(mod => mod.postData)
+  .filter((data): data is BlogPost => data !== undefined);
 
 // 3. Combine them into one master list and export
 export const BLOG_POSTS: BlogPost[] = [...hardcodedBlogs, ...autoBlogs];

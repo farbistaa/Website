@@ -1,23 +1,23 @@
 // src/pages/blogging/SuperVisa.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const SuperVisa: BlogPost = {
+export const postData = {
   slug: "super-visa-canada-guide",
   category: "Visitor Visas",
   categoryColor: "bg-orange-100 text-orange-700",
   title: "Super Visa for Parents & Grandparents: 10-Year Multi-Entry Explained",
   excerpt: "The Super Visa is a special, multi-entry visitor visa that allows the parents and grandparents of Canadian citizens or permanent residents to stay in Canada for up to 5 years per visit.",
   readTime: "7 min read",
-  date: "July 2, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Canada Super Visa Guide for Parents & Grandparents | Route 2 Migrate",
   seoDescription: "Complete guide to the Canada Super Visa for parents and grandparents. Learn about the 10-year multi-entry visa, income requirements, and insurance.",
   content: `
 The Super Visa is a special, multi-entry visitor visa that allows the parents and grandparents of Canadian citizens or permanent residents to stay in Canada for up to 5 years per visit. The visa itself is valid for up to 10 years, offering a much faster and more predictable route for family reunification than the lottery-based permanent residency sponsorship programs.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Extended Stay:</strong> Stay in Canada for up to 5 years per entry without needing to renew your status.</li>
     <li><strong>10-Year Validity:</strong> The visa itself is valid for up to 10 years, allowing multiple entries.</li>
     <li><strong>Host Requirements:</strong> Your child or grandchild in Canada must meet a minimum necessary income threshold.</li>
@@ -35,7 +35,7 @@ If you don’t meet the requirements, or if you want to stay for 6 months or les
 * Apply for a Super Visa while you wait for a decision on your PR application, or
 * Withdraw your sponsorship application at any time and apply for a Super Visa instead.
 
-For more details on the PR route, you can read our <a href="/blog/spouse-sponsorship-guide" class="text-primary font-semibold">Spousal Sponsorship Guide</a>.
+For more details on the PR route, you can read our <a href="/blog/spouse-sponsorship-guide" className="text-primary font-semibold hover:underline">Spousal Sponsorship Guide</a>.
 
 ## Host Requirements
 
@@ -75,10 +75,10 @@ Even if you don’t need a visitor visa to enter Canada (e.g., you hold a passpo
 
 If you travel by air, you may also need to apply for an electronic travel authorization (eTA) separately to allow you to travel to and enter Canada. The eTA will be electronically linked to your passport, so you need to travel with the passport you used to apply for your eTA and any supporting documents for your Super Visa application.
 
-<div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 class="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
-  <p class="text-muted-foreground text-sm leading-relaxed m-0">
-    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
+<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
+  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
+  <p className="text-muted-foreground text-sm leading-relaxed m-0">
+    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
   </p>
 </div>
 
@@ -107,4 +107,6 @@ The host must meet Canada's Low Income Cut-Off (LICO) plus 30% for their family 
   `
 };
 
-export default SuperVisa;
+export default function SuperVisaPage() {
+  return <BlogLayout post={postData} />;
+}

@@ -1,23 +1,23 @@
 // src/pages/blogging/WorkPermit.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const WorkPermit: BlogPost = {
+export const postData = {
   slug: "canada-work-permit-guide",
   category: "Work Permits",
   categoryColor: "bg-violet-100 text-violet-700",
   title: "Canada Work Permit: Closed vs Open Permits & Application Guide",
   excerpt: "A Canadian work permit is an official document issued by IRCC that authorizes a foreign national to legally work in Canada for a specific period. It is important to know that a work permit is not a travel visa.",
   readTime: "9 min read",
-  date: "July 8, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Canada Work Permit Guide: Closed vs Open | Route 2 Migrate",
   seoDescription: "Complete guide to Canadian work permits. Learn about employer-specific (closed) permits, open work permits, LMIA requirements, and how to apply from inside or outside Canada.",
   content: `
 A Canadian work permit is an official document issued by Immigration, Refugees and Citizenship Canada (IRCC) that authorizes a foreign national to legally work in Canada for a specific period. It is important to know that a work permit is not a travel visa. It does not give you permission to enter Canada on its own. You still need a visitor visa or an Electronic Travel Authorization (eTA) to physically enter the country.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Not a Travel Visa:</strong> A work permit authorizes work but requires a separate eTA or visitor visa for entry into Canada.</li>
     <li><strong>Two Main Categories:</strong> Canada offers Employer-Specific (Closed) and Open Work Permits.</li>
     <li><strong>LMIA Requirement:</strong> Closed work permits usually require a Labour Market Impact Assessment (LMIA), while open permits do not.</li>
@@ -44,7 +44,7 @@ This permit grants you the freedom to work for almost any employer in Canada.
 
 * **Flexibility:** You can change employers and industries without needing prior government approval.
 * **No LMIA Required:** Employers do not need to perform a labor market test to hire you.
-* **Who Qualifies:** Only specific groups are eligible, including international graduates via the <a href="/blog/pgwp-guide-2026" class="text-primary font-semibold">Post-Graduation Work Permit (PGWP)</a> program, spouses of certain skilled workers (like those applying for a Spousal Open Work Permit), and youth participating in programs like International Experience Canada (IEC).
+* **Who Qualifies:** Only specific groups are eligible, including international graduates via the <a href="/blog/pgwp-guide-2026" className="text-primary font-semibold hover:underline">Post-Graduation Work Permit (PGWP)</a> program, spouses of certain skilled workers (like those applying for a Spousal Open Work Permit), and youth participating in programs like International Experience Canada (IEC).
 
 ## Applying from Inside Canada
 
@@ -74,12 +74,12 @@ To apply from outside Canada, you must:
 
 ## Including Family on Your Application
 
-Your spouse, common-law partner, and dependent children may be able to visit, study, or work in Canada with you. Depending on your work permit type and skill level (TEER 0, 1, 2, or 3), your family members might be eligible to apply for their own visitor visas, study permits, or open work permits (OWP). Accompanying family members must meet their own admissibility requirements. Avoid making <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> by ensuring your family's applications are filed correctly alongside yours.
+Your spouse, common-law partner, and dependent children may be able to visit, study, or work in Canada with you. Depending on your work permit type and skill level (TEER 0, 1, 2, or 3), your family members might be eligible to apply for their own visitor visas, study permits, or open work permits (OWP). Accompanying family members must meet their own admissibility requirements. Avoid making <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by ensuring your family's applications are filed correctly alongside yours.
 
-<div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 class="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
-  <p class="text-muted-foreground text-sm leading-relaxed m-0">
-    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
+<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
+  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer</h3>
+  <p className="text-muted-foreground text-sm leading-relaxed m-0">
+    <strong>Please Note:</strong> These requirements are subject to change. Updated information will be found on the official <a href="https://www.canada.ca/en/immigration-refugees-citizenship.html" target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">canada.ca website</a>. Always consult with a licensed professional to verify the latest IRCC policy changes before applying.
   </p>
 </div>
 
@@ -106,4 +106,6 @@ Yes, in many cases. If you hold a work permit in a TEER 0, 1, 2, or 3 occupation
   `
 };
 
-export default WorkPermit;
+export default function WorkPermitPage() {
+  return <BlogLayout post={postData} />;
+}

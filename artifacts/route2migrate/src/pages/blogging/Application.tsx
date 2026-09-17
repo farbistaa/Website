@@ -1,14 +1,14 @@
 // src/pages/blogging/Application.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const ApplicationReview: BlogPost = {
+export const postData = {
   slug: "visa-application-review-services",
   category: "Consulting Services",
   categoryColor: "bg-teal-100 text-teal-700",
   title: "Visa Application Review Services: Ensure Your Approval with RCIC Expertise",
   excerpt: "Filing your own visa application can save you upfront costs, but a single oversight can lead to a devastating refusal. Our Visa Application Review Service bridges the gap between a DIY application and full legal representation.",
   readTime: "8 min read",
-  date: "July 12, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Visa Application Review Services Canada | Route 2 Migrate",
   seoDescription: "Ensure your Canadian visa application is flawless with Route 2 Migrate's RCIC-led Application Review Service. Avoid refusals and submit with confidence.",
@@ -17,9 +17,9 @@ Filing your own Canadian visa application can save you upfront representation co
 
 Our Visa Application Review Service bridges the gap between a DIY application and full legal representation—giving you the confidence that your paperwork is flawless before it ever reaches the immigration officer's desk.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Error Prevention:</strong> A single missing document, inconsistent date, or unexplained gap can trigger a refusal. We catch these errors before submission.</li>
     <li><strong>Legal Compliance:</strong> Your application is meticulously reviewed against the strict standards of the Immigration and Refugee Protection Act (IRPA).</li>
     <li><strong>Strategic SOP Review:</strong> We help refine your Statement of Purpose (SOP) to logically address any potential red flags in your profile.</li>
@@ -63,7 +63,7 @@ We are a professional immigration consultancy firm led by a Licensed Regulated C
 ## Visa Application Review FAQ
 
 ### Does this service guarantee my visa will be approved?
-No service can guarantee a visa approval, as the final decision rests solely with the IRCC officer. However, our review guarantees that your application is complete, legally sound, and presents your profile in the strongest possible light, drastically reducing the chances of an unfair refusal. Avoid making <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> by getting a professional review.
+No service can guarantee a visa approval, as the final decision rests solely with the IRCC officer. However, our review guarantees that your application is complete, legally sound, and presents your profile in the strongest possible light, drastically reducing the chances of an unfair refusal. Avoid making <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by getting a professional review.
 
 ### Will my RCIC submit the application for me?
 Under the Application Review Service, you are responsible for uploading and submitting the application yourself. If you prefer us to handle the entire submission, communicate with IRCC on your behalf, and act as your legal representative, we can upgrade your service to full representation.
@@ -76,4 +76,6 @@ Once we receive your completed application package and supporting documents, our
   `
 };
 
-export default ApplicationReview;
+export default function ApplicationPage() {
+  return <BlogLayout post={postData} />;
+}

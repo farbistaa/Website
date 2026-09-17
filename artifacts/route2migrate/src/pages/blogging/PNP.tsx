@@ -1,23 +1,23 @@
 // src/pages/blogging/PNP.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const PNP: BlogPost = {
+export const postData = {
   slug: "pnp-canada-pr-by-province-guide",
   category: "Provincial Nominee",
   categoryColor: "bg-emerald-100 text-emerald-700",
   title: "Provincial Nominee Program (PNP): Canada PR by Province",
   excerpt: "The Provincial Nominee Program (PNP) allows Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and settle in a particular province.",
   readTime: "11 min read",
-  date: "July 20, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Provincial Nominee Program (PNP) Canada Guide | Route 2 Migrate",
   seoDescription: "Complete guide to the Canada Provincial Nominee Program (PNP). Explore top streams like OINP, BC PNP, AAIP, and SINP to secure your Canadian PR by province.",
   content: `
-The Provincial Nominee Program (PNP) allows Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and settle in a particular province. It is one of the fastest and most popular pathways to Canadian Permanent Residence (PR), especially for candidates who may not have a high enough CRS score to receive an Invitation to Apply (ITA) through federal <a href="/blog/express-entry-2026-guide" class="text-primary font-semibold">Express Entry</a> draws.
+The Provincial Nominee Program (PNP) allows Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and settle in a particular province. It is one of the fastest and most popular pathways to Canadian Permanent Residence (PR), especially for candidates who may not have a high enough CRS score to receive an Invitation to Apply (ITA) through federal <a href="/express-entry" className="text-primary font-semibold hover:underline">Express Entry</a> draws.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Provincial Targeting:</strong> Each province designs its own PNP streams to address specific local labour market shortages (e.g., Tech in BC, Healthcare in Ontario).</li>
     <li><strong>Enhanced vs. Base Streams:</strong> Enhanced streams align with Express Entry and award 600 CRS points; Base streams are independent and have their own processing times.</li>
     <li><strong>Lower CRS Scores:</strong> PNPs are the best alternative for skilled workers whose CRS scores fall below the federal Express Entry cut-off.</li>
@@ -37,12 +37,12 @@ Most PNP streams fall into two main categories: Base streams and Enhanced stream
 
 With over 80 streams across 11 provinces and territories, choosing the right one can feel overwhelming. Explore some of the most accessible and popular PNP streams for skilled workers below:
 
-<div class="my-8 grid grid-cols-1 gap-6 not-prose">
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Ontario</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Ontario Immigrant Nominee Program (OINP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Canada's most populous province, offering streams for tech workers, healthcare professionals, and international students.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+<div className="my-8 grid grid-cols-1 gap-6 not-prose">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Ontario</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Ontario Immigrant Nominee Program (OINP)</h3>
+    <p className="text-sm text-muted-foreground mb-4">Canada's most populous province, offering streams for tech workers, healthcare professionals, and international students.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Human Capital Priorities stream (Tech & Healthcare draws)</li>
       <li>Employer Job Offer stream (Foreign Workers & Students)</li>
       <li>Masters Graduate & PhD Graduate streams</li>
@@ -52,11 +52,11 @@ With over 80 streams across 11 provinces and territories, choosing the right one
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">British Columbia</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">British Columbia Provincial Nominee Program (BC PNP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">A highly popular program for tech professionals, healthcare workers, and entrepreneurs looking to settle in BC.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">British Columbia</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">British Columbia Provincial Nominee Program (BC PNP)</h3>
+    <p className="text-sm text-muted-foreground mb-4">A highly popular program for tech professionals, healthcare workers, and entrepreneurs looking to settle in BC.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>BC PNP Tech Pilot (fast-tracked for 27 tech occupations)</li>
       <li>Skills Immigration (Entry-Level and Semi-Skilled)</li>
       <li>International Post-Graduate category</li>
@@ -66,11 +66,11 @@ With over 80 streams across 11 provinces and territories, choosing the right one
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">Alberta</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Alberta Advantage Immigration Program (AAIP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Ideal for candidates with lower CRS scores, leveraging Alberta's strong economy and job market.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">Alberta</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Alberta Advantage Immigration Program (AAIP)</h3>
+    <p className="text-sm text-muted-foreground mb-4">Ideal for candidates with lower CRS scores, leveraging Alberta's strong economy and job market.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Alberta Express Entry Stream (lower CRS cut-off)</li>
       <li>Accelerated Tech Pathway</li>
       <li>Rural Renewal Stream for smaller communities</li>
@@ -80,11 +80,11 @@ With over 80 streams across 11 provinces and territories, choosing the right one
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">Saskatchewan</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Saskatchewan Immigrant Nominee Program (SINP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Known for its accessible Occupation In-Demand stream, which does not require a job offer for eligible occupations.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-rose-100 text-rose-700 mb-3">Saskatchewan</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Saskatchewan Immigrant Nominee Program (SINP)</h3>
+    <p className="text-sm text-muted-foreground mb-4">Known for its accessible Occupation In-Demand stream, which does not require a job offer for eligible occupations.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>International Skilled Worker - Occupations In-Demand</li>
       <li>Saskatchewan Express Entry stream</li>
       <li>No job offer required for In-Demand streams</li>
@@ -118,7 +118,7 @@ Applying for a PNP requires precise documentation and a deep understanding of pr
 
 ## Why Choose Route 2 Migrate?
 
-In an industry filled with unregulated "consultants," working with an RCIC provides legal protection and accountability. Riffat H. Mohaimen (R710078) is regulated by the College of Immigration and Citizenship Consultants (CICC). We provide honest, objective assessments—we won't push you into a program just to make a sale. We continuously track the latest provincial draws and policy changes, ensuring your strategy is based on current law, not outdated forum advice. Avoid making the <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> by having your profile assessed professionally.
+In an industry filled with unregulated "consultants," working with an RCIC provides legal protection and accountability. Riffat H. Mohaimen (R710078) is regulated by the College of Immigration and Citizenship Consultants (CICC). We provide honest, objective assessments—we won't push you into a program just to make a sale. We continuously track the latest provincial draws and policy changes, ensuring your strategy is based on current law, not outdated forum advice. Avoid making the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by having your profile assessed professionally.
 
 ## Provincial Nominee Program (PNP) FAQ
 
@@ -139,4 +139,6 @@ Processing times vary by province and stream. Provincial processing can take any
   `
 };
 
-export default PNP;
+export default function PNPPage() {
+  return <BlogLayout post={postData} />;
+}

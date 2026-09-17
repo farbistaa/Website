@@ -1,23 +1,23 @@
 // src/pages/blogging/Schengen.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const Schengen: BlogPost = {
+export const postData = {
   slug: "schengen-visa-application-services-guide",
   category: "Schengen Visa",
   categoryColor: "bg-cyan-100 text-cyan-700",
   title: "Schengen Visa Application Services: Your 2026 Guide to Exploring Europe",
   excerpt: "The Schengen Area represents 29 European countries that have abolished all internal borders. Securing a Schengen visa requires meticulous preparation to maximize your chances of approval.",
   readTime: "12 min read",
-  date: "June 25, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Schengen Visa Application Services 2026 Guide | Route 2 Migrate",
   seoDescription: "Complete 2026 guide to applying for a Schengen Visa from Bangladesh. Learn about VFS appointments, required documents, financial proof, and processing times.",
   content: `
 The Schengen Area represents 29 European countries that have abolished all internal borders, allowing free and unrestricted movement. Whether you are planning a tourist vacation, a business trip, or visiting family, securing a Schengen visa requires meticulous preparation. Our Schengen Visa Application Services are designed to eliminate the guesswork and maximize your chances of approval.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>29 Countries, One Visa:</strong> A Schengen visa allows you to travel across 25 EU states and 4 non-EU states.</li>
     <li><strong>VFS Global in Dhaka:</strong> Appointments are mandatory and can be booked via online platforms or physically at the VFS Global centers.</li>
     <li><strong>Financial Proof:</strong> You must demonstrate sufficient funds (typically €40-€50 per day) and stable income.</li>
@@ -30,7 +30,7 @@ The Schengen Area represents 29 European countries that have abolished all inter
 
 Applying for a Schengen visa involves determining your primary destination. If you are visiting only one country, you apply at that country's embassy. If visiting multiple, you apply at the embassy of the country where you will spend the longest duration, or the first country you enter if the duration is equal.
 
-Most Schengen countries outsource their visa collection to VFS Global. For example, if you are traveling to Germany, the **German Embassy** processes the visa, but you will submit your documents and biometrics at the VFS Global center. Understanding the specific embassy's nuanced requirements is where our Schengen Visa Application Services provide immense value, preventing costly mistakes similar to the <a href="/blog/common-immigration-mistakes" class="text-primary font-semibold">common immigration mistakes</a> applicants make.
+Most Schengen countries outsource their visa collection to VFS Global. For example, if you are traveling to Germany, the **German Embassy** processes the visa, but you will submit your documents and biometrics at the VFS Global center. Understanding the specific embassy's nuanced requirements is where our Schengen Visa Application Services provide immense value, preventing costly mistakes similar to the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> applicants make.
 
 ## How to Book an Appointment for a Schengen Visa Application in Dhaka?
 
@@ -68,18 +68,18 @@ Having the correct documentation is critical. A short-stay (Type C) visa applica
     * A copy of their student card and/or a copy of school/college/university registration.
     * A transcript of results.
 
-<div class="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 class="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer & Processing Notes</h3>
-  <p class="text-muted-foreground text-sm leading-relaxed mb-3">
+<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
+  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer & Processing Notes</h3>
+  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
     <strong>Please Note:</strong> These requirements are subject to change based on the regions' immigration policies and laws. Additional documents may be required based on the specific country's requirements, immigration rules, law, or policy changes.
   </p>
-  <p class="text-muted-foreground text-sm leading-relaxed mb-3">
+  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
     This checklist serves as a generic guide for visa applicants regarding the supporting documents they should provide. It is the responsibility of the applicant to ensure that they have provided appropriate documentation. Supplementary documents may be requested by the Consulate during the visa application process. An interview may also be requested. Providing all the requested documentation does not automatically result in the approval of a visa application.
   </p>
-  <p class="text-muted-foreground text-sm leading-relaxed mb-3">
+  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
     The standard processing time for a visa application is 15 days. In certain cases where further information is required, the process may take longer than the standard time. It is incumbent upon the visa applicant and/or sponsor of the applicant to ensure that the application is filed appropriately in advance of the required travel to the Schengen area – and at least 15 days prior to the date of travel. Applications with dates of travel less than 15 days later will not be accepted. It is not possible for the Consulate to expedite or ‘fast-track’ applications.
   </p>
-  <p class="text-muted-foreground text-sm leading-relaxed">
+  <p className="text-muted-foreground text-sm leading-relaxed">
     Should an applicant wish to withdraw their passport during the visa application process, they may contact VFS via the appropriate helpline in order to request a passport withdrawal form. The visa application will not be accepted without a passport.
   </p>
 </div>
@@ -137,4 +137,6 @@ While not always mandatory, the embassy reserves the right to call you in for a 
   `
 };
 
-export default Schengen;
+export default function SchengenPage() {
+  return <BlogLayout post={postData} />;
+}

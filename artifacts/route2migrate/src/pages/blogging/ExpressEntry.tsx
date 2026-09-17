@@ -1,172 +1,238 @@
 // src/pages/blogging/ExpressEntry.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const ExpressEntry: BlogPost = {
-  slug: "express-entry-canada-system-guide",
+export const postData = {
+  slug: "express-entry-canada-2026-guide",
   category: "Express Entry",
   categoryColor: "bg-primary/10 text-primary",
-  title: "Express Entry Canada: The Complete Guide to Canada's PR System",
-  excerpt: "Canada continues to be one of the world's most sought-after destinations for skilled professionals. Express Entry remains one of the fastest and most efficient routes to obtaining Canadian Permanent Residence (PR).",
-  readTime: "12 min read",
-  date: "July 18, 2026",
-  author: "Foyaj Ahmmad Farabi",
-  seoTitle: "Express Entry Canada Guide | Route 2 Migrate",
-  seoDescription: "Complete guide to Canada's Express Entry system. Learn about FSWP, CEC, FSTP, CRS scores, and category-based selection draws for 2026.",
+  title: "Express Entry Canada 2026: The Ultimate Guide for Skilled Workers",
+  excerpt: "Canada's Express Entry system is the flagship immigration management system for skilled workers seeking permanent residence (PR). Whether you are applying from India, Nigeria, the Philippines, or Bangladesh, understanding how the Express Entry application works—from creating a profile to calculating your Comprehensive Ranking System (CRS) score—is critical.",
+  readTime: "15 min read",
+  date: "September 17, 2026",
+  author: "RCIC Riffat H. Mohaimen",
+  seoTitle: "Express Entry Canada 2026: Ultimate Guide | Route 2 Migrate",
+  seoDescription: "Complete guide to Express Entry Canada 2026. Learn about CRS scores, 67 points, fees, draws, and processing times.",
   content: `
-Canada continues to be one of the world's most sought-after destinations for skilled professionals, graduates, entrepreneurs, and families seeking better career opportunities, a higher quality of life, and long-term stability. Among the many immigration pathways available, Express Entry remains one of the fastest and most efficient routes to obtaining Canadian Permanent Residence (PR).
+<div className="lead text-lg text-foreground font-medium mb-8">Canada's Express Entry system is the flagship immigration management system for skilled workers seeking permanent residence (PR). Whether you are applying from India, Nigeria, the Philippines, or Bangladesh, understanding how the Express Entry application works—from creating a profile to calculating your Comprehensive Ranking System (CRS) score—is critical.</div>
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
-    <li><strong>Merit-Based System:</strong> Express Entry ranks candidates using the Comprehensive Ranking System (CRS), rewarding factors like age, education, and language proficiency.</li>
-    <li><strong>Three Core Programs:</strong> It manages FSWP, CEC, and FSTP applications under one umbrella.</li>
-    <li><strong>Category-Based Selection:</strong> IRCC now targets specific occupations (Healthcare, STEM, Trades) allowing lower CRS scores to receive ITAs.</li>
-    <li><strong>Fast Processing:</strong> Complete applications are often processed within 6 months.</li>
-    <li><strong>Professional Guidance:</strong> A Licensed RCIC can optimize your profile to maximize your CRS score and avoid refusal.</li>
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+    <li><strong>Three Programs:</strong> Express Entry manages FSWP, CEC, and FSTP applications.</li>
+    <li><strong>67 Points:</strong> You need at least 67/100 points to enter the FSWP pool.</li>
+    <li><strong>CRS Score:</strong> The Comprehensive Ranking System determines if you get an ITA.</li>
+    <li><strong>Category-Based Draws:</strong> Targeted occupations (Healthcare, STEM, Trades) often have lower CRS cutoffs.</li>
+    <li><strong>Proof of Funds:</strong> A single applicant needs at least CAD $14,690 in settlement funds.</li>
   </ul>
 </div>
 
-Every year, thousands of skilled workers from around the world—including Bangladesh—successfully immigrate to Canada through Express Entry. While the process is designed to be transparent and merit-based, many applicants find it challenging to understand eligibility requirements, CRS scores, category-based selection, documentation requirements, and the numerous policy updates introduced by Immigration, Refugees and Citizenship Canada (IRCC).
+## What is Express Entry and How Does it Work in Canada?
 
-This comprehensive guide explains every major aspect of Canada's Express Entry system in clear and practical language. Whether you are just beginning your research or preparing to submit your application, this guide will help you understand how the system works and what you can do to maximize your chances of receiving an Invitation to Apply (ITA) for permanent residence.
+Express Entry is not an immigration program itself, but an electronic system used by Immigration, Refugees and Citizenship Canada (IRCC) to manage applications for three federal economic immigration programs:
 
-## What is Express Entry?
+* **Federal Skilled Worker Program (FSWP):** For skilled workers with foreign work experience.
+* **Canadian Experience Class (CEC):** For skilled workers with Canadian work experience.
+* **Federal Skilled Trades Program (FSTP):** For workers qualified in a skilled trade.
 
-Express Entry is Canada's online application management system used by IRCC to manage permanent residence applications for skilled workers. Instead of processing applications on a first-come, first-served basis, Express Entry ranks eligible candidates using a points-based system known as the Comprehensive Ranking System (CRS). Applicants with the highest scores—or those who qualify under category-based selection—may receive an Invitation to Apply (ITA) for Canadian Permanent Residence.
+Eligible candidates submit an Express Entry profile online. The system assigns a CRS score based on factors like age, education, language proficiency, and work experience. IRCC regularly conducts draws (Rounds of Invitation), inviting the highest-scoring candidates to apply for Canadian PR.
 
-Express Entry is not a separate immigration program. Rather, it is a centralized system that manages applications under several federal economic immigration programs.
+### Federal Skilled Worker FSW vs Canadian Experience Class CEC
 
-## Why Canada Uses Express Entry
+Understanding the difference between these two streams is vital for international students and foreign workers. Here is a side-by-side comparison table to help you determine which program you are eligible for:
 
-Canada faces ongoing labour shortages across multiple industries, including healthcare, engineering, construction, information technology, transportation, skilled trades, finance, education, hospitality, and agriculture. To address these workforce needs while supporting long-term economic growth, the Canadian government introduced Express Entry as a modern, efficient, and merit-based immigration system.
+<div className="my-8 overflow-x-auto not-prose">
+  <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+    <thead className="bg-gray-50">
+      <tr>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Feature</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Federal Skilled Worker (FSW)</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Canadian Experience Class (CEC)</th>
+      </tr>
+    </thead>
+    <tbody className="bg-white divide-y divide-gray-200">
+      <tr>
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Work Experience</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">Foreign work experience allowed (TEER 0, 1, 2, 3)</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">Must have Canadian work experience (TEER 0, 1, 2, 3)</td>
+      </tr>
+      <tr>
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Minimum Points</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">67/100 on the selection grid</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">No points grid, just pass/fail criteria</td>
+      </tr>
+      <tr>
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Proof of Funds</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">Required (CAD $14,690+)</td>
+        <td className="px-6 py-4 text-sm text-muted-foreground">Not required (if working in Canada)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Unlike traditional immigration systems that often relied on lengthy queues, Express Entry enables Canada to identify and invite candidates who best meet current labour market priorities. Through category-based selection, IRCC can also target individuals with skills or language abilities that are in high demand.
+### Canadian Experience Class CEC Eligibility Requirements
 
-## Benefits of Applying Through Express Entry
+If you have studied or worked in Canada, the CEC pathway is often the fastest route to PR. To be eligible, you must meet the following checklist:
 
-Express Entry offers several advantages compared with many other immigration pathways:
+<ul className="space-y-3 my-6 not-prose">
+  <li className="flex items-start gap-3"><span className="text-green-500 font-bold mt-1">✓</span><div><strong>Canadian Work Experience:</strong> At least 12 months of full-time (or equivalent part-time) skilled work experience in Canada within the last 3 years.</div></li>
+  <li className="flex items-start gap-3"><span className="text-green-500 font-bold mt-1">✓</span><div><strong>Occupation Type:</strong> Experience must be in a TEER 0, 1, 2, or 3 occupation.</div></li>
+  <li className="flex items-start gap-3"><span className="text-green-500 font-bold mt-1">✓</span><div><strong>Language Proficiency:</strong> CLB 7 for TEER 0/1 jobs, or CLB 5 for TEER 2/3 jobs.</div></li>
+  <li className="flex items-start gap-3"><span className="text-green-500 font-bold mt-1">✓</span><div><strong>Intent to Reside:</strong> Must plan to live outside the province of Quebec.</div></li>
+</ul>
 
-* Faster processing times for many complete applications.
-* Opportunity to obtain Canadian Permanent Residence without a job offer in many cases.
-* Transparent points-based ranking system.
-* Ability to improve your CRS score while remaining in the candidate pool.
-* Opportunity to receive a provincial nomination for additional 600 CRS points.
-* Freedom to live and work anywhere in Canada (subject to provincial nomination obligations where applicable).
-* Access to Canada's publicly funded healthcare and education systems after becoming a permanent resident.
-* Pathway to Canadian citizenship after meeting residency requirements.
+## Express Entry Draws: General vs. Category-Based Selection
 
-## Immigration Programs Managed Under Express Entry
+IRCC conducts Express Entry draws approximately every two weeks. Historically, general draws invited the highest CRS scores. However, IRCC introduced **category-based Express Entry selection categories list** to target specific profiles. 
 
-Many people assume Express Entry is a single immigration program. In reality, it manages applications for three major federal economic immigration programs. Understanding these programs is essential because eligibility requirements differ for each. 
+<div className="grid grid-cols-2 md:grid-cols-3 gap-4 my-8 not-prose">
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">Healthcare</h4><p className="text-xs text-muted-foreground mt-1">Doctors, nurses, aides</p></div>
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">STEM</h4><p className="text-xs text-muted-foreground mt-1">Tech professionals, data analysts</p></div>
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">Trades</h4><p className="text-xs text-muted-foreground mt-1">Carpenters, plumbers, welders</p></div>
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">Transport</h4><p className="text-xs text-muted-foreground mt-1">Truck drivers, logistics</p></div>
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">Agriculture</h4><p className="text-xs text-muted-foreground mt-1">Farm supervisors, butchers</p></div>
+  <div className="border p-4 rounded-xl bg-gray-50 text-center"><h4 className="font-bold text-sm text-foreground">French Proficiency</h4><p className="text-xs text-muted-foreground mt-1">Francophones outside Quebec</p></div>
+</div>
 
-<div class="my-8 grid grid-cols-1 gap-6 not-prose">
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">For Professionals</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Federal Skilled Worker (FSWP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Designed for individuals with skilled foreign work experience who wish to immigrate permanently to Canada.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-      <li>Assessed on 6 selection factors (Age, Education, etc.)</li>
-      <li>Popular among professionals applying from outside Canada</li>
-      <li>Requires minimum CRS points for pool entry</li>
-      <li>Ideal for Software Engineers, Doctors, Accountants</li>
-      <li>No Canadian work experience required</li>
-      <li>Must meet minimum language proficiency benchmarks</li>
-    </ul>
+### Latest Express Entry Draw CRS Score Breakdown
+
+To give you an idea of current trends for September 2026, here is the latest data table for recent Express Entry draws. *(Note: Scores fluctuate; always verify with official IRCC data).*
+
+<div className="my-8 overflow-x-auto not-prose">
+  <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+    <thead className="bg-gray-50">
+      <tr>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Draw Type</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">CRS Cut-off</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Invitations Issued</th>
+      </tr>
+    </thead>
+    <tbody className="bg-white divide-y divide-gray-200 text-muted-foreground">
+      <tr><td className="px-6 py-4 text-sm">General</td><td className="px-6 py-4 text-sm">Sept 2026</td><td className="px-6 py-4 text-sm font-bold text-foreground">515</td><td className="px-6 py-4 text-sm">3,500</td></tr>
+      <tr><td className="px-6 py-4 text-sm">Healthcare</td><td className="px-6 py-4 text-sm">Sept 2026</td><td className="px-6 py-4 text-sm font-bold text-foreground">422</td><td className="px-6 py-4 text-sm">1,500</td></tr>
+      <tr><td className="px-6 py-4 text-sm">STEM</td><td className="px-6 py-4 text-sm">Aug 2026</td><td className="px-6 py-4 text-sm font-bold text-foreground">479</td><td className="px-6 py-4 text-sm">2,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+## How to Calculate CRS Score for Express Entry
+
+The Comprehensive Ranking System (CRS) scores candidates out of 1,200 points. To maximize your score, you need a step-by-step breakdown of the core factors:
+
+1. **Age (Max 110 points):** The optimal age is 20-29. After 30, points gradually decrease, reaching zero at age 45.
+2. **Education (Max 150 points):** A Master's degree earns more points than a Bachelor's. If your degree is foreign, you need an <a href="/blog/wes-eca-guide" className="text-primary font-semibold hover:underline">ECA from a designated body like WES</a>.
+3. **Language Proficiency (Max 160 points):** Achieving a CLB 9 in <a href="/blog/celpip-vs-ielts" className="text-primary font-semibold hover:underline">IELTS or CELPIP</a> unlocks significant skill transferability points.
+4. **Work Experience (Max 80 points):** At least 1 year of continuous, full-time work experience (1,560 hours) in a TEER 0, 1, 2, or 3 occupation is required.
+
+### How to Get Extra CRS Points for Express Entry
+
+If your score is below the latest draw cutoff, you can boost it using these actionable strategies:
+
+* **Provincial Nominee Program (PNP):** Receiving a provincial nomination adds a massive **600 points** to your profile, guaranteeing an ITA in the next draw.
+* **French Language Proficiency:** If you achieve CLB 7+ in French, you can earn up to 50 bonus points.
+* **Sibling in Canada:** Having a sibling living in Canada as a PR or citizen gives you 15 extra points.
+* **Arranged Employment:** A valid job offer backed by an LMIA adds 50 or 200 points.
+
+## How PGWP Counts Toward Express Entry Work Experience
+
+International students often wonder how their post-graduation work permit translates to PR points. Under the Canadian Experience Class, your **PGWP counts toward Express Entry work experience** provided it meets the following:
+
+* You must work at least 1,560 hours (1 year full-time) in a **TEER 0, 1, 2, or 3 NOC code**.
+* Self-employment and work done during studies (co-op placements) do not count.
+* Remote work on a PGWP is valid if properly documented by your employer.
+
+To learn how to secure this permit, read our <a href="/blog/pgwp-guide-2026" className="text-primary font-semibold hover:underline">Comprehensive PGWP Guide</a>.
+
+## Best PR Pathways for International Students in Canada
+
+International students have multiple routes to transition from a study permit to permanent residence. Here is a strategic comparison of the best PR pathways for international students in Canada:
+
+<div className="my-8 overflow-x-auto not-prose">
+  <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+    <thead className="bg-gray-50">
+      <tr>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Pathway</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Best Suited For</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Key Advantage</th>
+      </tr>
+    </thead>
+    <tbody className="bg-white divide-y divide-gray-200 text-muted-foreground">
+      <tr><td className="px-6 py-4 text-sm font-medium text-foreground">Express Entry (CEC)</td><td className="px-6 py-4 text-sm">Students with 1+ year Canadian work exp</td><td className="px-6 py-4 text-sm">Fast 6-month processing, no job offer needed</td></tr>
+      <tr><td className="px-6 py-4 text-sm font-medium text-foreground">Provincial Nominee (PNP)</td><td className="px-6 py-4 text-sm">Students with lower CRS scores</td><td className="px-6 py-4 text-sm">Adds 600 points, guarantees ITA</td></tr>
+      <tr><td className="px-6 py-4 text-sm font-medium text-foreground">Express Entry (FSW)</td><td className="px-6 py-4 text-sm">Students returning home after PGWP</td><td className="px-6 py-4 text-sm">Can apply from outside Canada</td></tr>
+    </tbody>
+  </table>
+</div>
+
+## Provincial Nominee Program PNP Express Entry Streams
+
+If you need extra points, aligning your Express Entry profile with a provincial stream is the smartest move. Here is a state/province breakdown grid of popular **Provincial Nominee Program PNP Express Entry streams**:
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 not-prose">
+  <div className="border border-gray-200 rounded-xl p-6 bg-white shadow-sm">
+    <h4 className="font-bold text-foreground mb-2">Ontario (OINP) - Human Capital Priorities</h4>
+    <p className="text-sm text-muted-foreground">Targets tech workers and specific healthcare professionals directly from the Express Entry pool. Often does not require a job offer.</p>
   </div>
-
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">For In-Canada Workers</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Canadian Experience Class (CEC)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Intended for skilled workers who have already gained qualifying Canadian work experience.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-      <li>Requires 1 year of skilled Canadian work experience</li>
-      <li>Recognizes ability to integrate into Canada's workforce</li>
-      <li>Popular pathway for PGWP holders</li>
-      <li>Ideal for international graduates employed in Canada</li>
-      <li>Exempts applicants from proof of funds in some cases</li>
-      <li>Must meet minimum language proficiency benchmarks</li>
-    </ul>
+  <div className="border border-gray-200 rounded-xl p-6 bg-white shadow-sm">
+    <h4 className="font-bold text-foreground mb-2">Alberta Express Entry Stream</h4>
+    <p className="text-sm text-muted-foreground">For candidates working in an eligible occupation in Alberta. Often requires a CRS score of just 300+ to be notified of interest.</p>
   </div>
-
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">For Tradespeople</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Federal Skilled Trades (FSTP)</h3>
-    <p class="text-sm text-muted-foreground mb-4">Specifically designed for experienced tradespeople to address strong demand in Canada's labor market.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-      <li>Requires qualifying work experience in a skilled trade</li>
-      <li>Ideal for Electricians, Welders, Plumbers, Chefs</li>
-      <li>Must satisfy employment or certification requirements</li>
-      <li>Lower language proficiency thresholds than FSWP</li>
-      <li>Job offer or certificate of qualification often required</li>
-      <li>Direct pathway to PR for trades professionals</li>
-    </ul>
+  <div className="border border-gray-200 rounded-xl p-6 bg-white shadow-sm">
+    <h4 className="font-bold text-foreground mb-2">British Columbia (EEBC)</h4>
+    <p className="text-sm text-muted-foreground">Covers tech, healthcare, and childcare professionals. Requires a valid job offer in BC.</p>
+  </div>
+  <div className="border border-gray-200 rounded-xl p-6 bg-white shadow-sm">
+    <h4 className="font-bold text-foreground mb-2">Saskatchewan (SINP) - Express Entry</h4>
+    <p className="text-sm text-muted-foreground">Targets highly skilled workers with experience in SINP's in-demand occupations list. Often selects candidates without a job offer.</p>
   </div>
 </div>
 
-## Category-Based Selection
+## Express Entry Proof of Funds Requirement Update
 
-One of the most significant developments in Canada's immigration system is category-based selection. Instead of inviting candidates solely based on CRS score, IRCC now conducts draws targeting applicants with skills that align with Canada's economic priorities.
+Unless you are currently authorized to work in Canada (e.g., on a <a href="/blog/work-permit-pathways" className="text-primary font-semibold hover:underline">work permit</a>) or are applying under the CEC, you must show proof of funds (LICO - Low Income Cut-Off). 
 
-Current priority categories have included areas such as:
+Here is the quick reference table by family size for the 2026 **Express Entry proof of funds requirement update**:
 
-* Healthcare occupations
-* STEM (Science, Technology, Engineering, Math) occupations
-* Skilled trades
-* Transport occupations
-* Agriculture and agri-food occupations
-* French-language proficiency
+<div className="my-8 overflow-x-auto not-prose">
+  <table className="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+    <thead className="bg-gray-50">
+      <tr>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Number of Family Members</th>
+        <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Minimum Funds Required (CAD)</th>
+      </tr>
+    </thead>
+    <tbody className="bg-white divide-y divide-gray-200 text-muted-foreground">
+      <tr><td className="px-6 py-4 text-sm">1 (Single Applicant)</td><td className="px-6 py-4 text-sm font-bold text-foreground">$14,690</td></tr>
+      <tr><td className="px-6 py-4 text-sm">2 (Couple)</td><td className="px-6 py-4 text-sm font-bold text-foreground">$18,288</td></tr>
+      <tr><td className="px-6 py-4 text-sm">3 (Family of 3)</td><td className="px-6 py-4 text-sm font-bold text-foreground">$22,482</td></tr>
+      <tr><td className="px-6 py-4 text-sm">4 (Family of 4)</td><td className="px-6 py-4 text-sm font-bold text-foreground">$27,297</td></tr>
+    </tbody>
+  </table>
+</div>
 
-This has created additional opportunities for skilled professionals whose occupations are experiencing labour shortages across Canada, allowing candidates with relatively lower CRS scores to receive invitations if they meet the requirements of a targeted category.
+## Comprehensive FAQ: Addressing Your Top Search Queries
 
-## How Express Entry Works: Step-by-Step
+### Can TEER 4 and TEER 5 apply for Express Entry?
+Generally, no. Express Entry (specifically FSW and CEC) requires TEER 0, 1, 2, or 3. However, certain specific category-based draws or provincial nominee programs may occasionally target specific TEER 4 or 5 occupations (e.g., healthcare aides, butchers).
 
-Many applicants believe they simply submit an application and wait for approval. In reality, Express Entry is a multi-stage competitive selection process.
+### Is food service supervisor eligible for Express Entry?
+Yes. A Food Service Supervisor is classified as TEER 2 (NOC 62020) and is eligible for Express Entry, provided you meet the language and work experience requirements.
 
-1. **Determine Eligibility:** Check if you qualify under FSWP, CEC, or FSTP based on work experience, education, language, and age.
-2. **Complete a Language Test:** Take an approved English (IELTS/CELPIP) or French test, as language proficiency heavily influences CRS scores.
-3. **Obtain an ECA:** Get an Educational Credential Assessment to confirm foreign education equals Canadian standards.
-4. **Create an Express Entry Profile:** Submit your details online to receive a CRS score.
-5. **Enter the Express Entry Pool:** Wait for ITA draws while improving your profile if needed (e.g., via provincial nomination).
-6. **Receive an ITA:** If your score meets the cut-off, you receive an Invitation to Apply for PR.
-7. **Submit the PR Application:** Upload all supporting documents (police checks, medicals, proof of funds) within 60 days.
-8. **Final Decision:** IRCC reviews everything. If approved, you get Confirmation of Permanent Residence (COPR).
+### Can Express Entry PR live in Quebec?
+No. Quebec has its own immigration system (Arrima/Quebec Regular Skilled Worker Program). Express Entry to Quebec is not applicable. If you apply through Express Entry, you must intend to reside outside the province of Quebec.
 
-## Is Express Entry the Right Pathway for You?
-
-Express Entry is an excellent immigration pathway for many skilled workers, but it is not the right option for everyone. Factors such as age, education, occupation, language proficiency, work experience, and long-term immigration goals all influence whether Express Entry is the most suitable choice. For some applicants, improving their CRS score before entering the pool may significantly increase their chances of success. Others may benefit from exploring additional pathways such as <a href="/blog/pnp-best-streams-2026" class="text-primary font-semibold">Provincial Nominee Programs (PNP)</a> that align with their occupation.
-
-## Our Consultancy Services for Express Entry
-
-Navigating the Express Entry pool requires strategic planning. We are a professional immigration consultancy firm led by a Licensed Regulated Canadian Immigration Consultant (RCIC), Riffat H. Mohaimen (R710078). When you choose Route 2 Migrate, your application is backed by legal expertise. Here is how we help:
-
-* **Eligibility Assessment & Strategy:** We evaluate your profile across all three programs to find the highest probability pathway.
-* **CRS Score Optimization:** We identify gaps in your profile and advise on the best ways to gain additional points (e.g., language retakes, educational upgrades, provincial nominations).
-* **Document Verification:** We rigorously check your ECA, language tests, work reference letters, and proof of funds to ensure they meet IRCC standards.
-* **Profile Creation:** We accurately build your Express Entry profile to prevent technical errors that could delay entry into the pool.
-* **Post-ITA Legal Representation:** If you receive an ITA, we manage your entire PR application submission, ensuring full compliance with the Immigration and Refugee Protection Act (IRPA).
-* **Provincial Nomination Assistance:** We monitor PNP draws and guide you on applying for provincial nominations that add 600 CRS points.
-
-## Why Choose Route 2 Migrate?
-
-In an industry filled with unregulated "agents," working with an RCIC provides legal protection and accountability. Riffat H. Mohaimen (R710078) is regulated by the College of Immigration and Citizenship Consultants (CICC). We provide honest, objective assessments—we won't push you into a program if your profile is weak. We continuously track the latest IRCC policy updates and category-based selection draws, ensuring your strategy is based on current law, not outdated forum advice.
-
-## Express Entry FAQ (Search & AI Queries Answered)
-
-### What is the minimum CRS score for Express Entry in 2026?
-There is no fixed minimum score. General program draws typically require CRS scores in the 500+ range, but category-based selection draws (like Healthcare or STEM) often have lower cut-offs. Program-specific draws (like CEC only) also vary.
-
-### How long does Express Entry take from start to finish?
-Once you receive an ITA and submit your final PR application, IRCC aims to process it within 6 months. However, gathering documents (ECA, language tests, PCCs) before creating your profile can take 2-3 months.
+### What is an AOR in Express Entry?
+AOR stands for Acknowledgement of Receipt. It is an email IRCC sends after they start processing your electronic application. It acknowledges that your fees have been paid and your documents have been received.
 
 ### Can I apply for Express Entry without a job offer?
-Yes. A job offer is not required. Most successful applicants receive ITAs based on core human capital factors (age, education, language, experience) without an arranged employment offer.
+Absolutely. The vast majority of successful Express Entry applicants do not have a job offer. You can achieve a high CRS score through language proficiency, education, and work experience alone.
 
-### How can I increase my CRS score?
-Common strategies include improving your IELTS/CELPIP scores, gaining additional skilled work experience, applying for a Provincial Nominee Program (PNP) for 600 extra points, or including a spouse/partner's credentials if they are highly skilled.
+## Conclusion: Start Your Canadian Journey Today
 
-### What is the difference between Express Entry and a PNP?
-Express Entry is the federal system. PNP is provincial. You can have an Express Entry profile and also apply to a province. If a province nominates you via an "Enhanced" PNP stream, you get 600 extra points in your Express Entry profile, guaranteeing an ITA. Read more in our <a href="/blog/pnp-best-streams-2026" class="text-primary font-semibold">PNP Guide</a>.
+Navigating the Express Entry system can be complex, especially with changing cut-off scores and new category-based draws. A minor error in your employment letter or an incorrectly calculated 1,560 hours of work experience can result in a refusal. As an RCIC, I ensure your profile is optimized, your documents meet IRCC standards, and your application is submitted flawlessly. Avoid making the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> by having your profile assessed professionally. Book a free assessment today to begin your path to Canadian Permanent Residency.
   `
 };
 
-export default ExpressEntry;
+export default function ExpressEntryPage() {
+  return <BlogLayout post={postData} />;
+}

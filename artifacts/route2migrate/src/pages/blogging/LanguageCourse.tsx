@@ -1,23 +1,23 @@
 // src/pages/blogging/LanguageCourse.tsx
-import type { BlogPost } from "@/data/blogPosts";
+import BlogLayout from "@/components/BlogLayout";
 
-const LanguageCourse: BlogPost = {
+export const postData = {
   slug: "ielts-celpip-test-prep-guide",
   category: "Language Tests",
   categoryColor: "bg-indigo-100 text-indigo-700",
   title: "IELTS & CELPIP Test Prep: Maximize Your CRS Score for Canada",
   excerpt: "Your English language test score is the single most impactful factor in your Canadian immigration journey. Achieving a high Canadian Language Benchmark (CLB) can drastically alter your fate.",
   readTime: "8 min read",
-  date: "July 22, 2026",
+  date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "IELTS & CELPIP Test Prep Guide Canada | Route 2 Migrate",
   seoDescription: "Maximize your CRS score for Canadian immigration with strategic IELTS and CELPIP test prep. Learn which test is right for you and how to achieve CLB 9+.",
   content: `
-Your English language test score is the single most impactful factor in your Canadian immigration journey. Whether you are applying for a <a href="/blog/canada-study-permit-guide" class="text-primary font-semibold">Study Permit</a> or <a href="/blog/express-entry-2026-guide" class="text-primary font-semibold">Express Entry</a>, achieving a high Canadian Language Benchmark (CLB) can drastically alter your fate. For Express Entry, jumping from CLB 7 to CLB 9 can add over 100 CRS points to your profile.
+Your English language test score is the single most impactful factor in your Canadian immigration journey. Whether you are applying for a <a href="/study-permits" className="text-primary font-semibold hover:underline">Study Permit</a> or <a href="/express-entry" className="text-primary font-semibold hover:underline">Express Entry</a>, achieving a high Canadian Language Benchmark (CLB) can drastically alter your fate. For Express Entry, jumping from CLB 7 to CLB 9 can add over 100 CRS points to your profile.
 
-<div class="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 class="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul class="list-disc pl-5 space-y-2 text-muted-foreground">
+<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
+  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
+  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
     <li><strong>Maximum CRS Impact:</strong> Language proficiency yields the highest points in the Express Entry grid.</li>
     <li><strong>IELTS vs. CELPIP:</strong> Both are accepted by IRCC, but they differ in format, scoring, and difficulty depending on your strengths.</li>
     <li><strong>CLB 9 is the Magic Number:</strong> Reaching CLB 9 unlocks maximum core human capital points.</li>
@@ -41,12 +41,12 @@ For Canadian immigration, you must choose between two IRCC-approved English test
 
 We don't just teach English; we teach test strategy. Our prep courses are specifically designed for aspiring students and professionals migrating to Canada. Explore our specialized training packages below:
 
-<div class="my-8 grid grid-cols-1 gap-6 not-prose">
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">Global Standard</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">IELTS General Training</h3>
-    <p class="text-sm text-muted-foreground mb-4">The world's most popular English test for immigration, accepted globally and by IRCC.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+<div className="my-8 grid grid-cols-1 gap-6 not-prose">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-3">Global Standard</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">IELTS General Training</h3>
+    <p className="text-sm text-muted-foreground mb-4">The world's most popular English test for immigration, accepted globally and by IRCC.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Face-to-face speaking interview format</li>
       <li>Accepted for Student Direct Stream (SDS)</li>
       <li>Ideal for Express Entry & PNP applications</li>
@@ -56,11 +56,11 @@ We don't just teach English; we teach test strategy. Our prep courses are specif
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Canadian Context</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">CELPIP General</h3>
-    <p class="text-sm text-muted-foreground mb-4">The Canadian English Language Proficiency Index Program, fully computer-delivered.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 mb-3">Canadian Context</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">CELPIP General</h3>
+    <p className="text-sm text-muted-foreground mb-4">The Canadian English Language Proficiency Index Program, fully computer-delivered.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>100% computer-delivered test format</li>
       <li>North American accents and context</li>
       <li>Speaking component recorded via microphone</li>
@@ -70,11 +70,11 @@ We don't just teach English; we teach test strategy. Our prep courses are specif
     </ul>
   </div>
 
-  <div class="p-6 bg-slate-50 border border-gray-200 rounded-xl">
-    <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">CRS Optimization</span>
-    <h3 class="text-xl font-bold text-foreground mb-2">Strategic Mock Tests & Review</h3>
-    <p class="text-sm text-muted-foreground mb-4">Targeted prep focusing on the specific CLB thresholds needed to maximize your CRS score.</p>
-    <ul class="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
+  <div className="p-6 bg-slate-50 border border-gray-200 rounded-xl">
+    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-3">CRS Optimization</span>
+    <h3 className="text-xl font-bold text-foreground mb-2">Strategic Mock Tests & Review</h3>
+    <p className="text-sm text-muted-foreground mb-4">Targeted prep focusing on the specific CLB thresholds needed to maximize your CRS score.</p>
+    <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
       <li>Identify weaknesses across all 4 modules</li>
       <li>Targeted strategy to break CLB 9 barrier</li>
       <li>Time management techniques for exam day</li>
@@ -110,4 +110,6 @@ Both IELTS and CELPIP test results are valid for exactly two years from the date
   `
 };
 
-export default LanguageCourse;
+export default function LanguageCoursePage() {
+  return <BlogLayout post={postData} />;
+}

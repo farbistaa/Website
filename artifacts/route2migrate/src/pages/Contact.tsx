@@ -1,3 +1,4 @@
+//artifacts/route2migrate/src/pages/Contact.tsx
 import { useState, useEffect, useRef, type FC } from "react";
 import { motion, useInView, type Variants } from "framer-motion";
 import {

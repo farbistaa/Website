@@ -4,137 +4,547 @@ import BlogLayout from "@/components/BlogLayout";
 export const postData = {
   slug: "schengen-visa-application-services-guide",
   category: "Schengen Visa",
-  categoryColor: "bg-cyan-100 text-cyan-700",
+  categoryColor: "bg-[#800000]/10 text-[#800000]",
   title: "Schengen Visa Application Services: Your 2026 Guide to Exploring Europe",
-  excerpt: "The Schengen Area represents 29 European countries that have abolished all internal borders. Securing a Schengen visa requires meticulous preparation to maximize your chances of approval.",
+  excerpt:
+    "The Schengen Area represents 29 European countries that have abolished all internal borders. Securing a Schengen visa requires meticulous preparation to maximize your chances of approval.",
   readTime: "12 min read",
   date: "September 17, 2026",
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Schengen Visa Application Services 2026 Guide | Route 2 Migrate",
-  seoDescription: "Complete 2026 guide to applying for a Schengen Visa from Bangladesh. Learn about VFS appointments, required documents, financial proof, and processing times.",
+  seoDescription:
+    "Complete 2026 guide to applying for a Schengen Visa from Bangladesh. Learn about VFS appointments, required documents, financial proof, and processing times.",
   content: `
-The Schengen Area represents 29 European countries that have abolished all internal borders, allowing free and unrestricted movement. Whether you are planning a tourist vacation, a business trip, or visiting family, securing a Schengen visa requires meticulous preparation. Our Schengen Visa Application Services are designed to eliminate the guesswork and maximize your chances of approval.
+A **Schengen Visa** (Standard Visitor / Type C) allows non-EU nationals to travel across **29 European countries** in the Schengen Area for up to **90 days within any 180-day period** for tourism, business, family visits, or short-term study. Our Schengen Visa Application Services are designed to eliminate the guesswork and maximize your chances of approval.
 
-<div className="my-8 p-6 bg-primary/5 border-l-4 border-primary rounded-r-xl not-prose">
-  <h2 className="text-xl font-bold mt-0 mb-3 text-foreground">Key Takeaways</h2>
-  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-    <li><strong>29 Countries, One Visa:</strong> A Schengen visa allows you to travel across 25 EU states and 4 non-EU states.</li>
-    <li><strong>VFS Global in Dhaka:</strong> Appointments are mandatory and can be booked via online platforms or physically at the VFS Global centers.</li>
-    <li><strong>Financial Proof:</strong> You must demonstrate sufficient funds (typically €40-€50 per day) and stable income.</li>
-    <li><strong>Mandatory Documents:</strong> Flight itineraries, hotel bookings, and travel insurance covering at least €30,000 are non-negotiable.</li>
-    <li><strong>Processing Time:</strong> The average processing time is 15 days, but it can extend up to 45 days during peak seasons.</li>
+<div className="not-prose my-10 rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+  <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
+    <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#800000] text-white shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M9 12l2 2 4-4"></path><path d="M12 3l8 4v5c0 5-3.5 7-8 9-4.5-2-8-4-8-9V7l8-4z"></path></svg>
+    </span>
+    <h2 className="text-xl md:text-2xl font-bold m-0 text-black tracking-tight">Key Takeaways</h2>
+  </div>
+  <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 list-none p-0 m-0">
+    <li className="flex items-start gap-3 py-2">
+      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">29 Countries, One Visa:</strong> Travel across 25 EU states and 4 non-EU states with a single visa.</span>
+    </li>
+    <li className="flex items-start gap-3 py-2">
+      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">90/180 Rule:</strong> Stay for up to 90 days within any 180-day period.</span>
+    </li>
+    <li className="flex items-start gap-3 py-2">
+      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Financial Proof:</strong> Demonstrate sufficient funds (typically €40–€50 per day) and stable income.</span>
+    </li>
+    <li className="flex items-start gap-3 py-2">
+      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Mandatory Insurance:</strong> Travel insurance covering at least €30,000 is non-negotiable.</span>
+    </li>
+    <li className="flex items-start gap-3 py-2 md:col-span-2">
+      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Processing Time:</strong> The average processing time is 15 days, but it can extend up to 45 days during peak seasons.</span>
+    </li>
   </ul>
 </div>
 
-## How Can I Apply for a Schengen Visa from Bangladesh?
+## 1. Key Visa Overview
 
-Applying for a Schengen visa involves determining your primary destination. If you are visiting only one country, you apply at that country's embassy. If visiting multiple, you apply at the embassy of the country where you will spend the longest duration, or the first country you enter if the duration is equal.
+Before diving into the application process, it is essential to understand the foundational rules of the Schengen short-stay visa.
 
-Most Schengen countries outsource their visa collection to VFS Global. For example, if you are traveling to Germany, the **German Embassy** processes the visa, but you will submit your documents and biometrics at the VFS Global center. Understanding the specific embassy's nuanced requirements is where our Schengen Visa Application Services provide immense value, preventing costly mistakes similar to the <a href="/blog/common-immigration-mistakes" className="text-primary font-semibold hover:underline">common immigration mistakes</a> applicants make.
+<div className="not-prose my-10 rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-sm">
+  <div className="bg-[#800000] px-6 md:px-8 py-4">
+    <h3 className="text-base font-semibold text-white m-0 flex items-center gap-2.5">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+      Visa Specifications at a Glance
+    </h3>
+  </div>
+  <div className="divide-y divide-gray-100">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
+      <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Max Stay
+      </div>
+      <div className="md:col-span-2 text-sm text-gray-700">Up to <strong className="text-black">90 days</strong> in any 180-day window</div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
+      <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        Visa Fee (Adults)
+      </div>
+      <div className="md:col-span-2 text-sm text-gray-700"><strong className="text-black">€90</strong> <span className="text-xs text-gray-500">(Children 6–12: €45 | Children under 6: Free)</span></div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
+      <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+        Application Window
+      </div>
+      <div className="md:col-span-2 text-sm text-gray-700">Apply <strong className="text-black">3 to 6 months</strong> prior to travel date</div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
+      <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+        Processing Time
+      </div>
+      <div className="md:col-span-2 text-sm text-gray-700"><strong className="text-black">15 to 45 calendar days</strong> depending on consulate workload</div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-start">
+      <div className="flex items-center gap-2.5 font-semibold text-black text-sm pt-0.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        Schengen Member States (29)
+      </div>
+      <div className="md:col-span-2">
+        <div className="flex flex-wrap gap-1.5">
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Austria</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Belgium</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Bulgaria</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Croatia</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Czech Republic</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Denmark</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Estonia</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Finland</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">France</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Germany</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Greece</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Hungary</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Iceland</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Italy</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Latvia</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Liechtenstein</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Lithuania</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Luxembourg</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Malta</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Netherlands</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Norway</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Poland</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Portugal</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Romania</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Slovakia</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Slovenia</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Spain</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Sweden</span>
+          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Switzerland</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-## How to Book an Appointment for a Schengen Visa Application in Dhaka?
+## 2. Visa-Exempt Travelers vs. Visa Required
 
-Securing an appointment is often the most frustrating step for applicants. You must book an appointment online before visiting the Visa Application Center.
+Understanding your nationality's requirements is the first step in the Schengen visa journey:
 
-* **Online Platforms:** Are there any online platforms for booking Schengen visa appointments? Yes, the primary platform is the official VFS Global website. You must create an account, select your destination country, and choose an available date and time.
-* **Physical Booking:** In some cases, VFS Global allows premium lounge services or provides limited walk-in slots for an additional fee, but online booking remains the standard.
+<div className="grid md:grid-cols-2 gap-5 my-10 not-prose">
+  <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
+    <div className="flex items-center gap-3 mb-4">
+      <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000]/10 text-[#800000] shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.83 6.72 2.23"></path><polyline points="11 5 11 9 15 9"></polyline><polyline points="21 3 21 9 15 9"></polyline></svg>
+      </span>
+      <h4 className="font-bold text-black m-0 text-base">Visa Required</h4>
+    </div>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">If your nationality requires a Schengen Visa, you must submit documents, attend a biometric appointment, and receive a visa sticker in your passport at the embassy/VFS/TLScontact before traveling.</p>
+  </div>
+  <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
+    <div className="flex items-center gap-3 mb-4">
+      <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black text-white shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </span>
+      <h4 className="font-bold text-black m-0 text-base">Visa-Exempt</h4>
+    </div>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">If your nationality is Visa-Exempt (e.g., USA, UK, Canada, Australia), you do not need a Schengen visa for stays under 90 days. Note that border entries now pass through the <strong>Entry/Exit System (EES)</strong> biometric registry.</p>
+  </div>
+</div>
 
-Due to high demand, slots fill up within minutes. We assist our clients by monitoring appointment availability and ensuring all forms are perfectly filled out before the booking phase.
-
-## Complete Required Documents Checklist
+## 3. Essential Document Checklist
 
 Having the correct documentation is critical. A short-stay (Type C) visa application requires a comprehensive set of documents. Please review this generic checklist carefully:
 
-1. **Application Form:** Filled in and signed by the applicant.
-2. **A Valid Passport:** The passport should have a validity of at least three months beyond the intended stay. The passport must have at least two blank pages to affix the visa.
-3. **One Recent Passport Photo (3.50cm x 4.50cm):** The photo should be recent (less than 6 months old), in colour, on a white background.
-4. **Overseas Travel Medical Insurance:** Valid for all Schengen Countries. The insurance must have a minimum coverage of €30,000 or equivalent. The policy must specify the period of validity and must cover the entire duration of stay, including dates of arrival and departure.
-5. **Travel Information:** Travel details including proof of return travel, flight reservations specifying flight numbers, dates, and personal details. If an applicant is travelling to several Schengen states, proof of travel within the Schengen area is required, such as flight reservations, train tickets, or car rentals.
-6. **Accommodation Information:** Proof of accommodation, such as a confirmed hotel reservation. If the applicant is travelling to several Schengen Member States, proof of accommodation in each is required.
-7. **Proof of Sponsorship (if applicable):** A declaration of proof is required if expenses shall be covered by a host/sponsor based in the Schengen area (including if hotel accommodation is covered by the host), or if private accommodation shall be provided.
-   * If the sponsor is providing private accommodation, the declaration of proof should be accompanied by proof of residence (such as a rental/lease agreement, and electricity/water bills), and/or proof of income (such as salary slips, bank statements). The document should be fully filled-in, witnessed, and notarized. A copy of the sponsor’s ID/passport should accompany the declaration of proof.
-8. **Proof of Employment & Sufficient Means of Subsistence:**
-   * **For employees:** (i) employment certificate, (ii) payslips covering the last three months, (iii) bank statement showing movements for the last 6 months.
-   * **For self-employed:** (i) company registration and copy of relevant official notification in the Government Gazette, and/or license to operate, and/or latest tax receipt, and/or certificate issued by professional association, (ii) bank statement showing movements in the last 6 months.
-   * **Pensioners/Retired:** (i) pension statements for the last three months and/or proof of income, (ii) bank statement showing movements in the last 6 months.
-   * A declaration of financial responsibility should be provided by sponsors on behalf of applicants who are not financially independent (such as students, minors, elderly parents, unemployed), signed by the sponsor. Proof of sufficient means of subsistence should be provided accordingly, as per above.
-9. **Previous Visas:** Photocopy of the relevant pages of previous Schengen visas (if any), including entry and exit stamps.
-10. **Applications on behalf of non-residents should include:** A valid residency permit issued by the competent local authorities must be provided.
-11. **Applications on behalf of minors should include:**
-    * A copy of the passport of the parents or legal guardian.
-    * If a minor intends to travel alone or only with one parent, or absent the legal guardian, a consent form signed by the parents or legal guardian is required.
-    * Exceptions are made if the single parent with whom the minor is to travel holds the parental authority alone (such as in cases where the other parent has deceased or been deprived of custody).
-12. **Applications on behalf of students should include:**
-    * A copy of their student card and/or a copy of school/college/university registration.
-    * A transcript of results.
-
-<div className="my-8 p-6 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl not-prose">
-  <h3 className="text-lg font-bold mt-0 mb-3 text-foreground">Important Disclaimer & Processing Notes</h3>
-  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-    <strong>Please Note:</strong> These requirements are subject to change based on the regions' immigration policies and laws. Additional documents may be required based on the specific country's requirements, immigration rules, law, or policy changes.
-  </p>
-  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-    This checklist serves as a generic guide for visa applicants regarding the supporting documents they should provide. It is the responsibility of the applicant to ensure that they have provided appropriate documentation. Supplementary documents may be requested by the Consulate during the visa application process. An interview may also be requested. Providing all the requested documentation does not automatically result in the approval of a visa application.
-  </p>
-  <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-    The standard processing time for a visa application is 15 days. In certain cases where further information is required, the process may take longer than the standard time. It is incumbent upon the visa applicant and/or sponsor of the applicant to ensure that the application is filed appropriately in advance of the required travel to the Schengen area – and at least 15 days prior to the date of travel. Applications with dates of travel less than 15 days later will not be accepted. It is not possible for the Consulate to expedite or ‘fast-track’ applications.
-  </p>
-  <p className="text-muted-foreground text-sm leading-relaxed">
-    Should an applicant wish to withdraw their passport during the visa application process, they may contact VFS via the appropriate helpline in order to request a passport withdrawal form. The visa application will not be accepted without a passport.
-  </p>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10 not-prose">
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">1</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Passport</strong><span className="text-sm text-gray-700 leading-relaxed">Issued within the last 10 years, valid for at least 3 months past intended departure, with 2+ blank pages.</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">2</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Schengen Application Form</strong><span className="text-sm text-gray-700 leading-relaxed">Completed and signed.</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">3</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Travel Medical Insurance</strong><span className="text-sm text-gray-700 leading-relaxed">Minimum <strong>€30,000 coverage</strong> for emergency medical treatment and repatriation across all Schengen states.</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">4</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Proof of Accommodation</strong><span className="text-sm text-gray-700 leading-relaxed">Hotel reservations, rental agreements, or an official invitation letter from a host.</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">5</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Proof of Financial Means</strong><span className="text-sm text-gray-700 leading-relaxed">Bank statements from the last 3–6 months showing sufficient daily funds (~€50–€100/day depending on the country).</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">6</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Proof of Ties to Home Country</strong><span className="text-sm text-gray-700 leading-relaxed">Employment contract/payslips, student enrollment certificate, business registration, or property deeds.</span></div>
+  </div>
+  <div className="flex items-start gap-4 p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300 md:col-span-2">
+    <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">7</span>
+    <div className="flex-1 min-w-0"><strong className="text-black block mb-1 text-sm">Flight Itinerary</strong><span className="text-sm text-gray-700 leading-relaxed">Round-trip flight reservation (do not buy non-refundable tickets prior to visa approval).</span></div>
+  </div>
 </div>
 
-## What Are the Financial Proof Requirements for a Schengen Visa Application?
+### Sponsorship Letter for Schengen Visa Family Visit
 
-Financial stability is one of the most scrutinized aspects of your application. You must prove you have the means to support yourself during your stay. The general requirement is equivalent to €40 to €50 per day of your stay, though this varies slightly by embassy. As mentioned in the checklist above, this requires 6 months of bank statements, tax returns, and clear proof of income.
+<div className="not-prose my-8 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
+  <div className="flex items-start gap-4">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+    </span>
+    <div className="flex-1 min-w-0">
+      <h4 className="text-base font-bold text-black m-0 mb-2">Hosted Visit Documentation</h4>
+      <p className="text-sm text-gray-700 leading-relaxed m-0">If your trip is sponsored by a family member residing in the Schengen area, a <strong>sponsorship letter for Schengen visa family visit</strong> is required. Many embassies require a formal legal declaration, such as a <em>Verpflichtungserklärung</em> in Germany, which must be notarized by the local foreigner's office. This document proves the host assumes full financial responsibility for your stay, covering living costs and potential repatriation.</p>
+    </div>
+  </div>
+</div>
 
-## Where Can I Find Reliable Flight Itinerary Services for a Schengen Visa?
+## 4. Step-by-Step Application Process
 
-A common mistake applicants make is buying a fully refundable, expensive flight ticket before the visa is even approved. Embassies explicitly state they do not require purchased tickets—only an itinerary. You can find reliable flight itinerary services through specialized travel agencies that hold a reservation for you for a small fee. Our Schengen Visa Application Services include arranging verifiable flight itineraries and hotel bookings specifically tailored for embassy submissions, saving you hundreds of dollars.
+<div className="not-prose my-10 relative">
+  <div className="absolute left-5 top-2 bottom-2 w-px bg-gray-200"></div>
+  <div className="space-y-5">
+    <div className="relative flex gap-4 group">
+      <div className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800000] text-white font-bold text-sm shrink-0 ring-4 ring-white">1</div>
+      <div className="flex-1 p-5 bg-white rounded-xl border border-gray-200 group-hover:border-[#800000]/40 group-hover:shadow-md transition-all duration-300">
+        <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Determine Correct Jurisdiction</h4>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Apply where you spend the most days. If visiting multiple countries, apply at the consulate of the country where you will spend the <strong className="text-black">longest duration</strong>. If equal time, apply at your <strong className="text-black">first port of entry</strong>.</p>
+      </div>
+    </div>
+    <div className="relative flex gap-4 group">
+      <div className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800000] text-white font-bold text-sm shrink-0 ring-4 ring-white">2</div>
+      <div className="flex-1 p-5 bg-white rounded-xl border border-gray-200 group-hover:border-[#800000]/40 group-hover:shadow-md transition-all duration-300">
+        <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Book Consulate/VFS Appointment</h4>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">GOV/Outsource Portals. Schedule your appointment via the official embassy portal or authorized service provider (VFS Global, TLScontact, or BLS International).</p>
+      </div>
+    </div>
+    <div className="relative flex gap-4 group">
+      <div className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#800000] text-white font-bold text-sm shrink-0 ring-4 ring-white">3</div>
+      <div className="flex-1 p-5 bg-white rounded-xl border border-gray-200 group-hover:border-[#800000]/40 group-hover:shadow-md transition-all duration-300">
+        <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Attend Biometric Appointment</h4>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Fingerprints & Photo. Submit your physical application package, pay visa/service fees, and provide fingerprints and facial biometrics.</p>
+      </div>
+    </div>
+    <div className="relative flex gap-4 group">
+      <div className="relative z-10 inline-flex items-center justify-center w-10 h-10 rounded-full bg-black text-white font-bold text-sm shrink-0 ring-4 ring-white">4</div>
+      <div className="flex-1 p-5 bg-white rounded-xl border border-gray-200 group-hover:border-[#800000]/40 group-hover:shadow-md transition-all duration-300">
+        <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Receive Decision & Collect Passport</h4>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">15-45 Days. Track your application status online. Once approved, retrieve your passport with the Schengen visa sticker.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-## Compare Travel Insurance Options for a Europe Trip from Bangladesh
+### How to Book VFS Global TLScontact BLS Appointment Schengen
 
-Travel insurance is legally mandatory for the Schengen Area. As outlined in the required documents, your insurance must provide a minimum coverage of €30,000, cover medical emergencies, hospitalization, and repatriation, and be valid for the entire duration of your stay across all 29 Schengen countries. Several local and international insurance companies offer Schengen-compliant travel insurance. We help our clients compare and select the most cost-effective and embassy-approved policies.
+<div className="not-prose my-8 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
+  <div className="flex items-start gap-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-[#800000] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+    <div className="flex-1 min-w-0">
+      <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Booking Strategy</h4>
+      <p className="text-sm text-gray-700 leading-relaxed m-0">Securing the appointment is often the hardest part. Knowing <strong>how to book VFS Global TLScontact BLS appointment Schengen</strong> is crucial. You must create an account on the official portal, select your destination, and refresh constantly to catch available slots. Due to severe shortages, we assist clients by monitoring systems and ensuring all forms are ready before the booking phase.</p>
+    </div>
+  </div>
+</div>
 
-## What is the Average Processing Time for a Schengen Visa Application?
+## Schengen Visa Refusal Reasons: Justification of Purpose and Stay
 
-The standard processing time for a Schengen visa is **15 calendar days** from the date your application reaches the embassy. However, during peak travel seasons (summer and winter holidays), or if the embassy requests additional documents, this can extend to 30 or even 45 days. We highly recommend applying at least 4 to 6 weeks before your intended travel date.
+<div className="not-prose my-10 rounded-xl border border-red-200 bg-red-50/50 p-6 md:p-8">
+  <div className="flex items-start gap-4">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+    </span>
+    <div className="flex-1 min-w-0">
+      <h4 className="text-base md:text-lg font-bold text-black m-0 mb-3">Understanding Refusal Grounds (Article 32)</h4>
+      <p className="text-sm text-gray-700 m-0 mb-4 leading-relaxed">Understanding <strong>Schengen visa refusal reasons justification purpose stay</strong> is critical to avoiding a rejection. Under Article 32 of the Visa Code, applications are often refused for:</p>
+      <div className="grid md:grid-cols-3 gap-3">
+        <div className="p-4 bg-white rounded-lg border border-gray-200">
+          <div className="text-xs font-bold text-[#800000] uppercase tracking-wider mb-1">Reason 1</div>
+          <div className="text-sm font-semibold text-black mb-1">Unreliable Documents</div>
+          <div className="text-xs text-gray-600">Fake hotel bookings or bank statements.</div>
+        </div>
+        <div className="p-4 bg-white rounded-lg border border-gray-200">
+          <div className="text-xs font-bold text-[#800000] uppercase tracking-wider mb-1">Reason 2</div>
+          <div className="text-sm font-semibold text-black mb-1">Weak Home Ties</div>
+          <div className="text-xs text-gray-600">Inability to prove stable job, family, or property compelling you to return.</div>
+        </div>
+        <div className="p-4 bg-white rounded-lg border border-gray-200">
+          <div className="text-xs font-bold text-[#800000] uppercase tracking-wider mb-1">Reason 3</div>
+          <div className="text-sm font-semibold text-black mb-1">Lack of Purpose</div>
+          <div className="text-xs text-gray-600">Vague or illogical itineraries that don't make sense for a tourist.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-## Exploring All 29 Schengen Countries
+## Schengen Visa Appeal Letter Template After Refusal
 
-Once your visa is approved, a world of history, culture, and breathtaking landscapes awaits you. The Schengen Area currently consists of 29 member countries:
+If your application is denied, you have 30 days to appeal. A strong <strong>Schengen visa appeal letter template after refusal</strong> should follow this structured outline:
 
-* Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany
-* Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands
-* Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, Switzerland
+<div className="not-prose my-10 rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
+  <div className="bg-[#800000] px-6 py-4 flex items-center justify-between">
+    <div className="flex items-center gap-2.5">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-white shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+      <h4 className="text-white font-bold m-0 text-sm md:text-base">Appeal Letter Structure — 6 Essential Sections</h4>
+    </div>
+    <span className="text-xs text-white/80 bg-white/15 px-2.5 py-1 rounded-full font-medium hidden sm:inline-block">30-Day Deadline</span>
+  </div>
+  <div className="divide-y divide-gray-100">
+    <div className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000]/10 text-[#800000] font-bold text-sm shrink-0">1</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+          <h5 className="font-bold text-black m-0 text-sm">Header</h5>
+          <span className="text-xs text-gray-400 font-normal">— Top of letter</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Date, Consulate Address, Reference Number.</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000]/10 text-[#800000] font-bold text-sm shrink-0">2</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+          <h5 className="font-bold text-black m-0 text-sm">Subject Line</h5>
+          <span className="text-xs text-gray-400 font-normal">— Clear and specific</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Appeal against visa refusal decision (cite reference number).</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000]/10 text-[#800000] font-bold text-sm shrink-0">3</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+          <h5 className="font-bold text-black m-0 text-sm">Formal Opening</h5>
+          <span className="text-xs text-gray-400 font-normal">— Respectful greeting</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Polite formal greeting addressed to the Consul / Visa Officer.</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-4 px-6 py-5 bg-[#800000]/5 border-l-4 border-[#800000]">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-sm shrink-0">4</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <h5 className="font-bold text-black m-0 text-sm">Body — The Core Argument</h5>
+          <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#800000] bg-[#800000]/10 px-2 py-0.5 rounded">Most Important</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed mb-3">Acknowledge the refusal reason, then systematically dismantle it with evidence (e.g., "I am submitting updated bank statements showing X balance, and an approved leave letter from my employer").</p>
+        <div className="flex flex-wrap gap-2 mt-2">
+          <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Reference refusal clause
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Attach supporting docs
+          </span>
+          <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Logical point-by-point rebuttal
+          </span>
+        </div>
+      </div>
+    </div>
+    <div className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000]/10 text-[#800000] font-bold text-sm shrink-0">5</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+          <h5 className="font-bold text-black m-0 text-sm">Conclusion</h5>
+          <span className="text-xs text-gray-400 font-normal">— Reiterate intent</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Reiterate strong ties to your home country and request reconsideration.</p>
+      </div>
+    </div>
+    <div className="flex items-start gap-4 px-6 py-4 hover:bg-gray-50 transition-colors">
+      <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000]/10 text-[#800000] font-bold text-sm shrink-0">6</span>
+      <div className="flex-1 min-w-0 pt-1">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+          <h5 className="font-bold text-black m-0 text-sm">Sign-off</h5>
+          <span className="text-xs text-gray-400 font-normal">— Formal closing</span>
+        </div>
+        <p className="text-sm text-gray-700 m-0 leading-relaxed">Formal closing ("Yours faithfully"), full name, signature, and contact details.</p>
+      </div>
+    </div>
+  </div>
+  <div className="bg-gray-50 px-6 py-4 flex items-center gap-3 border-t border-gray-200">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <p className="text-xs text-gray-600 m-0 leading-relaxed"><strong className="text-black">Important:</strong> The appeal must be submitted within <strong className="text-[#800000]">30 days</strong> of receiving the refusal letter. Late submissions are automatically rejected.</p>
+  </div>
+</div>
 
-With a multiple-entry Schengen visa, you can seamlessly travel from the romantic streets of Paris to the historic ruins of Rome, and the northern lights of Iceland, all under a single legal document.
+## Can I Travel to Ireland or UK with Schengen Visa?
+
+<div className="not-prose my-10 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
+  <div className="flex flex-col md:flex-row gap-5 items-start">
+    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#800000] text-white shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+    </div>
+    <div className="flex-1 min-w-0">
+      <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#800000] bg-[#800000]/10 px-3 py-1 rounded-full mb-3">Crucial Clarification</span>
+      <h4 className="text-lg md:text-xl font-bold text-black m-0 mb-3">Can I travel to Ireland or UK with Schengen visa?</h4>
+      <p className="text-sm md:text-base text-gray-700 m-0 leading-relaxed">
+        <strong className="text-2xl text-[#800000]">No.</strong> Ireland and the United Kingdom are <strong className="text-black">outside the Schengen Zone</strong>. They have their own distinct immigration policies and visa systems. You must apply for a UK Standard Visitor Visa or an Irish Short Stay Visa separately.
+      </p>
+    </div>
+  </div>
+</div>
 
 ## Apply for Your Schengen Visa Through Route 2 Migrate
 
-Navigating the Schengen visa process can be complex, especially with varying embassy requirements and strict documentation rules. We are not a traditional travel agency; we are a professional immigration consultancy firm led by a Licensed Regulated Canadian Immigration Consultant (RCIC), Riffat H. Mohaimen (R710078). We apply the same legal rigor to temporary resident (tourist) visas as we do to permanent residence applications. When you choose Route 2 Migrate for your Schengen Tourist Visa, your application is backed by legal expertise and strict compliance with European immigration laws. Here is the comprehensive support you will receive:
+Navigating the Schengen visa process can be complex, especially with varying embassy requirements and strict documentation rules. We are not a traditional travel agency; we are a professional immigration consultancy firm led by a Licensed Regulated Canadian Immigration Consultant (RCIC), Riffat H. Mohaimen (R710078). We apply the same legal rigor to temporary resident (tourist) visas as we do to permanent residence applications.
 
-* **Strategic Profile Assessment:** We evaluate your travel history, financial standing, and ties to your home country to ensure your profile meets the specific criteria of your destination country's embassy, minimizing the risk of refusal.
-* **Document Verification & Legal Review:** Our legal team meticulously verifies all your documents—bank statements, employment letters, and sponsorships—to ensure they meet the exact formatting and content requirements of the consulate, preventing refusals due to technicalities.
-* **Customized Itinerary & Accommodation Planning:** We assist in creating a verifiable, logical travel itinerary and securing embassy-compliant hotel reservations without requiring you to make upfront non-refundable payments.
-* **Flight Itinerary & Travel Insurance Support:** We provide reliable flight itinerary services tailored specifically for visa applications and help you secure Schengen-compliant travel insurance (minimum €30,000 coverage) at the best rates.
-* **Appointment Booking Assistance:** We monitor and guide you through the VFS Global appointment booking process, ensuring your application forms are perfectly completed before your physical appointment.
-* **Form Filling & Application Submission:** We handle the precise completion of your visa application form and prepare a comprehensive petition letter (cover letter) that logically and legally presents your case to the visa officer.
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10 not-prose">
+  <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M9 12l2 2 4-4"></path><path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path><path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path><path d="M12 3c0 1 1 3 3 3s3-2 3-3-1-3-3-3-3 2-3 3"></path><path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path></svg>
+    </span>
+    <h5 className="font-bold text-black mb-2 text-sm">Strategic Profile Assessment</h5>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">We evaluate your travel history, financial standing, and ties to your home country to ensure your profile meets the specific criteria of your destination country's embassy, minimizing the risk of refusal.</p>
+  </div>
+  <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+    </span>
+    <h5 className="font-bold text-black mb-2 text-sm">Document Verification & Legal Review</h5>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">Our legal team meticulously verifies all your documents to ensure they meet the exact formatting and content requirements of the consulate, preventing refusals due to technicalities.</p>
+  </div>
+  <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path></svg>
+    </span>
+    <h5 className="font-bold text-black mb-2 text-sm">Customized Itinerary & Accommodation</h5>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">We assist in creating a verifiable, logical travel itinerary and securing embassy-compliant hotel reservations without requiring you to make upfront non-refundable payments.</p>
+  </div>
+  <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"></path></svg>
+    </span>
+    <h5 className="font-bold text-black mb-2 text-sm">Flight Itinerary & Travel Insurance</h5>
+    <p className="text-sm text-gray-700 leading-relaxed m-0">We provide reliable flight itinerary services tailored specifically for visa applications and help you secure Schengen-compliant travel insurance (minimum €30,000 coverage) at the best rates.</p>
+  </div>
+  <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300 md:col-span-2">
+    <div className="flex flex-col md:flex-row gap-4 items-start">
+      <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="12" y1="13" y2="13"></line><line x1="16" x2="12" y1="17" y2="17"></line></svg>
+      </span>
+      <div className="flex-1 min-w-0">
+        <h5 className="font-bold text-black mb-2 text-sm">Form Filling & Application Submission</h5>
+        <p className="text-sm text-gray-700 leading-relaxed m-0">We handle the precise completion of your visa application form and prepare a comprehensive petition letter (cover letter) that logically and legally presents your case to the visa officer.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-## Schengen Visa FAQ
+## Frequently Asked Questions (FAQ)
 
-### Do I need to submit my actual passport during the application?
-Yes. Your physical passport must be submitted along with your application at the VFS Global center, as the embassy needs it to affix the visa sticker if approved. It will be returned to you via courier once a decision is made.
+<div className="not-prose my-10 space-y-3">
+  <details className="group rounded-xl border border-gray-200 bg-white overflow-hidden transition-all hover:border-[#800000]/30">
+    <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-black list-none hover:bg-gray-50 transition-colors">
+      <span className="flex items-center gap-3 min-w-0">
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-xs shrink-0">Q</span>
+        <span className="text-sm md:text-base truncate">Do I need to submit my actual passport during the application?</span>
+      </span>
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+    </summary>
+    <div className="px-5 pb-5 pl-16">
+      <p className="text-sm text-gray-700 leading-relaxed m-0">Yes. Your physical passport must be submitted along with your application at the VFS Global center, as the embassy needs it to affix the visa sticker if approved. It will be returned to you via courier once a decision is made.</p>
+    </div>
+  </details>
+  <details className="group rounded-xl border border-gray-200 bg-white overflow-hidden transition-all hover:border-[#800000]/30">
+    <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-black list-none hover:bg-gray-50 transition-colors">
+      <span className="flex items-center gap-3 min-w-0">
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-xs shrink-0">Q</span>
+        <span className="text-sm md:text-base truncate">Can I work on a Schengen short-stay visa?</span>
+      </span>
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+    </summary>
+    <div className="px-5 pb-5 pl-16">
+      <p className="text-sm text-gray-700 leading-relaxed m-0">No. A short-stay (Type C) Schengen visa is strictly for tourism, business meetings, family visits, or transit. It does not grant you the right to work or live permanently in Europe.</p>
+    </div>
+  </details>
+  <details className="group rounded-xl border border-gray-200 bg-white overflow-hidden transition-all hover:border-[#800000]/30">
+    <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-black list-none hover:bg-gray-50 transition-colors">
+      <span className="flex items-center gap-3 min-w-0">
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-xs shrink-0">Q</span>
+        <span className="text-sm md:text-base truncate">What happens if my Schengen visa is refused?</span>
+      </span>
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+    </summary>
+    <div className="px-5 pb-5 pl-16">
+      <p className="text-sm text-gray-700 leading-relaxed m-0">If your visa is refused, you will receive a standard refusal letter stating the reason. You have the right to appeal the decision within 30 days. It is often better to re-apply with stronger documentation addressing the reason for refusal, rather than appealing, if the initial application was fundamentally weak.</p>
+    </div>
+  </details>
+  <details className="group rounded-xl border border-gray-200 bg-white overflow-hidden transition-all hover:border-[#800000]/30">
+    <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-black list-none hover:bg-gray-50 transition-colors">
+      <span className="flex items-center gap-3 min-w-0">
+        <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#800000] text-white font-bold text-xs shrink-0">Q</span>
+        <span className="text-sm md:text-base truncate">Is an interview required for a Schengen visa?</span>
+      </span>
+      <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </span>
+    </summary>
+    <div className="px-5 pb-5 pl-16">
+      <p className="text-sm text-gray-700 leading-relaxed m-0">While not always mandatory, the embassy reserves the right to call you in for a personal interview to clarify details about your trip, financial status, or ties to your home country.</p>
+    </div>
+  </details>
+</div>
 
-### Can I work on a Schengen short-stay visa?
-No. A short-stay (Type C) Schengen visa is strictly for tourism, business meetings, family visits, or transit. It does not grant you the right to work or live permanently in Europe.
+## Conclusion: Explore Europe with Confidence
 
-### What happens if my Schengen visa is refused?
-If your visa is refused, you will receive a standard refusal letter stating the reason. You have the right to appeal the decision. It is often better to re-apply with stronger documentation addressing the reason for refusal, rather than appealing, if the initial application was fundamentally weak.
+Navigating the Schengen visa process can be complex, especially with varying embassy requirements and strict documentation rules. A minor error in your financial proof or an illogical travel itinerary can result in a refusal, delaying your travel plans. As an RCIC, I ensure your application is backed by legal expertise and strict compliance with European immigration laws, maximizing your chances of approval.
 
-### Is an interview required for a Schengen visa?
-While not always mandatory, the embassy reserves the right to call you in for a personal interview to clarify details about your trip, financial status, or ties to your home country.
-  `
+<div className="not-prose my-10 rounded-xl border-l-4 border-yellow-400 bg-yellow-50 p-6 md:p-8">
+  <div className="flex items-start gap-4">
+    <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-yellow-400 text-white shrink-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+    </span>
+    <div className="flex-1 min-w-0">
+      <h4 className="text-base font-bold text-black m-0 mb-2">Disclaimer</h4>
+      <p className="text-sm text-gray-700 leading-relaxed m-0">Visa requirements and immigration laws are subject to change based on EU regulations. For the most accurate and updated information, please consult the official website of the relevant Schengen embassy or consulate.</p>
+    </div>
+  </div>
+</div>
+
+<div className="not-prose my-12 rounded-2xl bg-[#800000] p-8 md:p-12 text-center shadow-lg">
+  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 border border-white/20 mb-5">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="w-7 h-7 text-white"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+  </div>
+  <h3 className="text-2xl md:text-3xl font-bold text-white mt-0 mb-3 tracking-tight">Ready to Explore Europe?</h3>
+  <p className="text-white/80 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">Stop guessing and start preparing the right way. Get your Schengen visa profile assessed by a licensed RCIC and align your documents with embassy expectations.</p>
+  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+    <a href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-[#800000] px-7 py-3 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      Contact Us
+    </a>
+    <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent border border-white/60 text-white px-7 py-3 rounded-lg text-sm font-bold hover:bg-white/10 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+      Book Consultation with RCIC
+    </a>
+  </div>
+</div>
+  `,
 };
 
 export default function SchengenPage() {

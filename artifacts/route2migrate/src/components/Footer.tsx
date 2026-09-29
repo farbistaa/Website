@@ -65,7 +65,7 @@ export function Footer() {
 
             <div className="flex items-center gap-2 mb-6">
               {[
-                { label: "Facebook", icon: FaFacebook, href: "https://www.facebook.com/RMigrate.ca" },
+                { label: "Facebook", icon: FaFacebook, href: "https://www.facebook.com/R2Migrate.ca" },
                 { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/route2migrate" },
                 { label: "LinkedIn", icon: FaLinkedin, href: "https://www.linkedin.com/company/route2migrateca" },
                 { label: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/@route2migrate" },

@@ -93,12 +93,6 @@ export default function BlogPostPage() {
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div variants={stagger} initial="hidden" animate="visible" className="space-y-5">
             <motion.div variants={fadeUp}>
-              <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 rounded-full">
-                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-                Back to Blog
-              </Link>
-            </motion.div>
-            <motion.div variants={fadeUp}>
               <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full ${post.categoryColor} bg-opacity-90`}>
                 <Tag className="h-3 w-3" aria-hidden="true" />
                 {post.category}

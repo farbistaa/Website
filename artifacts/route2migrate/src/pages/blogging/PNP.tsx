@@ -222,18 +222,23 @@ Avoid making the <a href="/blog/common-immigration-mistakes" className="text-pri
 
 The Provincial Nominee Program is your strongest ally if your CRS score isn't high enough for federal draws, or if you have specific skills targeted by a Canadian province. However, navigating the EOI point grids and proving your intent to reside requires legal precision. A minor documentation error can result in a lost nomination or a misrepresentation ban.
 
-<div className="not-prose my-12 rounded-3xl bg-[#800000] p-8 md:p-12 text-center shadow-xl">
-  <h3 className="text-2xl font-bold text-white mt-0 mb-3">Ready to Secure Your Provincial Nomination?</h3>
-  <p className="text-white/80 text-base mb-8 max-w-2xl mx-auto">Don't leave your Canadian PR to chance. Get your profile assessed by a licensed RCIC to identify the best PNP stream for your occupation.</p>
-  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-    <a href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-[#800000] px-8 py-3 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors shadow-md">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-      Contact Us
-    </a>
-    <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-sm font-bold hover:bg-white/10 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
-      Book Consultation with RCIC
-    </a>
+<div className="not-prose my-12">
+  <div className="bg-gradient-to-br from-[#3b0a0a] via-[#7f1d1d] to-[#3b0a0a] rounded-3xl p-8 sm:p-12 text-white text-center relative overflow-hidden shadow-xl">
+    <div className="absolute inset-0 opacity-10 [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.15)_0,rgba(255,255,255,0.15)_1px,transparent_0,transparent_50%)] [background-size:12px_12px]" aria-hidden="true"></div>
+    <div className="relative z-10">
+      <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-4">PNP Strategy Assessment</p>
+      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-tight">Ready to Secure Your Provincial Nomination?</h3>
+      <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Stop guessing about EOI point grids, Enhanced vs Base streams, 600 CRS point nominations, and intent-to-reside compliance under Section 40 IRPA. Get your profile assessed by a licensed RCIC to identify the highest-probability PNP stream for your occupation.</p>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" aria-label="Book a consultation" className="inline-flex items-center justify-center bg-white text-[#800000] hover:bg-white/90 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+          Book Consultation
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 ml-2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="/contact" aria-label="Contact us" className="inline-flex items-center justify-center bg-transparent border border-white/60 text-white hover:bg-white/10 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+          Contact Us
+        </a>
+      </div>
+    </div>
   </div>
 </div>
   `

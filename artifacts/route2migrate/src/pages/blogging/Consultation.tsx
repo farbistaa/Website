@@ -131,6 +131,19 @@ Ready to take the first step? Secure your appointment directly through our onlin
   <iframe src="https://riffathmohaimen.setmore.com/" style="width: 100%; height: 850px; border: none;" title="Schedule a Consultation with Route 2 Migrate"></iframe>
 </div>
 
+## Immigration Consultation FAQ
+
+### How is the consultation conducted?
+All consultations are conducted virtually via secure video conferencing (Zoom or Google Meet). Once you book your slot, you will receive an email with the meeting link and instructions on how to prepare for your session.
+
+### Do I need to prepare anything before the consultation?
+Yes. To make the most of your time, please have your resume, educational transcripts, language test scores (if any), and a list of your specific questions ready. For refusal discussions, please have your refusal letter on hand.
+
+### Will the consultation fee be deducted from my full application fees if I hire Route 2 Migrate?
+While the consultation fee covers the legal time and expertise provided during the session, we often credit a portion of the consultation fee toward your full representation package if you choose to proceed with our firm for your visa application within a specified timeframe.
+  </div>
+</div>
+
 ## Booking Assistance
 
 If you need help selecting the right consultation package or require assistance scheduling your appointment, our client relations team is here to help. Please reach out to:
@@ -175,19 +188,6 @@ If you need help selecting the right consultation package or require assistance 
         </div>
       </a>
     </div>
-  </div>
-</div>
-
-## Immigration Consultation FAQ
-
-### How is the consultation conducted?
-All consultations are conducted virtually via secure video conferencing (Zoom or Google Meet). Once you book your slot, you will receive an email with the meeting link and instructions on how to prepare for your session.
-
-### Do I need to prepare anything before the consultation?
-Yes. To make the most of your time, please have your resume, educational transcripts, language test scores (if any), and a list of your specific questions ready. For refusal discussions, please have your refusal letter on hand.
-
-### Will the consultation fee be deducted from my full application fees if I hire Route 2 Migrate?
-While the consultation fee covers the legal time and expertise provided during the session, we often credit a portion of the consultation fee toward your full representation package if you choose to proceed with our firm for your visa application within a specified timeframe.
   </div>
 </div>
   `

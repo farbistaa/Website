@@ -125,37 +125,6 @@ export default function BlogPostPage() {
           </motion.div>
         </Reveal>
       </article>
-
-      {/* CTA Section - Dark Red Premium Gradient Background & Wider Layout */}
-      <section className="pb-16">
-        <Reveal className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div variants={fadeUp}>
-            <div className="bg-gradient-to-br from-[#3b0a0a] via-[#7f1d1d] to-[#3b0a0a] rounded-3xl p-8 sm:p-12 text-white text-center relative overflow-hidden shadow-xl">
-              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 0, transparent 50%)", backgroundSize: "12px 12px" }} aria-hidden="true" />
-              <div className="relative z-10">
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-4">Free Assessment</p>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-tight">
-                  Have questions about your immigration options?
-                </h3>
-                <div className="space-y-4 mb-8 text-left sm:text-justify">
-                  <p className="text-white/80 text-base sm:text-lg leading-relaxed">
-                    Every immigration journey is unique, and the right path depends on your personal profile and circumstances. If you're looking for guidance tailored to your goals and profile, book a consultation with our licensed RCIC, Riffat H. Mohaimen, to receive trusted, legal, and expert advice before making your next move.
-                  </p>
-                  <p className="text-white/60 text-sm leading-relaxed">
-                    <strong className="text-white">Remember:</strong> Choosing the wrong immigration strategy can cost you valuable time, unnecessary expenses, missed opportunities, or even lead to a refusal and ban. Start with the right advice and move forward with confidence.
-                  </p>
-                </div>
-                <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" aria-label="Book a consultation" className="inline-block">
-                  <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
-                    Book Consultation <ArrowRight className="ml-2 h-5 w-5 inline" aria-hidden="true" />
-                  </Button>
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        </Reveal>
-      </section>
-
       <Footer />
     </div>
   );

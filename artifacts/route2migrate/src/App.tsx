@@ -11,6 +11,7 @@ import ContactPage from "@/pages/Contact";
 import BlogPage from "@/pages/Blog";
 import BlogPostPage from "@/pages/BlogPost";
 
+
 // Blogging pages imports
 import StudyPermit from "@/pages/blogging/StudyPermit";
 import ExpressEntry from "@/pages/blogging/ExpressEntry";
@@ -24,6 +25,8 @@ import Consultation from "@/pages/blogging/Consultation";
 import PNP from "@/pages/blogging/PNP";
 import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
 import BusinessMigration from "@/pages/blogging/BusinessMigration";
+import ECA from "@/pages/blogging/ECA"
+
 
 const queryClient = new QueryClient();
 
@@ -49,6 +52,7 @@ function Router() {
       <Route path="/language-course" component={LanguageTestPrep} />
       <Route path="/business-immigration" component={BusinessMigration} />
       <Route path="/application-review" component={Application} />
+      <Route path="/eca" component={ECA} />
       <Route component={NotFound} />
     </Switch>
   );

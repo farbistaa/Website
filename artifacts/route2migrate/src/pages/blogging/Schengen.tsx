@@ -93,7 +93,7 @@ Before diving into the application process, it is essential to understand the fo
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
         Processing Time
       </div>
       <div className="md:col-span-2 text-sm text-gray-700"><strong className="text-black">15 to 45 calendar days</strong> depending on consulate workload</div>
@@ -148,7 +148,7 @@ Understanding your nationality's requirements is the first step in the Schengen 
   <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
     <div className="flex items-center gap-3 mb-4">
       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000]/10 text-[#800000] shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.85.83 6.72 2.23"></path><polyline points="11 5 11 9 15 9"></polyline><polyline points="21 3 21 9 15 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
       </span>
       <h4 className="font-bold text-black m-0 text-base">Visa Required</h4>
     </div>
@@ -157,7 +157,7 @@ Understanding your nationality's requirements is the first step in the Schengen 
   <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
     <div className="flex items-center gap-3 mb-4">
       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black text-white shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
       </span>
       <h4 className="font-bold text-black m-0 text-base">Visa-Exempt</h4>
     </div>
@@ -254,7 +254,7 @@ Having the correct documentation is critical. A short-stay (Type C) visa applica
 
 <div className="not-prose my-8 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
   <div className="flex items-start gap-4">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-[#800000] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="M8 12h8"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-[#800000] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
     <div className="flex-1 min-w-0">
       <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Booking Strategy</h4>
       <p className="text-sm text-gray-700 leading-relaxed m-0">Securing the appointment is often the hardest part. Knowing <strong>how to book VFS Global TLScontact BLS appointment Schengen</strong> is crucial. You must create an account on the official portal, select your destination, and refresh constantly to catch available slots. Due to severe shortages, we assist clients by monitoring systems and ensuring all forms are ready before the booking phase.</p>
@@ -392,7 +392,7 @@ If your application is denied, you have 30 days to appeal. A strong <strong>Sche
 <div className="not-prose my-10 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
   <div className="flex flex-col md:flex-row gap-5 items-start">
     <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#800000] text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
     </div>
     <div className="flex-1 min-w-0">
       <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#800000] bg-[#800000]/10 px-3 py-1 rounded-full mb-3">Crucial Clarification</span>
@@ -411,7 +411,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10 not-prose">
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M9 12l2 2 4-4"></path><path d="M21 12c-1 0-3-1-3-3s2-3 3-3 3 1 3 3-2 3-3 3"></path><path d="M3 12c1 0 3-1 3-3s-2-3-3-3-3 1-3 3 2 3 3 3"></path><path d="M12 3c0 1 1 3 3 3s3-2 3-3-1-3-3-3-3 2-3 3"></path><path d="M12 21c0-1 1-3 3-3s3 2 3 3-1 3-3 3-3-2-3-3"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
     </span>
     <h5 className="font-bold text-black mb-2 text-sm">Strategic Profile Assessment</h5>
     <p className="text-sm text-gray-700 leading-relaxed m-0">We evaluate your travel history, financial standing, and ties to your home country to ensure your profile meets the specific criteria of your destination country's embassy, minimizing the risk of refusal.</p>
@@ -527,21 +527,23 @@ Navigating the Schengen visa process can be complex, especially with varying emb
   </div>
 </div>
 
-<div className="not-prose my-12 rounded-2xl bg-[#800000] p-8 md:p-12 text-center shadow-lg">
-  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/10 border border-white/20 mb-5">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="w-7 h-7 text-white"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-  </div>
-  <h3 className="text-2xl md:text-3xl font-bold text-white mt-0 mb-3 tracking-tight">Ready to Explore Europe?</h3>
-  <p className="text-white/80 text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed">Stop guessing and start preparing the right way. Get your Schengen visa profile assessed by a licensed RCIC and align your documents with embassy expectations.</p>
-  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-    <a href="/contact" className="inline-flex items-center justify-center gap-2 bg-white text-[#800000] px-7 py-3 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-      Contact Us
-    </a>
-    <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-transparent border border-white/60 text-white px-7 py-3 rounded-lg text-sm font-bold hover:bg-white/10 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
-      Book Consultation with RCIC
-    </a>
+<div className="not-prose my-12">
+  <div className="bg-gradient-to-br from-[#3b0a0a] via-[#7f1d1d] to-[#3b0a0a] rounded-3xl p-8 sm:p-12 text-white text-center relative overflow-hidden shadow-xl">
+    <div className="absolute inset-0 opacity-10 [background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.15)_0,rgba(255,255,255,0.15)_1px,transparent_0,transparent_50%)] [background-size:12px_12px]" aria-hidden="true"></div>
+    <div className="relative z-10">
+      <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-4">Schengen Visa Assessment</p>
+      <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-tight">Ready to Explore Europe?</h3>
+      <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Stop guessing about Article 32 refusal grounds, VFS/TLScontact/BLS appointment slots, and €30,000 insurance compliance. Get your Schengen visa profile assessed by a licensed RCIC before you submit to the consulate.</p>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+        <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" aria-label="Book a consultation" className="inline-flex items-center justify-center bg-white text-primary hover:bg-white/90 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+          Book Consultation
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 ml-2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="/contact" aria-label="Contact us" className="inline-flex items-center justify-center bg-transparent border border-white/60 text-white hover:bg-white/10 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+          Contact Us
+        </a>
+      </div>
+    </div>
   </div>
 </div>
   `,

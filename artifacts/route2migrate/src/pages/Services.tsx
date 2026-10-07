@@ -8,7 +8,8 @@ import { useLocation } from "wouter";
 import {
   Globe, MapPin, GraduationCap, Briefcase, Heart, Home as HomeIcon,
   Building2, FileText, ArrowRight, CheckCircle, Shield, BadgeCheck,
-  Languages, Plane, ChevronRight, ChevronLeft, CreditCard,
+  Languages, Plane, ChevronRight, ChevronLeft, CreditCard, Clock, 
+  Users, Wallet, BookOpen, MessagesSquare, Award, Target, Lock
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -430,10 +431,68 @@ const schengenServices: SchengenService[] = [
   schengenCountry("Switzerland", "Experience the Alps, Lake Geneva, Zurich, and scenic rail journeys. We prepare your Schengen Tourist Visa for Switzerland.", SwitzerlandImg),
 ];
 
+// Updated Highlights: Complete paragraphs and 12 total reasons
 const highlights: Highlight[] = [
-  { icon: Shield, title: "RCIC Licensed — Not Just an Agent", desc: "Riffat holds RCIC license R710078, regulated by the CICC. Legal protection and accountability every step of the way." },
-  { icon: Globe, title: "Dual US + Canadian Expertise", desc: "6 years at the US Consulate in Dhaka. 3+ years at Canadian immigration law firms. Perspective that few consultants possess." },
-  { icon: BadgeCheck, title: "End-to-End Service", desc: "From language test prep and ECA to final application filing — we handle everything under one roof so nothing falls through the cracks." },
+  { 
+    icon: Shield, 
+    title: "RCIC Licensed — Not Just an Agent", 
+    desc: "Riffat holds RCIC license R710078, regulated by the CICC. Legal protection and accountability every step of the way, ensuring ethical and professional service." 
+  },
+  { 
+    icon: Globe, 
+    title: "Dual US + Canadian Expertise", 
+    desc: "With 6 years of direct experience at the US Consulate in Dhaka and 3+ years at leading Canadian immigration law firms, we provide a global perspective that few consultants possess." 
+  },
+  { 
+    icon: BadgeCheck, 
+    title: "End-to-End Service", 
+    desc: "From language test prep and ECA to final application filing — we handle everything under one roof so nothing falls through the cracks during your immigration journey." 
+  },
+  { 
+    icon: Clock, 
+    title: "Timely & Fast Processing", 
+    desc: "We strictly ensure rapid document preparation and swift submissions to minimize delays, maximizing your chances within tight immigration draw cycles and quotas." 
+  },
+  { 
+    icon: Users, 
+    title: "Client-Centric Approach", 
+    desc: "Your goals are our priority. We listen, understand, and tailor our strategy to your specific background, ensuring a personalized experience rather than a one-size-fits-all service." 
+  },
+  { 
+    icon: Wallet, 
+    title: "Transparent Pricing", 
+    desc: "No hidden fees or surprise charges. Our consultation and service charges are clearly outlined upfront, allowing you to plan your immigration budget with confidence." 
+  },
+  { 
+    icon: BookOpen, 
+    title: "Up-to-Date Immigration Knowledge", 
+    desc: "Immigration laws change constantly. We continuously monitor IRCC updates and international visa policies to adapt your strategy in real-time and keep you ahead." 
+  },
+  { 
+    icon: MessagesSquare, 
+    title: "Dedicated Support System", 
+    desc: "You are never left in the dark. We provide regular updates on your application status and remain readily available to answer any questions or concerns throughout the process." 
+  },
+  { 
+    icon: FileText, 
+    title: "Meticulous Documentation", 
+    desc: "A single error can lead to rejection. We ensure rigorous cross-checking of every form and document to present a flawless, compelling case to the immigration officers." 
+  },
+  { 
+    icon: Award, 
+    title: "Proven High Success Rate", 
+    desc: "Backed by a 95% approval rate and over 500 successful applications, our results speak for themselves. We have a proven track record of turning complex cases into approvals." 
+  },
+  { 
+    icon: Target, 
+    title: "Strategic Application Roadmaps", 
+    desc: "We don't just file forms; we craft personalized roadmaps. Whether it's transitioning from a study permit to PR or navigating multiple provincial streams, we map out the optimal path." 
+  },
+  { 
+    icon: Lock, 
+    title: "Confidential & Secure Process", 
+    desc: "Your personal data is handled with the utmost security and discretion. We strictly adhere to privacy regulations, ensuring your sensitive information is fully protected from start to finish." 
+  },
 ];
 
 // Compact list of all international services for "All Of Our Services" section
@@ -982,7 +1041,8 @@ const UsaUkServicesSectionBlock = memo(function UsaUkServicesSectionBlock() {
   );
 });
 
-const typingText = "All Of Our Services";
+const typingTextServices = "All Of Our Services";
+const typingTextWhyChoose = "Why Choose Route 2 Migrate";
 
 function useTypewriterEffect(text: string, speed: number = 100, startDelay: number = 300) {
   const [displayText, setDisplayText] = useState("");
@@ -1020,7 +1080,8 @@ function useTypewriterEffect(text: string, speed: number = 100, startDelay: numb
 
 export default function ServicesPage() {
   const [activeRegion, setActiveRegion] = useState<Region>("canada");
-  const { displayText, isTyping, ref: typingRef } = useTypewriterEffect(typingText);
+  const { displayText: displayServicesText, isTyping: isServicesTyping, ref: servicesTypingRef } = useTypewriterEffect(typingTextServices);
+  const { displayText: displayWhyChooseText, isTyping: isWhyChooseTyping, ref: whyChooseTypingRef } = useTypewriterEffect(typingTextWhyChoose);
 
   // Page-wide image warm-up: the moment this page opens, EVERY card image
   // from BOTH carousels (13 Canada + 29 Schengen) starts downloading at low
@@ -1187,9 +1248,9 @@ export default function ServicesPage() {
             <motion.div variants={fadeUp} className="text-center mb-8 sm:mb-10">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">At a Glance</span>
               <h2 id="all-services-heading" className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-foreground mb-2 min-h-[1.2em] flex justify-center items-center">
-                <span ref={typingRef} aria-label={typingText}>
-                  {displayText}
-                  {isTyping && <span className="ml-1 w-[2px] h-[1em] bg-primary inline-block animate-pulse" />}
+                <span ref={servicesTypingRef} aria-label={typingTextServices}>
+                  {displayServicesText}
+                  {isServicesTyping && <span className="ml-1 w-[2px] h-[1em] bg-primary inline-block animate-pulse" />}
                 </span>
               </h2>
             </motion.div>
@@ -1206,7 +1267,12 @@ export default function ServicesPage() {
           <Reveal>
             <motion.div variants={fadeUp} className="text-center max-w-xl mx-auto mb-10 sm:mb-12">
               <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Our Difference</span>
-              <h2 id="service-highlights-heading" className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-4">Why Choose Route 2 Migrate</h2>
+              <h2 id="service-highlights-heading" className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-4 min-h-[1.2em] flex items-center justify-center">
+                <span ref={whyChooseTypingRef} aria-label={typingTextWhyChoose}>
+                  {displayWhyChooseText}
+                  {isWhyChooseTyping && <span className="ml-1 w-[2px] h-[1em] bg-primary inline-block animate-pulse" />}
+                </span>
+              </h2>
             </motion.div>
             <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
               {highlights.map((h) => {
@@ -1217,7 +1283,7 @@ export default function ServicesPage() {
                       <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
                     </div>
                     <h3 className="font-serif font-bold text-foreground mb-2 text-base sm:text-lg">{h.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed font-normal line-clamp-2">{h.desc}</p>
+                    <p className="text-muted-foreground text-sm leading-relaxed font-normal">{h.desc}</p>
                   </motion.div>
                 );
               })}

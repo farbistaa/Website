@@ -63,24 +63,30 @@ export function Footer() {
               RMohaimen Immigration Services (Route 2 Migrate) is a licensed Canadian immigration consultancy firm led by RCIC Riffat H. Mohaimen.
             </p>
 
-            <div className="flex items-center gap-2 mb-6">
-              {[
-                { label: "Facebook", icon: FaFacebook, href: "https://www.facebook.com/R2Migrate.ca" },
-                { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/route2migrate" },
-                { label: "LinkedIn", icon: FaLinkedin, href: "https://www.linkedin.com/company/route2migrateca" },
-                { label: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/@route2migrate" },
-              ].map(({ label, icon: Icon, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-white/6 border border-white/8 hover:bg-primary hover:border-primary flex items-center justify-center transition-all duration-200 hover:scale-110"
-                  aria-label={label}
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ))}
+            <div className="relative inline-block mb-6">
+              {/* 3D Base Layer (The "Side" of the button) */}
+              <div className="absolute inset-0 rounded-full bg-white/5 border-b-4 border-transparent translate-y-1.5"></div>
+              
+              {/* Top Layer (Main Pill) */}
+              <div className="relative inline-flex items-center gap-1 p-1.5 rounded-full bg-white/10 border border-white/15 hover:translate-y-[3px] transition-transform duration-200 ease-out">
+                {[
+                  { label: "Facebook", icon: FaFacebook, href: "https://www.facebook.com/R2Migrate.ca" },
+                  { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/route2migrate" },
+                  { label: "LinkedIn", icon: FaLinkedin, href: "https://www.linkedin.com/company/route2migrateca" },
+                  { label: "YouTube", icon: FaYoutube, href: "https://www.youtube.com/@route2migrate" },
+                ].map(({ label, icon: Icon, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-8 h-8 rounded-full text-white/70 hover:text-white hover:bg-primary hover:scale-110 transition-all duration-200 ease-out"
+                    aria-label={label}
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

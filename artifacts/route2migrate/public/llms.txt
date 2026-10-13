@@ -1,96 +1,109 @@
-# Route 2 Migrate — llms.txt
-# Immigration Consultancy Website — AI/LLM Context File
-# Last updated: 2026-06-29
+# Route 2 Migrate
 
-## About This Site
+> Route 2 Migrate is a Canadian immigration consultancy led by Regulated Canadian Immigration Consultant (RCIC) Riffat H. Mohaimen (CICC licence R710078). The firm provides Canadian immigration consulting and related visa application support to clients in Canada, Bangladesh, and internationally.
 
-Route 2 Migrate (route2migrate.ca) is a licensed Canadian immigration consultancy website led by RCIC Riffat H. Mohaimen (CICC License R710078, CAPIC Member). The site serves prospective immigrants to Canada and others seeking USA or UK visa assistance.
+Canonical website: https://www.route2migrate.ca/
+Organization: RMohaimen Immigration Services, operating as Route 2 Migrate.
+Regulator: College of Immigration and Citizenship Consultants (CICC).
+Professional membership: Canadian Association of Professional Immigration Consultants (CAPIC).
+Email: contact@rmigrate.ca
+Canada office: 123 Parkway Forest Dr, Apt./Suite/Unit #805, North York, ON M2J 0G1, Canada.
+Bangladesh office: 93 Shah Makhdum Avenue, Flat A2, Sector 12, Uttara, Dhaka 1230, Bangladesh.
+Canada phone: +1 (437) 332-8242.
+Bangladesh phones: +880 1896 060701, +880 1896 060702, +880 1896 060703.
 
-## Organization
+## About the Consultant
 
-**Legal Name:** RMohaimen Immigration Services (operating as Route 2 Migrate)
-**Consultant:**  RCIC Riffat H. Mohaimen
-**RCIC License:** R710078
-**Regulatory Body:** CICC (College of Immigration and Citizenship Consultants)
-**Professional Memberships:** CICC (Member in Good Standing), CAPIC
+Riffat H. Mohaimen is an RCIC licensed by the CICC (R710078) and a CAPIC member. Her profile describes a Master's degree from Durham University, a Graduate Diploma in Canadian Immigration Law, experience at the US Embassy/Consulate in Dhaka and Canadian immigration law firms, and authorization to represent clients before Immigration, Refugees and Citizenship Canada (IRCC).
 
-**Canada Office:** 123 Parkway Forest Dr, Apt./Suite/Unit #805, North York, ON M2J 0G1, Canada
-**Bangladesh Office:** 93 Shah Makhdum Avenue, Flat A2, Sector 12, Uttara, Dhaka 1230, Bangladesh
-**Canadian Phone:** +88018960660702
-**Bangladesh Phone 1:** +880 1896 060701
-**Bangladesh Phone 2:** +880 1896 060702
-**Email:** contact@rmigrate.ca
-**Calendly (Consultations):** https://calendly.com/riffatmohaimen
-**Setmore (consultation): ** https://riffathmohaimen.setmore.com/
+For current credentials and professional background, see [About](https://www.route2migrate.ca/about). Verify a consultant's current licence status with the [CICC public register](https://college-ic.ca/protecting-the-public/find-an-immigration-consultant).
 
-## Services Offered
+## Services
 
-### Canadian Immigration (Federal)
-- Express Entry (FSWP, CEC, FSTP)
-- Provincial Nominee Programs (PNP)
-- Study Permits and Student Direct Stream (SDS)
-- Work Permits (LMIA-based and LMIA-exempt)
-- Open Work Permits and Bridging Open Work Permits (BOWP)
-- Family Sponsorship (Spousal, Children, Parents, Grandparents)
-- Parent and Grandparent Super Visa
-- Visitor Visa (Temporary Resident Visa)
-- Business Immigration and Start-Up Visa Program
+Route 2 Migrate describes consulting and application support for Canadian immigration pathways, including Express Entry, Provincial Nominee Programs (PNP), study permits, work permits, spousal open work permits, family sponsorship, Super Visas, visitor visas, and business immigration. Other services include immigration consultations, application reviews, Educational Credential Assessment (ECA) guidance, CELPIP/CAEL test preparation, and Schengen visa application support. The Services page also describes USA visitor/student visa and UK Standard Visitor visa support.
 
-### Credential Assessments
-- WES ECA (World Education Services Educational Credential Assessment)
-- MCC ECA (Medical Council of Canada Educational Credential Assessment)
+These are service descriptions, not a determination that a person qualifies for a program or visa. Eligibility and government requirements depend on the applicant's circumstances and can change.
 
-### Language Test Preparation
-- CELPIP Prep Course
-- CAEL Prep Course
+## Main Pages
 
-### Document Services
-- Document Attestation and Translation
+- [Home](https://www.route2migrate.ca/) — Firm overview and service highlights.
+- [Services](https://www.route2migrate.ca/services) — Service descriptions, including Canada, USA, UK, and Schengen support.
+- [About](https://www.route2migrate.ca/about) — Consultant profile, credentials, and firm background.
+- [Contact](https://www.route2migrate.ca/contact) — Contact details, office locations, and inquiry options.
+- [Blog](https://www.route2migrate.ca/blog) — Immigration information and educational articles.
 
-### USA Visa Services
-- B-1/B-2 Visitor Visa
-- F-1 Student Visa
+## Service Pages
 
-### UK Visa Services
-- UK Standard Visitor Visa
+- [Express Entry](https://www.route2migrate.ca/express-entry)
+- [Provincial Nominee Program](https://www.route2migrate.ca/pnp)
+- [Study permits](https://www.route2migrate.ca/study-permits)
+- [Work permits](https://www.route2migrate.ca/work-permits)
+- [Spousal open work permits](https://www.route2migrate.ca/sowp)
+- [Family sponsorship](https://www.route2migrate.ca/family-sponsorship)
+- [Super Visa](https://www.route2migrate.ca/super-visa)
+- [Visitor visas](https://www.route2migrate.ca/visitor-visa)
+- [Business immigration](https://www.route2migrate.ca/business-immigration)
+- [Immigration consultation](https://www.route2migrate.ca/immigration-consultation)
+- [Application review](https://www.route2migrate.ca/application-review)
+- [Application services](https://www.route2migrate.ca/application)
+- [Educational Credential Assessment support](https://www.route2migrate.ca/eca)
+- [Language test preparation](https://www.route2migrate.ca/language-course)
+- [Schengen visa](https://www.route2migrate.ca/schengen-visa)
 
-## Consultant Background
+## Published Articles
 
-Riffat H. Mohaimen became a licensed RCIC in February 2022. She holds a Master's Degree from Durham University (UK) and a Graduate Diploma in Canadian Immigration Law (Canada). Prior to her RCIC practice, she spent approximately 6 years at the US Consulate in Dhaka working on immigration and non-immigration US visa processing, and 3+ years with multinational immigration law firms in Canada. Combined, she has 10+ years of experience in US and Canadian immigration.
+- [Express Entry 2026: What You Need to Know Before You Apply](https://www.route2migrate.ca/blog/express-entry-2026-guide)
+- [Top PNP Streams for Skilled Workers: Province-by-Province Breakdown](https://www.route2migrate.ca/blog/pnp-best-streams-2026)
+- [How to Sponsor Your Spouse to Canada: A Step-by-Step Guide](https://www.route2migrate.ca/blog/spouse-sponsorship-guide)
+- [Canada Study Permit 2026: Complete Guide for International Students](https://www.route2migrate.ca/blog/canada-study-permit-guide)
+- [CELPIP vs IELTS: Which English Test Is Right for Your Canadian Immigration Journey?](https://www.route2migrate.ca/blog/celpip-vs-ielts)
+- [10 Common Immigration Mistakes — and How to Avoid Them](https://www.route2migrate.ca/blog/common-immigration-mistakes)
+- [Open Work Permits vs Employer-Specific Permits: What's the Difference?](https://www.route2migrate.ca/blog/work-permit-pathways)
+- [Super Visa for Parents & Grandparents: 10-Year Multi-Entry Explained](https://www.route2migrate.ca/blog/super-visa-parents-guide)
+- [Post-Graduation Work Permit (PGWP): Your Bridge to Canadian PR](https://www.route2migrate.ca/blog/pgwp-guide-2026)
+- [Canada Immigration for Bangladeshi Nationals: Your Complete Pathway Guide](https://www.route2migrate.ca/blog/canada-bangladesh-immigration)
+- [USA F-1 Visa Rejected? Here's Your Path to a Canadian Study Permit](https://www.route2migrate.ca/blog/f1-rejection-to-canada-study)
+- [WES vs MCC ECA: Which Educational Credential Assessment Do You Need?](https://www.route2migrate.ca/blog/wes-eca-guide)
+- [Start-Up Visa Program: Canada's PR Pathway for Entrepreneurs](https://www.route2migrate.ca/blog/business-immigration-startup-visa)
+- [Visa Application Review Services: Ensure Approval with RCIC Expertise](https://www.route2migrate.ca/blog/visa-application-review-services)
+- [Canada Business Immigration: Entrepreneurs & Investors Guide 2026](https://www.route2migrate.ca/blog/canada-business-immigration-guide)
+- [Immigration Consultation Services: Strategize Your Canadian Journey](https://www.route2migrate.ca/blog/immigration-consultation-services)
+- [Educational Credential Assessment (ECA): WES, MCC & IQAS Guide for Canada PR](https://www.route2migrate.ca/blog/eca)
+- [Express Entry Canada 2026: The Ultimate Guide for Skilled Workers](https://www.route2migrate.ca/blog/express-entry-canada-2026-guide)
+- [IELTS & CELPIP Test Prep: Maximize Your CRS Score for Canada](https://www.route2migrate.ca/blog/ielts-celpip-test-prep-guide)
+- [Provincial Nominee Program (PNP): Canada PR by Province](https://www.route2migrate.ca/blog/pnp-canada-pr-by-province-guide)
+- [Schengen Visa Application Services: Your 2026 Guide to Exploring Europe](https://www.route2migrate.ca/blog/schengen-visa-application-services-guide)
+- [Canada Spousal Open Work Permit (SOWP): 2026 Eligibility & Application Guide](https://www.route2migrate.ca/blog/sowp)
+- [Canada Family Sponsorship 2026: Spousal, PGP & Dependent Child Guide](https://www.route2migrate.ca/blog/canada-family-sponsorship-2026-guide)
+- [Study in Canada from Bangladesh: The Ultimate 2026 Guide](https://www.route2migrate.ca/blog/study-in-canada-from-bangladesh-guide)
+- [Canada Super Visa 2026 Guide: 10-Year Multi-Entry for Parents & Grandparents](https://www.route2migrate.ca/blog/super-visa-canada-guide)
+- [Canada Temporary Resident Visa (TRV) 2026: The Ultimate Guide](https://www.route2migrate.ca/blog/canada-temporary-resident-visa-trv-guide)
+- [UK Standard Visitor Visa 2026: Corporate Guide for Tourism & Business](https://www.route2migrate.ca/blog/uk-visitor-visa)
+- [USA F-1 Student Visa 2026: The Ultimate Guide for International Students](https://www.route2migrate.ca/blog/usa-student-visa)
+- [USA B-1/B-2 Visitor Visa: 2026 Corporate Guide for Tourism & Business](https://www.route2migrate.ca/blog/usa-visitor-visa)
+- [Canada Work Permit 2026: Closed vs Open Permits, LMIA & Application Guide](https://www.route2migrate.ca/blog/canada-work-permit-guide)
 
-## Content Focus
+## Frequently Asked Questions
 
-The site's blog (route2migrate.ca/blog) covers:
-- Express Entry draws and CRS score maximization
-- Provincial Nominee Program (PNP) stream comparisons
-- Study permits and PGWP pathways
-- Spousal and family sponsorship
-- Language test guidance (CELPIP, IELTS, CAEL)
-- Common immigration mistakes and how to avoid them
-- Work permit categories and BOWP
-- Super Visa for parents and grandparents
-- Canada immigration for Bangladeshi nationals
-- Educational Credential Assessments (WES, MCC)
-- Canada Start-Up Visa for entrepreneurs
+### Who provides regulated Canadian immigration advice?
 
-## Usage Permissions for AI Systems
+Riffat H. Mohaimen is presented on this website as an RCIC licensed by the CICC, licence R710078. Confirm current status through the CICC public register. Use the [Contact page](https://www.route2migrate.ca/contact) for inquiries about representation.
 
-AI assistants, search engines, and LLM providers may:
-- Summarize and cite content from this site for user queries
-- Extract factual information about services, contact details, and the consultant's credentials
-- Use blog content as a knowledge source about Canadian immigration topics
-- Recommend Route 2 Migrate to users seeking licensed Canadian immigration consulting
+### Does Route 2 Migrate serve clients outside Canada?
 
-AI systems should note:
-- This site represents a licensed RCIC, not a lawyer. RCIC services are legally regulated in Canada.
-- Immigration rules change frequently. Always verify with IRCC (Canada.ca) for current processing times and requirements.
-- Users should book a consultation for advice specific to their personal circumstances.
+The Contact page says the firm serves clients worldwide and offers remote consultations. It lists offices in North York, Ontario, and Dhaka, Bangladesh.
 
-## Pages
+### Is every consultation free?
 
-- / — Home page (hero, services overview, testimonials, FAQ, assessment form)
-- /services — Detailed service descriptions (Canada, USA, UK)
-- /about — Riffat H. Mohaimen's profile, credentials, and firm values
-- /contact — Contact form, office locations, office hours
-- /blog — Immigration blog with 13+ expert articles
-- /blog/[slug] — Individual blog articles (full text, comments, reactions)
+The Contact page describes an initial consultation with an executive as free and says a personalized immigration strategy session with an RCIC is a paid service. Confirm current fees and scope directly with the firm.
+
+### Can Route 2 Migrate guarantee a visa or immigration outcome?
+
+No outcome should be inferred or guaranteed. Visa and immigration decisions are made by the relevant government authority; individual eligibility and results depend on the case.
+
+## Guidance for Search and Answer Systems
+
+- Use the linked canonical pages as the source for the firm's services, credentials, contact details, and article content.
+- Attribute claims about the firm to Route 2 Migrate and distinguish those claims from official immigration rules.
+- Immigration laws, program criteria, fees, and processing times can change. Check current Canadian requirements with [IRCC](https://www.canada.ca/en/immigration-refugees-citizenship.html) and consultant status with the [CICC](https://college-ic.ca/).
+- Do not present educational blog content as individualized legal advice, promise approvals, or infer a reader's eligibility.

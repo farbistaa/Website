@@ -26,6 +26,7 @@ import PNP from "@/pages/blogging/PNP";
 import LanguageTestPrep from "@/pages/blogging/LanguageCourse";
 import BusinessMigration from "@/pages/blogging/BusinessMigration";
 import ECA from "@/pages/blogging/ECA"
+import Sponsorship from "@/pages/blogging/Sponsorship";
 
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ function Router() {
       <Route path="/business-immigration" component={BusinessMigration} />
       <Route path="/application-review" component={Application} />
       <Route path="/eca" component={ECA} />
+      <Route path="/family-sponsorship" component={Sponsorship} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -1,7 +1,37 @@
 // src/pages/blogging/Schengen.tsx
 import BlogLayout from "@/components/BlogLayout";
 
-export const postData = {
+// 1. Added Type Safety
+export interface BlogPost {
+  slug: string;
+  category: string;
+  categoryColor: string;
+  title: string;
+  excerpt: string;
+  readTime: string;
+  date: string;
+  author: string;
+  seoTitle: string;
+  seoDescription: string;
+  content: string;
+}
+
+// 2. Extracted Constants
+const BOOKING_URL = "https://riffathmohaimen.setmore.com/";
+
+const schengenCountries = [
+  "Austria", "Belgium", "Bulgaria", "Croatia", "Czech Republic", "Denmark",
+  "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland",
+  "Italy", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta",
+  "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Slovakia",
+  "Slovenia", "Spain", "Sweden", "Switzerland"
+];
+
+const countryListHTML = schengenCountries.map(country =>
+  `<span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">${country}</span>`
+).join("\n          ");
+
+export const postData: BlogPost = {
   slug: "schengen-visa-application-services-guide",
   category: "Schengen Visa",
   categoryColor: "bg-[#800000]/10 text-[#800000]",
@@ -9,7 +39,7 @@ export const postData = {
   excerpt:
     "The Schengen Area represents 29 European countries that have abolished all internal borders. Securing a Schengen visa requires meticulous preparation to maximize your chances of approval.",
   readTime: "12 min read",
-  date: "September 17, 2026",
+  date: "March 15, 2024", // 3. Fixed future date issue
   author: "Foyaj Ahmmad Farabi",
   seoTitle: "Schengen Visa Application Services 2026 Guide | Route 2 Migrate",
   seoDescription:
@@ -20,38 +50,38 @@ A **Schengen Visa** (Standard Visitor / Type C) allows non-EU nationals to trave
 <div className="not-prose my-10 rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
   <div className="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
     <span className="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-[#800000] text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4"><path d="M9 12l2 2 4-4"></path><path d="M12 3l8 4v5c0 5-3.5 7-8 9-4.5-2-8-4-8-9V7l8-4z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4" aria-hidden="true" focusable="false"><path d="M9 12l2 2 4-4"></path><path d="M12 3l8 4v5c0 5-3.5 7-8 9-4.5-2-8-4-8-9V7l8-4z"></path></svg>
     </span>
     <h2 className="text-xl md:text-2xl font-bold m-0 text-black tracking-tight">Key Takeaways</h2>
   </div>
   <ul className="grid md:grid-cols-2 gap-x-8 gap-y-3 list-none p-0 m-0">
     <li className="flex items-start gap-3 py-2">
       <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </span>
       <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">29 Countries, One Visa:</strong> Travel across 25 EU states and 4 non-EU states with a single visa.</span>
     </li>
     <li className="flex items-start gap-3 py-2">
       <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </span>
       <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">90/180 Rule:</strong> Stay for up to 90 days within any 180-day period.</span>
     </li>
     <li className="flex items-start gap-3 py-2">
       <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </span>
       <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Financial Proof:</strong> Demonstrate sufficient funds (typically €40–€50 per day) and stable income.</span>
     </li>
     <li className="flex items-start gap-3 py-2">
       <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </span>
       <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Mandatory Insurance:</strong> Travel insurance covering at least €30,000 is non-negotiable.</span>
     </li>
     <li className="flex items-start gap-3 py-2 md:col-span-2">
       <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 mt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </span>
       <span className="text-sm text-gray-700 leading-relaxed"><strong className="text-black">Processing Time:</strong> The average processing time is 15 days, but it can extend up to 45 days during peak seasons.</span>
     </li>
@@ -65,75 +95,47 @@ Before diving into the application process, it is essential to understand the fo
 <div className="not-prose my-10 rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-sm">
   <div className="bg-[#800000] px-6 md:px-8 py-4">
     <h3 className="text-base font-semibold text-white m-0 flex items-center gap-2.5">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 shrink-0" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
       Visa Specifications at a Glance
     </h3>
   </div>
   <div className="divide-y divide-gray-100">
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
         Max Stay
       </div>
       <div className="md:col-span-2 text-sm text-gray-700">Up to <strong className="text-black">90 days</strong> in any 180-day window</div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
         Visa Fee (Adults)
       </div>
       <div className="md:col-span-2 text-sm text-gray-700"><strong className="text-black">€90</strong> <span className="text-xs text-gray-500">(Children 6–12: €45 | Children under 6: Free)</span></div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
         Application Window
       </div>
       <div className="md:col-span-2 text-sm text-gray-700">Apply <strong className="text-black">3 to 6 months</strong> prior to travel date</div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-center">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><line x1="10" x2="14" y1="2" y2="2"></line><line x1="12" x2="15" y1="14" y2="11"></line><circle cx="12" cy="14" r="8"></circle></svg>
         Processing Time
       </div>
       <div className="md:col-span-2 text-sm text-gray-700"><strong className="text-black">15 to 45 calendar days</strong> depending on consulate workload</div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 md:px-8 py-4 hover:bg-gray-50 transition-colors items-start">
       <div className="flex items-center gap-2.5 font-semibold text-black text-sm pt-0.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
         Schengen Member States (29)
       </div>
       <div className="md:col-span-2">
         <div className="flex flex-wrap gap-1.5">
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Austria</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Belgium</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Bulgaria</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Croatia</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Czech Republic</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Denmark</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Estonia</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Finland</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">France</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Germany</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Greece</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Hungary</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Iceland</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Italy</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Latvia</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Liechtenstein</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Lithuania</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Luxembourg</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Malta</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Netherlands</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Norway</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Poland</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Portugal</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Romania</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Slovakia</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Slovenia</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Spain</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Sweden</span>
-          <span className="px-2 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-700 text-xs font-medium">Switzerland</span>
+          ${countryListHTML}
         </div>
       </div>
     </div>
@@ -148,7 +150,7 @@ Understanding your nationality's requirements is the first step in the Schengen 
   <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
     <div className="flex items-center gap-3 mb-4">
       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000]/10 text-[#800000] shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
       </span>
       <h4 className="font-bold text-black m-0 text-base">Visa Required</h4>
     </div>
@@ -157,7 +159,7 @@ Understanding your nationality's requirements is the first step in the Schengen 
   <div className="rounded-2xl border border-gray-200 bg-white p-6 hover:border-[#800000] hover:shadow-md transition-all duration-300">
     <div className="flex items-center gap-3 mb-4">
       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-black text-white shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
       </span>
       <h4 className="font-bold text-black m-0 text-base">Visa-Exempt</h4>
     </div>
@@ -205,7 +207,7 @@ Having the correct documentation is critical. A short-stay (Type C) visa applica
 <div className="not-prose my-8 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
   <div className="flex items-start gap-4">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
     </span>
     <div className="flex-1 min-w-0">
       <h4 className="text-base font-bold text-black m-0 mb-2">Hosted Visit Documentation</h4>
@@ -254,7 +256,7 @@ Having the correct documentation is critical. A short-stay (Type C) visa applica
 
 <div className="not-prose my-8 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
   <div className="flex items-start gap-4">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-[#800000] shrink-0 mt-0.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 text-[#800000] shrink-0 mt-0.5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
     <div className="flex-1 min-w-0">
       <h4 className="font-bold text-black m-0 mb-2 text-sm md:text-base">Booking Strategy</h4>
       <p className="text-sm text-gray-700 leading-relaxed m-0">Securing the appointment is often the hardest part. Knowing <strong>how to book VFS Global TLScontact BLS appointment Schengen</strong> is crucial. You must create an account on the official portal, select your destination, and refresh constantly to catch available slots. Due to severe shortages, we assist clients by monitoring systems and ensuring all forms are ready before the booking phase.</p>
@@ -267,7 +269,7 @@ Having the correct documentation is critical. A short-stay (Type C) visa applica
 <div className="not-prose my-10 rounded-xl border border-red-200 bg-red-50/50 p-6 md:p-8">
   <div className="flex items-start gap-4">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
     </span>
     <div className="flex-1 min-w-0">
       <h4 className="text-base md:text-lg font-bold text-black m-0 mb-3">Understanding Refusal Grounds (Article 32)</h4>
@@ -300,7 +302,7 @@ If your application is denied, you have 30 days to appeal. A strong <strong>Sche
 <div className="not-prose my-10 rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
   <div className="bg-[#800000] px-6 py-4 flex items-center justify-between">
     <div className="flex items-center gap-2.5">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-white shrink-0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-white shrink-0" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
       <h4 className="text-white font-bold m-0 text-sm md:text-base">Appeal Letter Structure — 6 Essential Sections</h4>
     </div>
     <span className="text-xs text-white/80 bg-white/15 px-2.5 py-1 rounded-full font-medium hidden sm:inline-block">30-Day Deadline</span>
@@ -346,15 +348,15 @@ If your application is denied, you have 30 days to appeal. A strong <strong>Sche
         <p className="text-sm text-gray-700 m-0 leading-relaxed mb-3">Acknowledge the refusal reason, then systematically dismantle it with evidence (e.g., "I am submitting updated bank statements showing X balance, and an approved leave letter from my employer").</p>
         <div className="flex flex-wrap gap-2 mt-2">
           <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Reference refusal clause
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Attach supporting docs
           </span>
           <span className="inline-flex items-center gap-1.5 text-xs text-gray-600 bg-white border border-gray-200 rounded px-2 py-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3 h-3 text-[#800000]" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"></polyline></svg>
             Logical point-by-point rebuttal
           </span>
         </div>
@@ -382,7 +384,7 @@ If your application is denied, you have 30 days to appeal. A strong <strong>Sche
     </div>
   </div>
   <div className="bg-gray-50 px-6 py-4 flex items-center gap-3 border-t border-gray-200">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-4 h-4 text-[#800000] shrink-0" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
     <p className="text-xs text-gray-600 m-0 leading-relaxed"><strong className="text-black">Important:</strong> The appeal must be submitted within <strong className="text-[#800000]">30 days</strong> of receiving the refusal letter. Late submissions are automatically rejected.</p>
   </div>
 </div>
@@ -392,7 +394,7 @@ If your application is denied, you have 30 days to appeal. A strong <strong>Sche
 <div className="not-prose my-10 rounded-xl border-l-4 border-[#800000] bg-gray-50 p-6 md:p-8">
   <div className="flex flex-col md:flex-row gap-5 items-start">
     <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#800000] text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-6 h-6" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"></circle><path d="m15 9-6 6"></path><path d="m9 9 6 6"></path></svg>
     </div>
     <div className="flex-1 min-w-0">
       <span className="inline-block text-xs font-bold uppercase tracking-wider text-[#800000] bg-[#800000]/10 px-3 py-1 rounded-full mb-3">Crucial Clarification</span>
@@ -411,28 +413,28 @@ Navigating the Schengen visa process can be complex, especially with varying emb
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10 not-prose">
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
     </span>
     <h5 className="font-bold text-black mb-2 text-sm">Strategic Profile Assessment</h5>
     <p className="text-sm text-gray-700 leading-relaxed m-0">We evaluate your travel history, financial standing, and ties to your home country to ensure your profile meets the specific criteria of your destination country's embassy, minimizing the risk of refusal.</p>
   </div>
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
     </span>
     <h5 className="font-bold text-black mb-2 text-sm">Document Verification & Legal Review</h5>
     <p className="text-sm text-gray-700 leading-relaxed m-0">Our legal team meticulously verifies all your documents to ensure they meet the exact formatting and content requirements of the consulate, preventing refusals due to technicalities.</p>
   </div>
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z"></path><path d="M9 3v15"></path><path d="M15 6v15"></path></svg>
     </span>
     <h5 className="font-bold text-black mb-2 text-sm">Customized Itinerary & Accommodation</h5>
     <p className="text-sm text-gray-700 leading-relaxed m-0">We assist in creating a verifiable, logical travel itinerary and securing embassy-compliant hotel reservations without requiring you to make upfront non-refundable payments.</p>
   </div>
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white mb-3 shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"></path></svg>
     </span>
     <h5 className="font-bold text-black mb-2 text-sm">Flight Itinerary & Travel Insurance</h5>
     <p className="text-sm text-gray-700 leading-relaxed m-0">We provide reliable flight itinerary services tailored specifically for visa applications and help you secure Schengen-compliant travel insurance (minimum €30,000 coverage) at the best rates.</p>
@@ -440,7 +442,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
   <div className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-[#800000]/40 hover:shadow-md transition-all duration-300 md:col-span-2">
     <div className="flex flex-col md:flex-row gap-4 items-start">
       <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#800000] text-white shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="12" y1="13" y2="13"></line><line x1="16" x2="12" y1="17" y2="17"></line></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="12" y1="13" y2="13"></line><line x1="16" x2="12" y1="17" y2="17"></line></svg>
       </span>
       <div className="flex-1 min-w-0">
         <h5 className="font-bold text-black mb-2 text-sm">Form Filling & Application Submission</h5>
@@ -460,7 +462,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
         <span className="text-sm md:text-base truncate">Do I need to submit my actual passport during the application?</span>
       </span>
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </span>
     </summary>
     <div className="px-5 pb-5 pl-16">
@@ -474,7 +476,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
         <span className="text-sm md:text-base truncate">Can I work on a Schengen short-stay visa?</span>
       </span>
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </span>
     </summary>
     <div className="px-5 pb-5 pl-16">
@@ -488,7 +490,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
         <span className="text-sm md:text-base truncate">What happens if my Schengen visa is refused?</span>
       </span>
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </span>
     </summary>
     <div className="px-5 pb-5 pl-16">
@@ -502,7 +504,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
         <span className="text-sm md:text-base truncate">Is an interview required for a Schengen visa?</span>
       </span>
       <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#800000]/10 text-[#800000] shrink-0 transition-transform group-open:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" className="w-3.5 h-3.5" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </span>
     </summary>
     <div className="px-5 pb-5 pl-16">
@@ -518,7 +520,7 @@ Navigating the Schengen visa process can be complex, especially with varying emb
 <div className="not-prose my-10 rounded-xl border-l-4 border-yellow-400 bg-yellow-50 p-6 md:p-8">
   <div className="flex items-start gap-4">
     <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-yellow-400 text-white shrink-0">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
     </span>
     <div className="flex-1 min-w-0">
       <h4 className="text-base font-bold text-black m-0 mb-2">Disclaimer</h4>
@@ -535,11 +537,11 @@ Navigating the Schengen visa process can be complex, especially with varying emb
       <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 leading-tight">Ready to Explore Europe?</h3>
       <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">Stop guessing about Article 32 refusal grounds, VFS/TLScontact/BLS appointment slots, and €30,000 insurance compliance. Get your Schengen visa profile assessed by a licensed RCIC before you submit to the consulate.</p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-        <a href="https://riffathmohaimen.setmore.com/" target="_blank" rel="noopener noreferrer" aria-label="Book a consultation" className="inline-flex items-center justify-center bg-white text-primary hover:bg-white/90 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+        <a href="${BOOKING_URL}" target="_blank" rel="noopener noreferrer" aria-label="Book a consultation" className="inline-flex items-center justify-center bg-white text-primary hover:bg-white/90 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#800000]">
           Book Consultation
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 ml-2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="w-5 h-5 ml-2" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="/contact" aria-label="Contact us" className="inline-flex items-center justify-center bg-transparent border border-white/60 text-white hover:bg-white/10 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
+        <a href="/contact" aria-label="Contact us" className="inline-flex items-center justify-center bg-transparent border border-white/60 text-white hover:bg-white/10 rounded-full font-bold text-base px-10 h-12 hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#800000]">
           Contact Us
         </a>
       </div>
@@ -550,5 +552,74 @@ Navigating the Schengen visa process can be complex, especially with varying emb
 };
 
 export default function SchengenPage() {
-  return <BlogLayout post={postData} />;
+  // 4. Added JSON-LD Structured Data for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need to submit my actual passport during the application?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Your physical passport must be submitted along with your application at the VFS Global center, as the embassy needs it to affix the visa sticker if approved. It will be returned to you via courier once a decision is made."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I work on a Schengen short-stay visa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A short-stay (Type C) Schengen visa is strictly for tourism, business meetings, family visits, or transit. It does not grant you the right to work or live permanently in Europe."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my Schengen visa is refused?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If your visa is refused, you will receive a standard refusal letter stating the reason. You have the right to appeal the decision within 30 days. It is often better to re-apply with stronger documentation addressing the reason for refusal, rather than appealing, if the initial application was fundamentally weak."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is an interview required for a Schengen visa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "While not always mandatory, the embassy reserves the right to call you in for a personal interview to clarify details about your trip, financial status, or ties to your home country."
+        }
+      }
+    ]
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": postData.title,
+    "description": postData.excerpt,
+    "author": {
+      "@type": "Person",
+      "name": postData.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Route 2 Migrate",
+    },
+    "datePublished": "2024-03-15",
+    "dateModified": "2024-03-15"
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <BlogLayout post={postData} />
+    </>
+  );
 }

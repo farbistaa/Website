@@ -181,9 +181,8 @@ export function Footer() {
                 &copy; {new Date().getFullYear()} All rights reserved RMohaimen Immigration Services (Route 2 Migrate).
               </p>
               <a 
-                href="https://www.facebook.com/farbistaa/" 
+                href="https://www.linkedin.com/in/farbista" 
                 className="text-white text-xs text-center lg:text-right max-w-md"
-                aria-label="This website is an intellectual Property of Foyaj Ahmmad Farabi"
               >
                 Crafted with ❤️ by Foyaj Ahmmad Farabi
               </a>

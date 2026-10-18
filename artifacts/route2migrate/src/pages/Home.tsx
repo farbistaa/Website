@@ -276,7 +276,7 @@ export default function HomePage() {
   }
 
   // ── Typing effect ──
-  const TYPING_PHRASES = ["Express Entry","PNP Applications", "PR Applications", "C10/C11 Work Permits","Business Migration", "Study Permits", "Family Sponsorship", "Visitor Visas","Super Visas", "Spousal Open Work Permits", ];
+  const TYPING_PHRASES = ["PR Pathways","Express Entry","PNP Applications", "PR Applications", "C10/C11 Work Permits","Business Migration", "Study Permits", "Family Sponsorship", "Visitor Visas","Super Visas", "Spousal Open Work Permits", ];
   const [typedText, setTypedText] = useState("");
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);

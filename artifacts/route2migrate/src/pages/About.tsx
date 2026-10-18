@@ -120,18 +120,29 @@ export default function AboutPage() {
             initial="hidden"
             animate="visible"
           >
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-              Hassle Free Canada's Immigration<br />
-              {/* Separate smooth animation on 'Expert on Your Side.' */}
-              <motion.span
-                className="text-gradient inline-block"
-                initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 1.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              >
-                When Expert is on Your Side.
-              </motion.span>
-            </motion.h1>
+            
+<motion.h1
+  variants={fadeUp}
+  className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight"
+>
+  <span className="whitespace-nowrap">
+    Hassle Free Canada's Immigration
+  </span>
+  <br />
+  <motion.span
+    className="text-gradient inline-block"
+    initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
+    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+    transition={{
+      duration: 1.4,
+      delay: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  >
+    When Expert is on Your Side.
+  </motion.span>
+</motion.h1>
+
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal mb-8">
               Route 2 Migrate is led by RCIC Riffat H. Mohaimen — a regulated consultant who has worked on both sides of the immigration process, bringing 10+ years of combined US and Canadian immigration expertise to every client.
             </motion.p>

@@ -121,7 +121,7 @@ export default function AboutPage() {
             animate="visible"
           >
             <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight">
-              Canada's Immigration<br />
+              Hassle Free Canada's Immigration<br />
               {/* Separate smooth animation on 'Expert on Your Side.' */}
               <motion.span
                 className="text-gradient inline-block"

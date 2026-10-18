@@ -1,3 +1,4 @@
+// artifacts/route2migrate/src/pages/About.tsx
 import { useRef, useState, useEffect } from "react";
 import { Link } from "wouter";
 import { motion, useInView, type Variants } from "framer-motion";
@@ -142,7 +143,6 @@ export default function AboutPage() {
     When Expert is on Your Side.
   </motion.span>
 </motion.h1>
-
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal mb-8">
               Route 2 Migrate is led by RCIC Riffat H. Mohaimen — a regulated consultant who has worked on both sides of the immigration process, bringing 10+ years of combined US and Canadian immigration expertise to every client.
             </motion.p>

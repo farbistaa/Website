@@ -129,7 +129,7 @@ export default function AboutPage() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 1.4, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
-                Expert on Your Side.
+                When Expert is on Your Side.
               </motion.span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal mb-8">

@@ -481,7 +481,7 @@ export default function AboutPage() {
                         </span>
                         {member.phone}
                       </a>
-                      {/* WhatsApp on the next line */}
+            
                       <a href={`https://wa.me/${member.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-xs text-muted-foreground hover:text-primary transition-colors group/link" aria-label={`WhatsApp ${member.name}`}>
                         <span className="w-6 h-6 rounded-full bg-primary/8 flex items-center justify-center shrink-0 group-hover/link:bg-primary group-hover/link:text-white transition-all">
                           <WhatsAppIcon className="h-3 w-3" />

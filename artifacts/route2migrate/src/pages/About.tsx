@@ -130,7 +130,8 @@ export default function AboutPage() {
   <span
     className="block whitespace-nowrap"
     style={{
-      fontSize: "clamp(14px, 3.5vw, 56px)",
+      fontSize: "clamp(17px, 4.5vw, 56px)",
+      letterSpacing: "-0.04em",
     }}
   >
     Hassle Free Canada's Immigration
@@ -139,7 +140,7 @@ export default function AboutPage() {
   <motion.span
     className="text-gradient block"
     style={{
-      fontSize: "clamp(20px, 4vw, 64px)",
+      fontSize: "clamp(24px, 5vw, 64px)",
     }}
     initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -152,6 +153,7 @@ export default function AboutPage() {
     When Expert is on Your Side.
   </motion.span>
 </motion.h1>
+
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto font-normal mb-8">
               Route 2 Migrate is led by RCIC Riffat H. Mohaimen — a regulated consultant who has worked on both sides of the immigration process, bringing 10+ years of combined US and Canadian immigration expertise to every client.
             </motion.p>

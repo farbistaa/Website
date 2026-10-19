@@ -430,7 +430,7 @@ export default function AboutPage() {
             {/* Changed lg:grid-cols-4 to lg:grid-cols-3 to remove the blank space */}
             <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {[
-               { name: "Syed Mohd. Zubair Huda Adel", role: "Operations Manager", phone: "+8801896060700", whatsapp: "8801896060700", email: "zubair@rmigrate.ca", linkedin: "https://www.linkedin.com/in/zubairhuda/", photo: zubairPhoto },
+               { name: "Syed Mohd. Zubair Huda Adel", role: "Operations Manager", phone: "", whatsapp: "", email: "zubair@rmigrate.ca", linkedin: "https://www.linkedin.com/in/zubairhuda/", photo: zubairPhoto },
                 { name: "Foyaj Ahmmad Farabi", role: "Client Service Executive", phone: "+8801896060702", whatsapp: "8801896060702", email: "farabi@rmigrate.ca", linkedin: "https://www.linkedin.com/in/farbista/", photo: farabiPhoto },
                 { name: "S M Juhayer Alam", role: "Education Consultant", phone: "+8801896060703", whatsapp: "8801896060703", email: "juhayer@rmigrate.ca", linkedin: "https://www.linkedin.com/company/route2migrateca", photo: juhayerPhoto },
               ].map((member) => (

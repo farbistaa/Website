@@ -122,16 +122,25 @@ export default function AboutPage() {
             animate="visible"
           >
             
+
 <motion.h1
   variants={fadeUp}
-  className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 leading-tight"
+  className="font-serif font-bold text-foreground mb-6 leading-tight"
 >
-  <span className="whitespace-nowrap">
+  <span
+    className="block whitespace-nowrap"
+    style={{
+      fontSize: "clamp(14px, 3.5vw, 56px)",
+    }}
+  >
     Hassle Free Canada's Immigration
   </span>
-  <br />
+
   <motion.span
-    className="text-gradient inline-block"
+    className="text-gradient block"
+    style={{
+      fontSize: "clamp(20px, 4vw, 64px)",
+    }}
     initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
     transition={{

@@ -1,6 +1,6 @@
 // src/pages/blogging/Consultation.tsx
 import BlogLayout from "@/components/BlogLayout";
-import farabiPhoto from "@assets/Foyaj Ahmmad Farabi - About Portrait.png";
+import farabiPhoto from "@assets/Foyaj Ahmmad Farabi.png";
 
 export const postData = {
   slug: "immigration-consultation-services",

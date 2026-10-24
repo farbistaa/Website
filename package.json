@@ -7,7 +7,7 @@
     "server": "tsx watch server.ts",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "preview": "pnpm --filter @workspace/route2migrate serve",
-    "typecheck:libs": "tsc --build",
+    "typecheck:libs": "tsc --build lib/api-zod/tsconfig.json lib/db/tsconfig.json lib/api-client-react/tsconfig.json",
     "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck",
     "dev:web": "pnpm --filter @workspace/route2migrate dev",
     "dev:api": "pnpm --filter @workspace/api-server dev"

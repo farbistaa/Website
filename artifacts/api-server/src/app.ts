@@ -9,17 +9,26 @@ const app = express();
 
 app.use(express.json());
 
-const allowedOrigins = [
+const allowedOrigins = new Set([
   "https://website-route2migrate.vercel.app",
-  "http://localhost:5173",
-];
+  "https://route2migrate.vercel.app",
+  "https://route2migrate.ca",
+  "https://www.route2migrate.ca",
+]);
 
 app.use(
   cors({
     origin(origin, callback) {
-      // allow no-Origin requests (curl, health checks) + whitelisted origins
-      if (!origin || allowedOrigins.includes(origin)) callback(null, true);
-      else callback(new Error("Not allowed by CORS"));
+      // Allow non-browser requests and local Vite dev servers on any port.
+      const isLocalDevOrigin =
+        typeof origin === "string" &&
+        /^http:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin);
+
+      if (!origin || allowedOrigins.has(origin) || isLocalDevOrigin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
     },
   })
 );

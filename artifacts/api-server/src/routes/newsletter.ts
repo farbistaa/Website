@@ -58,7 +58,7 @@ function normalizeEmail(raw: string): string {
   const domain = email.slice(at + 1);
 
   if (domain === "gmail.com" || domain === "googlemail.com") {
-    return `${local.split("+")[0].replace(/\\./g, "")}@gmail.com`;
+    return `${local.split("+")[0].replace(/\./g, "")}@gmail.com`;
   }
   return email;
 }

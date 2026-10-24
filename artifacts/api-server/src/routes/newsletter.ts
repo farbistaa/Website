@@ -1,5 +1,5 @@
 // artifacts/api-server/src/routes/newsletter.ts
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import disposableDomains from "disposable-email-domains";
@@ -70,31 +70,73 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
 }
 
 // =========================================================
-// PREMIUM SAAS EMAIL TEMPLATE — PRODUCTION READY
+// LOGO DISCOVERY + PUBLIC SERVING ENDPOINT
 // =========================================================
-function resolveLogo(): string {
-  const envUrl = process.env.LOGO_URL;
-  if (envUrl && /^https?:\/\//.test(envUrl)) return envUrl;
+const LOGO_FILENAME = "White_logo_With_Transparent_Backgrund_1782379235056.png";
 
-  const logoPaths = [
-    path.join(process.cwd(), "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png"),
-    path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png"),
+function findLogoPath(): string | null {
+  const candidates = [
+    path.join(process.cwd(), "attached_assets", LOGO_FILENAME),
+    path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
+    path.resolve(__dirname, "..", "..", "..", "attached_assets", LOGO_FILENAME),
+    path.resolve(__dirname, "..", "..", "..", "..", "attached_assets", LOGO_FILENAME),
+    path.join(process.cwd(), "artifacts", "route2migrate", "dist", "assets", LOGO_FILENAME),
+    path.join(process.cwd(), "dist", "assets", LOGO_FILENAME),
   ];
-  for (const p of logoPaths) {
+  for (const p of candidates) {
     try {
-      if (fs.existsSync(p)) {
-        return `data:image/png;base64,${fs.readFileSync(p).toString("base64")}`;
+      if (fs.existsSync(p) && fs.statSync(p).isFile()) {
+        return p;
       }
     } catch {
       // try next
     }
   }
+  return null;
+}
+
+const LOGO_FILE = findLogoPath();
+
+router.get("/email-logo", (_req: Request, res: Response) => {
+  if (!LOGO_FILE) {
+    return res.status(404).send("Logo not found");
+  }
+  res.setHeader("Content-Type", "image/png");
+  res.setHeader("Cache-Control", "public, max-age=86400");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.sendFile(path.resolve(LOGO_FILE));
+});
+
+function getLogoUrl(req: Request): string {
+  if (process.env.LOGO_URL && /^https?:\/\//.test(process.env.LOGO_URL)) {
+    return process.env.LOGO_URL;
+  }
+  if (!LOGO_FILE) return "";
+
+  const siteUrl = process.env.SITE_URL || process.env.API_URL;
+  if (siteUrl && /^https?:\/\//.test(siteUrl)) {
+    return `${siteUrl.replace(/\/$/, "")}${req.baseUrl || ""}/email-logo`;
+  }
+
+  const proto =
+    (req.headers["x-forwarded-proto"] as string) || req.protocol || "https";
+  const host =
+    (req.headers["x-forwarded-host"] as string) || req.get("host") || "";
+  if (host) {
+    return `${proto}://${host}${req.baseUrl || ""}/email-logo`;
+  }
   return "";
 }
-const logoSrc = resolveLogo();
-const SITE_URL = process.env.SITE_URL || "https://rmigrate.ca";
+// =========================================================
 
-const generateEmailTemplate = (title: string, subtitle: string, content: string, ctaLink: string, ctaText: string) => `
+const generateEmailTemplate = (
+  title: string,
+  subtitle: string,
+  content: string,
+  ctaLink: string,
+  ctaText: string,
+  logoUrl: string
+) => `
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -117,8 +159,8 @@ const generateEmailTemplate = (title: string, subtitle: string, content: string,
 
           <tr>
             <td style="padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);background-color:#0d0d18;">
-              ${logoSrc
-                ? `<img src="${logoSrc}" alt="Route 2 Migrate" width="200" style="width:200px;height:auto;margin:0 auto 24px;display:block;border:0;outline:none;text-decoration:none;" />`
+              ${logoUrl
+                ? `<img src="${logoUrl}" alt="Route 2 Migrate" width="200" style="width:200px;height:auto;margin:0 auto 24px;display:block;border:0;outline:none;text-decoration:none;" />`
                 : `<h1 style="color:#ffffff;margin:0 0 24px;font-family:Georgia,serif;font-size:24px;font-weight:bold;letter-spacing:0.5px;">Route 2 Migrate</h1>`
               }
               <span style="display:inline-block;font-size:11px;color:#94a3b8;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:8px 16px;border-radius:20px;">${subtitle}</span>
@@ -150,9 +192,6 @@ const generateEmailTemplate = (title: string, subtitle: string, content: string,
                 Designed and Engineered with <span style="color:#ef4444;">&#10084;</span> by
                 <a href="https://www.linkedin.com/in/farbista/" style="color:#ffffff;text-decoration:none;font-weight:600;">Foyaj Ahmmad Farabi</a>
               </p>
-              <p style="margin:16px 0 0;font-size:11px;color:#475569;">
-                <a href="${SITE_URL}" style="color:#475569;text-decoration:none;">${SITE_URL.replace(/^https?:\/\//, '')}</a>
-              </p>
             </td>
           </tr>
 
@@ -163,7 +202,6 @@ const generateEmailTemplate = (title: string, subtitle: string, content: string,
 </body>
 </html>
 `;
-// =========================================================
 
 router.post("/subscribe", async (req, res): Promise<void> => {
   try {
@@ -236,10 +274,12 @@ router.post("/subscribe", async (req, res): Promise<void> => {
       </tr>
     `;
 
+    const logoUrl = getLogoUrl(req);
+
     await sendNotificationEmail({
       to: process.env.NOTIFICATION_EMAIL || "contact@rmigrate.ca",
       subject: `New Newsletter Subscriber: ${email}`,
-      html: generateEmailTemplate("New Subscription Confirmed", "Newsletter Signup", emailContent, `mailto:${email}`, "Welcome Subscriber"),
+      html: generateEmailTemplate("New Subscription Confirmed", "Newsletter Signup", emailContent, `mailto:${email}`, "Welcome Subscriber", logoUrl),
     });
 
     res.status(200).json({ success: true, message: "Subscribed successfully" });

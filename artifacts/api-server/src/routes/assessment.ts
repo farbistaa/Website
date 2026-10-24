@@ -80,7 +80,7 @@ function findLogoPath(): string | null {
     path.join(process.cwd(), "attached_assets", LOGO_FILENAME),
     // Frontend source
     path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
-    path.resolve(__dirname, "..", "..", "..", "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
+    path.resolve(__dirname, "..", "..", "..", "..", "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
     // Relative to this file (api-server/src/routes/assessment.ts -> ../../../attached_assets)
     path.resolve(__dirname, "..", "..", "..", "attached_assets", LOGO_FILENAME),
     path.resolve(__dirname, "..", "..", "..", "..", "attached_assets", LOGO_FILENAME),

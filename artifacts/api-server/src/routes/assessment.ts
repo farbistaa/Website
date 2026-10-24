@@ -109,7 +109,7 @@ router.get("/email-logo", (_req: Request, res: Response) => {
   res.setHeader("Content-Type", "image/png");
   res.setHeader("Cache-Control", "public, max-age=86400");
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.sendFile(path.resolve(LOGO_FILE));
+  return res.sendFile(path.resolve(LOGO_FILE));
 });
 
 // Construct the public logo URL for use inside emails

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm --parallel --filter @workspace/route2migrate --filter @workspace/api-server dev",
+    "dev": "pnpm -r --parallel --filter @workspace/route2migrate --filter @workspace/api-server run dev",
     "server": "tsx watch server.ts",
     "build": "pnpm run typecheck && pnpm -r --if-present run build",
     "preview": "pnpm --filter @workspace/route2migrate serve",

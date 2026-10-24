@@ -90,7 +90,7 @@ function findLogoPath(): string | null {
   const candidates = [
     path.join(process.cwd(), "attached_assets", LOGO_FILENAME),
     path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
-    path.resolve(__dirname, "..", "..", "..", "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
+    path.resolve(__dirname, "..", "..", "..", "..", "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
     path.resolve(__dirname, "..", "..", "..", "attached_assets", LOGO_FILENAME),
     path.resolve(__dirname, "..", "..", "..", "..", "attached_assets", LOGO_FILENAME),
     path.join(process.cwd(), "artifacts", "route2migrate", "dist", "assets", LOGO_FILENAME),

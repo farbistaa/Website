@@ -354,10 +354,6 @@ export function FreeAssessmentForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [honeypot, setHoneypot] = useState(""); // FIX: honeypot — humans never fill this
 
-  // Empty string locally (relative /api → Vite proxy).
-  // On Vercel, the function lives on the same origin so this stays "".
-  const API_BASE = import.meta.env.VITE_API_URL ?? "";
-
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -375,7 +371,7 @@ export function FreeAssessmentForm() {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const res = await fetch(`${API_BASE}/api/assessment/submit`, {
+      const res = await fetch("/api/assessment/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

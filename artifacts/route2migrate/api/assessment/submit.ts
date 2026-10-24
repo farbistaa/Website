@@ -3,6 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import { createRequire } from "module";
+import { sendNotificationEmail } from "../../server/mailer";
 
 // ── Config ─────────────────────────────────────────────────────────
 const MAX_ATTEMPTS_PER_HOUR = 10;
@@ -195,6 +196,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `;
 
     await logAttempt(email, "success");
+    await sendNotificationEmail(`New Free Assessment Request: ${fullName}`, "New Free Assessment Request", {
+      "Full Name": fullName,
+      "Email": email,
+      "Phone": phone,
+      "Country": country,
+      "Immigration Status": immigrationStatus,
+      "Service": service,
+      "Description": description,
+      "Submission ID": String(result[0].id),
+    });
     return res.status(200).json({ success: true, id: result[0].id });
   } catch (error) {
     console.error("Assessment Submit Error:", error);

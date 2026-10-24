@@ -1,60 +1,51 @@
-# See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# compiled output
+# Build output
 dist
 tmp
 out-tsc
 *.tsbuildinfo
-.expo
-.expo-shared
+coverage
 
-# dependencies
+# Dependencies
 node_modules
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
-
-# IDE - VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
+# OS and logs
+.DS_Store
+Thumbs.db
 npm-debug.log
 yarn-error.log
 testem.log
-/typings
+typings
+connect.lock
+libpeerconnection.log
+.sass-cache
 
-# System Files
-.DS_Store
-Thumbs.db
-
+# Replit / local tooling
+.cache/
+.local/
+.expo
+.expo-shared
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 
-# Replit
-.cache/
-.local/
-
-# Environment variables
+# Secrets: keep real environment files out of Git; allow safe templates
 .env
-.env.local
 .env.*
 !.env.example
-.env
-.env.*
+!.env.*.example
 
+# Vercel local metadata
 .vercel
-.env*

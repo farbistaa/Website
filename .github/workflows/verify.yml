@@ -1,0 +1,40 @@
+name: Verify website
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, chore/website-architecture-cleanup]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type-check workspace
+        run: pnpm run typecheck
+
+      - name: Build Vercel frontend
+        run: pnpm --filter @workspace/route2migrate build
+
+      - name: Build Express API
+        run: pnpm --filter @workspace/api-server build

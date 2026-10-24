@@ -3,6 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import { createRequire } from "module";
+import { sendNotificationEmail } from "../../server/mailer";
 
 // ── Config ─────────────────────────────────────────────────────────
 const MAX_ATTEMPTS_PER_HOUR = 10;
@@ -196,6 +197,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         INSERT INTO newsletter (email, source) VALUES (${normalized}, 'website')
       `;
       await logAttempt(normalized, "success");
+      await sendNotificationEmail(`New Newsletter Subscriber: ${normalized}`, "New Newsletter Subscriber", {
+        "Email Address": normalized,
+        "Source": "Website Newsletter Form",
+      });
       return res.status(200).json({ success: true });
     } catch (err: unknown) {
       const e = err as { code?: string; message?: string };

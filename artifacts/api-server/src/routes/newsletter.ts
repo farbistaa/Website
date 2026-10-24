@@ -10,7 +10,7 @@ import { sendNotificationEmail } from "../lib/mailer";
 
 const router = Router();
 
-const MAX_ATTEMPTS_PER_HOUR = 15;
+const MAX_ATTEMPTS_PER_HOUR = 10;
 
 const CUSTOM_DISPOSABLE = [
   "tempmail.com", "temp-mail.org", "tempmail.plus", "tempmailo.com",
@@ -51,6 +51,18 @@ function basicValidate(email: string): string | null {
   return null;
 }
 
+function normalizeEmail(raw: string): string {
+  const email = raw.trim().toLowerCase();
+  const at = email.lastIndexOf("@");
+  const local = email.slice(0, at);
+  const domain = email.slice(at + 1);
+
+  if (domain === "gmail.com" || domain === "googlemail.com") {
+    return `${local.split("+")[0].replace(/\./g, "")}@gmail.com`;
+  }
+  return email;
+}
+
 async function domainCanReceiveMail(domain: string): Promise<boolean> {
   try {
     const mx = await resolveMx(domain);
@@ -78,6 +90,7 @@ function findLogoPath(): string | null {
   const candidates = [
     path.join(process.cwd(), "attached_assets", LOGO_FILENAME),
     path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
+    path.resolve(__dirname, "..", "..", "..", "..", "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
     path.resolve(__dirname, "..", "..", "..", "attached_assets", LOGO_FILENAME),
     path.resolve(__dirname, "..", "..", "..", "..", "attached_assets", LOGO_FILENAME),
     path.join(process.cwd(), "artifacts", "route2migrate", "dist", "assets", LOGO_FILENAME),
@@ -217,19 +230,41 @@ router.post("/subscribe", async (req, res): Promise<void> => {
       return;
     }
 
-    const ip = req.ip ?? "unknown";
+    const forwardedFor = req.headers["x-forwarded-for"];
+    const ip =
+      (typeof forwardedFor === "string" ? forwardedFor.split(",")[0].trim() : "") ||
+      req.ip ||
+      "unknown";
     const body = req.body ?? {};
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
 
     const sql = neon(databaseUrl);
 
+    if (Math.random() < 0.1) {
+      await sql`DELETE FROM newsletter_attempts WHERE created_at < now() - interval '7 days'`;
+    }
+
+    const rateRows = await sql`
+      SELECT COUNT(*)::int AS count FROM newsletter_attempts
+      WHERE ip = ${ip} AND created_at > now() - interval '1 hour'
+    `;
+    if ((rateRows[0]?.count ?? 0) >= MAX_ATTEMPTS_PER_HOUR) {
+      res.status(429).json({ error: "Too many attempts. Please try again later." });
+      return;
+    }
+
+    const logAttempt = (em: string, outcome: string) =>
+      sql`INSERT INTO newsletter_attempts (ip, email, outcome) VALUES (${ip}, ${em}, ${outcome})`;
+
     if (!email) {
+      await logAttempt("", "invalid");
       res.status(400).json({ error: "Email is required" });
       return;
     }
 
     const formatError = basicValidate(email);
     if (formatError) {
+      await logAttempt(email, "invalid");
       res.status(400).json({ error: formatError });
       return;
     }
@@ -238,26 +273,39 @@ router.post("/subscribe", async (req, res): Promise<void> => {
 
     const typo = TYPO_DOMAINS[domain];
     if (typo) {
+      await logAttempt(email, "invalid");
       res.status(400).json({ error: `Did you mean @${typo}? Please check the spelling.` });
       return;
     }
 
     if (disposableSet.has(domain)) {
+      await logAttempt(email, "blocked");
       res.status(400).json({ error: "Temporary or disposable email addresses are not allowed." });
       return;
     }
 
     const canReceive = await domainCanReceiveMail(domain);
     if (!canReceive) {
+      await logAttempt(email, "invalid");
       res.status(400).json({ error: "This email domain can't receive mail. Please check for typos." });
       return;
     }
 
-    await sql`
+    const normalized = normalizeEmail(email);
+    const inserted = await sql`
       INSERT INTO newsletter (email, source)
-      VALUES (${email}, 'website')
+      VALUES (${normalized}, 'website')
       ON CONFLICT (email) DO NOTHING
+      RETURNING email
     `;
+
+    if (inserted.length === 0) {
+      await logAttempt(normalized, "duplicate");
+      res.status(200).json({ success: true, alreadySubscribed: true });
+      return;
+    }
+
+    await logAttempt(normalized, "success");
 
     const emailContent = `
       <tr>

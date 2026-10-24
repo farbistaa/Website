@@ -70,97 +70,110 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
 }
 
 // =========================================================
-// PREMIUM SAAS EMAIL TEMPLATE (GRADIENT BG + DISTINCT WHITE CARD)
+// PREMIUM SAAS EMAIL TEMPLATE — PRODUCTION READY
+// Priority 1: LOGO_URL env var (works in ALL email clients)
+// Priority 2: base64 fallback (dev only — Gmail/Outlook strip it)
+// Priority 3: text header fallback
 // =========================================================
-let logoSrc = "";
-const logoPaths = [
-  path.join(process.cwd(), "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png"),
-  path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png")
-];
+function resolveLogo(): string {
+  // 1. Public URL — always works in all clients
+  const envUrl = process.env.LOGO_URL;
+  if (envUrl && /^https?:\/\//.test(envUrl)) return envUrl;
 
-for (const p of logoPaths) {
-  try {
-    if (fs.existsSync(p)) {
-      const base64 = fs.readFileSync(p).toString("base64");
-      logoSrc = `data:image/png;base64,${base64}`;
-      break;
+  // 2. Local base64 fallback (dev only)
+  const logoPaths = [
+    path.join(process.cwd(), "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png"),
+    path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", "White_logo_With_Transparent_Backgrund_1782379235056.png"),
+  ];
+  for (const p of logoPaths) {
+    try {
+      if (fs.existsSync(p)) {
+        return `data:image/png;base64,${fs.readFileSync(p).toString("base64")}`;
+      }
+    } catch {
+      // try next
     }
-  } catch (err) {
-    // silent fail
   }
+  // 3. Empty -> template renders text header fallback
+  return "";
 }
+const logoSrc = resolveLogo();
+
+const SITE_URL = process.env.SITE_URL || "https://rmigrate.ca";
 
 const generateEmailTemplate = (title: string, subtitle: string, content: string, ctaLink: string, ctaText: string) => `
-  <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <style>
-      .btn:hover { transform: scale(1.05); }
-    </style>
-  </head>
-  <body style="margin: 0; padding: 0; -webkit-font-smoothing: antialiased; background-color: #3b0a0a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-    <!-- Outer Table: Applies Gradient + Stripe Background -->
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #3b0a0a; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.08) 0px, rgba(255,255,255,0.08) 1px, transparent 1px, transparent 12px), linear-gradient(135deg, #3b0a0a 0%, #7f1d1d 50%, #3b0a0a 100%); padding: 48px 24px;">
-      <tr>
-        <td align="center">
-          <!-- Inner Container: Solid White Card for Distinct Readability -->
-          <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); overflow: hidden; border-collapse: separate;">
-            
-            <!-- Header -->
-            <tr>
-              <td style="padding: 40px 40px 24px 40px; border-bottom: 1px solid #f3f4f6; text-align: center;">
-                ${logoSrc ? `<img src="${logoSrc}" alt="Route 2 Migrate" style="width: 180px; height: auto; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;" />` : `<h1 style="color: #800000; margin: 0 0 20px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; font-family: Georgia, 'Times New Roman', serif;">Route 2 Migrate</h1>`}
-                <span style="display: inline-block; font-size: 11px; color: #800000; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700; background: #fdf2f2; border: 1px solid #fadada; padding: 6px 16px; border-radius: 50px;">${subtitle}</span>
-              </td>
-            </tr>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <!--[if mso]>
+  <xml>
+    <o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings>
+  </xml>
+  <![endif]-->
+  <title>Route 2 Migrate — ${title}</title>
+</head>
+<body style="margin:0;padding:0;background-color:#08080f;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#08080f;padding:48px 24px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="580" cellpadding="0" cellspacing="0" style="max-width:580px;width:580px;background-color:#0d0d18;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 40px rgba(0,0,0,0.4);">
 
-            <!-- Body -->
-            <tr>
-              <td style="padding: 32px 40px 16px 40px;">
-                <!-- Using Georgia Serif font exactly like the font-serif class in the CTA -->
-                <h2 style="margin: 0 0 24px 0; color: #111827; font-size: 24px; line-height: 1.3; font-weight: 700; letter-spacing: -0.5px; font-family: Georgia, 'Times New Roman', serif;">${title}</h2>
-                
-                <!-- Data Table inside Light Gray Box -->
-                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f9fafb; border-radius: 12px; border: 1px solid #f3f4f6;">
-                  <tr>
-                    <td style="padding: 8px 24px;">
-                      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                        ${content}
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
+          <!-- HEADER -->
+          <tr>
+            <td style="padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);background-color:#0d0d18;">
+              ${logoSrc
+                ? `<img src="${logoSrc}" alt="Route 2 Migrate" width="200" style="width:200px;height:auto;margin:0 auto 24px;display:block;border:0;outline:none;text-decoration:none;" />`
+                : `<h1 style="color:#ffffff;margin:0 0 24px;font-family:Georgia,serif;font-size:24px;font-weight:bold;letter-spacing:0.5px;">Route 2 Migrate</h1>`
+              }
+              <span style="display:inline-block;font-size:11px;color:#94a3b8;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:8px 16px;border-radius:20px;">${subtitle}</span>
+            </td>
+          </tr>
 
-            <!-- CTA Section -->
-            <tr>
-              <td style="padding: 24px 40px 40px 40px; text-align: center;">
-                <a href="${ctaLink}" class="btn" style="background-color: #800000; color: #ffffff; text-decoration: none; padding: 14px 36px; border-radius: 8px; font-size: 14px; font-weight: 700; display: inline-block; box-shadow: 0 4px 6px rgba(128,0,0,0.2);">
-                  ${ctaText} &rarr;
-                </a>
-              </td>
-            </tr>
+          <!-- BODY -->
+          <tr>
+            <td style="padding:48px 40px;background-color:#0d0d18;">
+              <h2 style="margin:0 0 32px;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.4;border-bottom:2px solid #ef4444;display:inline-block;padding-bottom:12px;">${title}</h2>
 
-            <!-- Footer -->
-            <tr>
-              <td style="padding: 24px 40px; background-color: #f9fafb; border-top: 1px solid #f3f4f6; text-align: center;">
-                <p style="margin: 0; font-size: 12px; color: #6b7280; line-height: 1.5;">This is an automated notification sent from the Route 2 Migrate WebMail Service.</p>
-                <p style="margin: 8px 0 0; font-size: 12px; color: #6b7280;">
-                  Designed and Engineered with <span style="color: #800000;">&#10084;</span> by 
-                  <a href="https://www.linkedin.com/in/farbista/" style="color: #111827; text-decoration: none; font-weight: 600;">Foyaj Ahmmad Farabi</a>
-                </p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </body>
-  </html>
+              <!-- Glass Data Card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#cbd5e1;background-color:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
+                ${content}
+              </table>
+
+              <!-- CTA Button -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
+                <tr>
+                  <td align="center">
+                    <a href="${ctaLink}" style="background-color:#ef4444;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:14px;font-weight:600;display:inline-block;box-shadow:0 4px 12px rgba(239,68,68,0.3);border:1px solid rgba(255,255,255,0.1);">${ctaText} &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background-color:#08080f;padding:32px 40px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;">
+              <p style="margin:0;font-size:12px;color:#64748b;line-height:1.5;">This is an automated notification sent from the Route 2 Migrate WebMail Service.</p>
+              <p style="margin:16px 0 0;font-size:12px;color:#64748b;">
+                Designed and Engineered with <span style="color:#ef4444;">&#10084;</span> by
+                <a href="https://www.linkedin.com/in/farbista/" style="color:#ffffff;text-decoration:none;font-weight:600;">Foyaj Ahmmad Farabi</a>
+              </p>
+              <p style="margin:16px 0 0;font-size:11px;color:#475569;">
+                <a href="${SITE_URL}" style="color:#475569;text-decoration:none;">${SITE_URL.replace(/^https?:\/\//, '')}</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
 `;
 // =========================================================
 
@@ -259,13 +272,13 @@ router.post("/submit", async (req, res): Promise<void> => {
     await logAttempt(email, "success");
 
     const emailContent = `
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Name</span> <span style="color: #111827; font-weight: 500; font-size: 14px;">${fullName}</span></td></tr>
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Email</span> <a href="mailto:${email}" style="color: #800000; text-decoration: none; font-weight: 600; font-size: 14px;">${email}</a></td></tr>
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Phone</span> <span style="color: #111827; font-weight: 500; font-size: 14px;">${phone}</span></td></tr>
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Country</span> <span style="color: #111827; font-weight: 500; font-size: 14px;">${country}</span></td></tr>
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Status</span> <span style="color: #111827; font-weight: 500; font-size: 14px;">${immigrationStatus}</span></td></tr>
-      <tr><td style="padding: 14px 0; border-bottom: 1px solid #f3f4f6;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">Service</span> <span style="color: #111827; font-weight: 500; font-size: 14px;">${service}</span></td></tr>
-      <tr><td style="padding: 14px 0;"><span style="display: inline-block; width: 140px; color: #6b7280; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; vertical-align: top;">Description</span> <span style="display: inline-block; max-width: 340px; line-height: 1.6; color: #374151; font-size: 14px;">${description || 'N/A'}</span></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Name</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${fullName}</span></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email</span> <a href="mailto:${email}" style="color:#ef4444;text-decoration:none;font-weight:500;font-size:14px;">${email}</a></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Phone</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${phone}</span></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Country</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${country}</span></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${immigrationStatus}</span></td></tr>
+      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Service</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${service}</span></td></tr>
+      <tr><td style="padding:16px 24px;"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;vertical-align:top;">Description</span> <span style="display:inline-block;max-width:360px;line-height:1.6;color:#cbd5e1;font-size:14px;">${description || 'N/A'}</span></td></tr>
     `;
 
     await sendNotificationEmail({

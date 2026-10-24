@@ -530,7 +530,6 @@ export default function AboutPage() {
           </Section>
         </div>
       </section>
-
       <Footer />
     </div>
   );

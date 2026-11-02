@@ -75,7 +75,7 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// ── Email template (maroon glassmorphism — matches StudyPermit CTA) ──
+// ── Email template (maroon glassmorphism + white inner panel) ──
 const generateEmailTemplate = (
   title: string,
   subtitle: string,
@@ -102,7 +102,7 @@ const generateEmailTemplate = (
   </xml>
   <style>
     .glass-card { background-color:#5a1818 !important; border:1px solid #8a3838 !important; }
-    .inner-panel { background-color:#4d1414 !important; border:1px solid #6a2a2a !important; }
+    .white-glass-panel { background-color:#f5f1f1 !important; border:1px solid #ffffff !important; }
     .pattern-overlay { display:none !important; }
   </style>
   <![endif]-->
@@ -128,7 +128,7 @@ const generateEmailTemplate = (
             <tr>
               <td style="padding:48px 40px;">
                 <h2 style="margin:0 0 32px;color:#ffffff;font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:24px;line-height:1.4;text-align:center;font-weight:600;">${escapeHtml(title)}</h2>
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="inner-panel" style="font-size:14px;color:rgba(255,255,255,0.85);background-color:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="white-glass-panel" style="font-size:14px;color:#3b0a0a;background-color:rgba(255,255,255,0.92);border-radius:12px;border:1px solid rgba(255,255,255,0.6);backdrop-filter:blur(10px);">
                   ${content}
                 </table>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
@@ -217,21 +217,21 @@ router.post("/subscribe", async (req, res): Promise<void> => {
 
     const emailContent = `
       <tr>
-        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
-          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email Address</span>
-          <a href="mailto:${escapeHtml(email)}" style="color:#ffffff;text-decoration:none;font-weight:500;font-size:14px;">${escapeHtml(email)}</a>
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(59,10,10,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(59,10,10,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email Address</span>
+          <a href="mailto:${escapeHtml(email)}" style="color:#7f1d1d;text-decoration:none;font-weight:500;font-size:14px;">${escapeHtml(email)}</a>
         </td>
       </tr>
       <tr>
-        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
-          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Source</span>
-          <span style="color:#ffffff;font-weight:500;font-size:14px;">Website Newsletter Form</span>
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(59,10,10,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(59,10,10,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Source</span>
+          <span style="color:#3b0a0a;font-weight:500;font-size:14px;">Website Newsletter Form</span>
         </td>
       </tr>
       <tr>
         <td style="padding:16px 24px;">
-          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span>
-          <span style="color:#ffffff;font-weight:500;font-size:14px;">${isDuplicate ? "Already Subscribed" : "New Subscriber"}</span>
+          <span style="display:inline-block;width:140px;color:rgba(59,10,10,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span>
+          <span style="color:#3b0a0a;font-weight:500;font-size:14px;">${isDuplicate ? "Already Subscribed" : "New Subscriber"}</span>
         </td>
       </tr>
     `;

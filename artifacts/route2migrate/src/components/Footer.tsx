@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import logoPath from "@assets/R2M Logo.png";
-import caelBadge from "@assets/CAEL_Network_Badge_-_Silver_1782555104773.png";
-import celpipBadge from "@assets/CELPIP_Network_Badge_-_Silver_1782555114632.png";
+import caelBadge from "@assets/CAEL_Network_Badge.png";
+import celpipBadge from "@assets/CELPIP_Network_Badge.png";
 
 const scrollTop = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 

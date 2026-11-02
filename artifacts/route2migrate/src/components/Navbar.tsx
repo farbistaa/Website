@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoPath from "@assets/White_logo_With_Transparent_Backgrund_1782379235056.png";
+import logoPath from "@assets/R2M Nav bar logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },

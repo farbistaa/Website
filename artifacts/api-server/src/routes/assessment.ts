@@ -1,10 +1,8 @@
 // artifacts/api-server/src/routes/assessment.ts
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import disposableDomains from "disposable-email-domains";
-import fs from "fs";
-import path from "path";
 import { logger } from "../lib/logger";
 import { sendNotificationEmail } from "../lib/mailer";
 
@@ -69,147 +67,38 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
   }
 }
 
-// =========================================================
-// LOGO DISCOVERY + PUBLIC SERVING ENDPOINT
-// =========================================================
-const LOGO_FILENAME = "White_logo_With_Transparent_Backgrund_1782379235056.png";
-
-function findLogoPath(): string | null {
-  const candidates = [
-    // Root of project (Windows: D:\Website\attached_assets\...)
-    path.join(process.cwd(), "attached_assets", LOGO_FILENAME),
-    // Frontend source
-    path.join(process.cwd(), "artifacts", "route2migrate", "src", "attached_assets", LOGO_FILENAME),
-    // Relative to this file (api-server/src/routes/assessment.ts -> ../../../attached_assets)
-    path.resolve(__dirname, "..", "..", "..", "attached_assets", LOGO_FILENAME),
-    path.resolve(__dirname, "..", "..", "..", "..", "attached_assets", LOGO_FILENAME),
-    // Vite build output
-    path.join(process.cwd(), "artifacts", "route2migrate", "dist", "assets", LOGO_FILENAME),
-    path.join(process.cwd(), "dist", "assets", LOGO_FILENAME),
-  ];
-  for (const p of candidates) {
-    try {
-      if (fs.existsSync(p) && fs.statSync(p).isFile()) {
-        return p;
-      }
-    } catch {
-      // try next
-    }
-  }
-  return null;
-}
-
-const LOGO_FILE = findLogoPath();
-
-// Serve logo as a public HTTP URL — works in ALL email clients
-router.get("/email-logo", (_req: Request, res: Response) => {
-  if (!LOGO_FILE) {
-    return res.status(404).send("Logo not found");
-  }
-  res.setHeader("Content-Type", "image/png");
-  res.setHeader("Cache-Control", "public, max-age=86400");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  return res.sendFile(path.resolve(LOGO_FILE));
-});
-
-// Construct the public logo URL for use inside emails
-function getLogoUrl(req: Request): string {
-  // Priority 1: explicit LOGO_URL env var
-  if (process.env.LOGO_URL && /^https?:\/\//.test(process.env.LOGO_URL)) {
-    return process.env.LOGO_URL;
-  }
-  if (!LOGO_FILE) return ""; // -> template renders text fallback
-
-  // Priority 2: SITE_URL env var (e.g. https://api.rmigrate.ca)
-  const siteUrl = process.env.SITE_URL || process.env.API_URL;
-  if (siteUrl && /^https?:\/\//.test(siteUrl)) {
-    return `${siteUrl.replace(/\/$/, "")}${req.baseUrl || ""}/email-logo`;
-  }
-
-  // Priority 3: derive from request (respects proxy headers)
-  const proto =
-    (req.headers["x-forwarded-proto"] as string) || req.protocol || "https";
-  const host =
-    (req.headers["x-forwarded-host"] as string) || req.get("host") || "";
-  if (host) {
-    return `${proto}://${host}${req.baseUrl || ""}/email-logo`;
-  }
-  return "";
-}
-// =========================================================
-
-const generateEmailTemplate = (
-  title: string,
-  subtitle: string,
-  content: string,
-  ctaLink: string,
-  ctaText: string,
-  logoUrl: string
-) => `
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="x-apple-disable-message-reformatting" />
-  <!--[if mso]>
-  <xml>
-    <o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings>
-  </xml>
-  <![endif]-->
-  <title>Route 2 Migrate — ${title}</title>
-</head>
-<body style="margin:0;padding:0;background-color:#08080f;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#08080f;padding:48px 24px;">
-    <tr>
-      <td align="center">
-        <table role="presentation" width="580" cellpadding="0" cellspacing="0" style="max-width:580px;width:580px;background-color:#0d0d18;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 40px rgba(0,0,0,0.4);">
-
-          <tr>
-            <td style="padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);background-color:#0d0d18;">
-              ${logoUrl
-                ? `<img src="${logoUrl}" alt="Route 2 Migrate" width="200" style="width:200px;height:auto;margin:0 auto 24px;display:block;border:0;outline:none;text-decoration:none;" />`
-                : `<h1 style="color:#ffffff;margin:0 0 24px;font-family:Georgia,serif;font-size:24px;font-weight:bold;letter-spacing:0.5px;">Route 2 Migrate</h1>`
-              }
-              <span style="display:inline-block;font-size:11px;color:#94a3b8;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:8px 16px;border-radius:20px;">${subtitle}</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="padding:48px 40px;background-color:#0d0d18;">
-              <h2 style="margin:0 0 32px;color:#ffffff;font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.4;border-bottom:2px solid #ef4444;display:inline-block;padding-bottom:12px;">${title}</h2>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#cbd5e1;background-color:rgba(255,255,255,0.03);border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
-                ${content}
-              </table>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
-                <tr>
-                  <td align="center">
-                    <a href="${ctaLink}" style="background-color:#ef4444;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:14px;font-weight:600;display:inline-block;box-shadow:0 4px 12px rgba(239,68,68,0.3);border:1px solid rgba(255,255,255,0.1);">${ctaText} &rarr;</a>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <tr>
-            <td style="background-color:#08080f;padding:32px 40px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;">
-              <p style="margin:0;font-size:12px;color:#64748b;line-height:1.5;">This is an automated notification sent from the Route 2 Migrate WebMail Service.</p>
-              <p style="margin:16px 0 0;font-size:12px;color:#64748b;">
-                Designed and Engineered with <span style="color:#ef4444;">&#10084;</span> by
-                <a href="https://www.linkedin.com/in/farbista/" style="color:#ffffff;text-decoration:none;font-weight:600;">Foyaj Ahmmad Farabi</a>
-              </p>
-            </td>
-          </tr>
-
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
+// Premium Dark-Themed Email Template (matching About.tsx design)
+const generateEmailTemplate = (title: string, content: string) => `
+  <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #08080f; padding: 40px 20px; margin: 0;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <!-- Header -->
+      <tr>
+        <td style="background-color: #08080f; padding: 30px 40px; text-align: center; border-bottom: 2px solid #1e3a8a;">
+          <h1 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 28px; font-weight: bold;">Route 2 Migrate</h1>
+          <p style="color: #94a3b8; margin: 8px 0 0; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;">WebMail Service</p>
+        </td>
+      </tr>
+      <!-- Body -->
+      <tr>
+        <td style="padding: 40px; background-color: #ffffff;">
+          <h2 style="margin-top: 0; color: #08080f; font-family: Georgia, serif; font-size: 24px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px;">${title}</h2>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 15px; color: #4a5568;">
+            ${content}
+          </table>
+        </td>
+      </tr>
+      <!-- Footer -->
+      <tr>
+        <td style="background-color: #08080f; padding: 25px 40px; border-top: 1px solid #1e293b; text-align: center;">
+          <p style="margin: 0; font-size: 12px; color: #94a3b8;">This is an automated notification sent from the Route2Migrate WebMail Service.</p>
+          <p style="margin: 10px 0 0; font-size: 12px; color: #94a3b8;">
+            Designed and Engineered with <span style="color: #ef4444;">&#10084;</span> by 
+            <a href="https://www.linkedin.com/in/farbista/" style="color: #3b82f6; text-decoration: none; font-weight: 600;">Foyaj Ahmmad Farabi</a>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
 `;
 
 router.post("/submit", async (req, res): Promise<void> => {
@@ -220,6 +109,7 @@ router.post("/submit", async (req, res): Promise<void> => {
       return;
     }
 
+    // Honeypot — silent fake success for bots
     const honeypot = typeof req.body?.company === "string" ? req.body.company.trim() : "";
     if (honeypot) {
       res.status(200).json({ success: true, id: 0 });
@@ -230,12 +120,15 @@ router.post("/submit", async (req, res): Promise<void> => {
 
     const body = req.body ?? {};
     const fullName = typeof body.fullName === "string" ? body.fullName.trim() : "";
-    const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
+    const email =
+      typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
     const phone = typeof body.phone === "string" ? body.phone.trim() : "";
     const country = typeof body.country === "string" ? body.country.trim() : "";
-    const immigrationStatus = typeof body.immigrationStatus === "string" ? body.immigrationStatus.trim() : "";
+    const immigrationStatus =
+      typeof body.immigrationStatus === "string" ? body.immigrationStatus.trim() : "";
     const service = typeof body.service === "string" ? body.service.trim() : "";
-    const description = typeof body.description === "string" ? body.description.slice(0, 2000) : "";
+    const description =
+      typeof body.description === "string" ? body.description.slice(0, 2000) : "";
 
     const sql = neon(databaseUrl);
 
@@ -306,23 +199,25 @@ router.post("/submit", async (req, res): Promise<void> => {
 
     await logAttempt(email, "success");
 
+    // ==========================================
+    // SEND EMAIL NOTIFICATION (Premium Design)
+    // ==========================================
     const emailContent = `
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Name</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${fullName}</span></td></tr>
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email</span> <a href="mailto:${email}" style="color:#ef4444;text-decoration:none;font-weight:500;font-size:14px;">${email}</a></td></tr>
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Phone</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${phone}</span></td></tr>
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Country</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${country}</span></td></tr>
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${immigrationStatus}</span></td></tr>
-      <tr><td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.06);"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Service</span> <span style="color:#ffffff;font-weight:500;font-size:14px;">${service}</span></td></tr>
-      <tr><td style="padding:16px 24px;"><span style="display:inline-block;width:140px;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;vertical-align:top;">Description</span> <span style="display:inline-block;max-width:360px;line-height:1.6;color:#cbd5e1;font-size:14px;">${description || 'N/A'}</span></td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Name:</strong> ${fullName}</td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Email:</strong> <a href="mailto:${email}" style="color: #2563eb; text-decoration: none;">${email}</a></td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Phone:</strong> ${phone}</td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Country:</strong> ${country}</td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Status:</strong> ${immigrationStatus}</td></tr>
+      <tr><td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Service:</strong> ${service}</td></tr>
+      <tr><td style="padding: 12px 0;"><strong style="display: inline-block; width: 160px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: top;">Description:</strong> <span style="display: inline-block; max-width: 380px; line-height: 1.5;">${description || 'N/A'}</span></td></tr>
     `;
-
-    const logoUrl = getLogoUrl(req);
 
     await sendNotificationEmail({
       to: process.env.NOTIFICATION_EMAIL || "contact@rmigrate.ca",
       subject: `New Assessment Submission: ${fullName}`,
-      html: generateEmailTemplate("New Client Assessment Details", "Assessment Form Submitted", emailContent, `mailto:${email}`, "Reply to Client", logoUrl),
+      html: generateEmailTemplate("New Assessment Form Submitted", emailContent),
     });
+    // ==========================================
 
     res.status(200).json({ success: true, id: result[0].id });
   } catch (error) {

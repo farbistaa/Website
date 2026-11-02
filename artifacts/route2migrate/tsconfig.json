@@ -1,4 +1,3 @@
-//artifacts/route2migrate/tsconfig.json
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
@@ -22,9 +21,10 @@
 
     "types": ["node"],
 
-   "paths": {
-  "@/*": ["./src/*"]
-}
+    "paths": {
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"]
+    }
   },
-   "include": ["src"]
+  "include": ["src"]
 }

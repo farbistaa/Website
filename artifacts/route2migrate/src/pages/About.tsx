@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import riffatPhoto from "@assets/RCIC_Riffat_H_Mohaimen_1785319025735.jpeg";
-import zubairPhoto from "@assets/Syed_Mohd._Zubair_Huda_Adel_1782727934629.jfif";
+import riffatPhoto from "@assets/Riffat.jpeg";
+import zubairPhoto from "@assets/Adel.jfif";
 import tamimPhoto from "@assets/Tamim.jfif";
 import farabiPhoto from "@assets/Foyaj Ahmmad Farabi.png";
 import juhayerPhoto from "@assets/SM Juhayer Alam.png";
@@ -402,9 +402,9 @@ export default function AboutPage() {
                 </a>
 
                 {/* RIFFAT'S STORY — Timeline */}
-                <div className="mt-14 pt-10 border-t border-border" aria-labelledby="riffat-story-heading">
+                <div className="mt-14 pt-10 border-t border-border" aria-labelledby="RCIC_Riffat_H_Mohaimen-story-heading">
                   <span className="text-xs font-semibold text-primary uppercase tracking-[0.2em] mb-3 block">Riffat's Story</span>
-                  <h3 id="riffat-story-heading" className="text-2xl font-serif font-bold text-foreground mb-8">A Decade in the Making</h3>
+                  <h3 id="RCIC_Riffat_H_Mohaimen-story-heading" className="text-2xl font-serif font-bold text-foreground mb-8">A Decade in the Making</h3>
                   <div className="relative">
                     <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border" aria-hidden="true" />
                     <div className="space-y-7">

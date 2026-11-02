@@ -15,13 +15,13 @@ import { Footer } from "@/components/Footer";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { FreeAssessmentForm } from "@/components/FreeAssessmentForm";
 import { ServiceCarousel } from "@/components/ServiceCarousel";
-import riffatPhoto from "@/attached_assets/riffat.jpg";
-import capicLogo from "@assets/Capic_logo_1782725044398.jpg";
-import applyboardLogo from "@assets/applyboard-logo-png_seeklogo-525628_1782725044397.png";
-import celpipLogo from "@assets/Celpip_Logo_1782725044400.png";
-import caelLogo from "@assets/CAEL_logo_1782725044399.png"; // Fixed extension
+import riffatPhoto from "@/assets/RCIC_Riffat_H_Mohaimen.jpg";
+import capicLogo from "@assets/Capic_logo.jpg";
+import applyboardLogo from "@assets/applyboard-logo.png";
+import celpipLogo from "@assets/Celpip_Logo.png";
+import caelLogo from "@assets/CAEL_logo.png"; // Fixed extension
 import wesLogo from "@assets/Wes_Logo_1782725044400.png";
-import joorneyLogo from "@assets/joorney_logo_1782725044398.svg";
+import joorneyLogo from "@assets/joorney_logo.svg";
 
 // ── Fixed: properly typed easing tuple and Variants ──
 const EASING: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];

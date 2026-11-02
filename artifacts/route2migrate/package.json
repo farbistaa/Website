@@ -78,12 +78,8 @@
     "zod": "catalog:"
   },
   "dependencies": {
-    "@clerk/clerk-sdk-node": "^5.1.6",
-    "@clerk/react": "^6.12.10",
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/node": "^5.9.8",
-    "clerk": "^2.3.1",
-    "clerk-react": "^0.1.9",
     "cors": "^2.8.6",
     "disposable-email-domains": "^1.0.62",
     "express": "^5.2.1",
@@ -91,6 +87,7 @@
     "react-helmet-async": "^3.0.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.2",
-    "rehype-raw": "^7.0.0"
+    "rehype-raw": "^7.0.0",
+    "resend": "^6.32.1"
   }
 }

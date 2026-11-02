@@ -1,5 +1,4 @@
-// artifacts/api-server/src/routes/newsletter.ts
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import disposableDomains from "disposable-email-domains";
@@ -67,39 +66,96 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
   }
 }
 
-// Premium Dark-Themed Email Template (matching About.tsx design)
-const generateEmailTemplate = (title: string, content: string) => `
-  <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #08080f; padding: 40px 20px; margin: 0;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-      <!-- Header -->
-      <tr>
-        <td style="background-color: #08080f; padding: 30px 40px; text-align: center; border-bottom: 2px solid #1e3a8a;">
-          <h1 style="color: #ffffff; margin: 0; font-family: Georgia, serif; font-size: 28px; font-weight: bold;">Route 2 Migrate</h1>
-          <p style="color: #94a3b8; margin: 8px 0 0; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;">WebMail Service</p>
-        </td>
-      </tr>
-      <!-- Body -->
-      <tr>
-        <td style="padding: 40px; background-color: #ffffff;">
-          <h2 style="margin-top: 0; color: #08080f; font-family: Georgia, serif; font-size: 24px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px;">${title}</h2>
-          <table width="100%" cellpadding="0" cellspacing="0" style="font-size: 15px; color: #4a5568;">
-            ${content}
+function escapeHtml(s: string): string {
+  return (s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+// ── Email template (maroon glassmorphism — matches StudyPermit CTA) ──
+const generateEmailTemplate = (
+  title: string,
+  subtitle: string,
+  content: string,
+  ctaLink: string,
+  ctaText: string
+) => `<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+  </style>
+  <title>Route 2 Migrate — ${escapeHtml(title)}</title>
+  <!--[if mso]>
+  <xml>
+    <o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings>
+  </xml>
+  <style>
+    .glass-card { background-color:#5a1818 !important; border:1px solid #8a3838 !important; }
+    .inner-panel { background-color:#4d1414 !important; border:1px solid #6a2a2a !important; }
+    .pattern-overlay { display:none !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+  <!--[if mso]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="gradient" color="#3b0a0a" color2="#7f1d1d" angle="135" />
+  </v:background>
+  <![endif]-->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#3b0a0a;background-image:linear-gradient(135deg, #3b0a0a 0%, #7f1d1d 50%, #3b0a0a 100%);padding:48px 24px;">
+    <tr>
+      <td align="center">
+        <div style="position:relative;max-width:580px;margin:0 auto;">
+          <div style="position:absolute;inset:0;opacity:0.1;background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 12px);background-size:12px 12px;pointer-events:none;border-radius:24px;" aria-hidden="true"></div>
+          <table role="presentation" width="580" cellpadding="0" cellspacing="0" class="glass-card" style="position:relative;z-index:1;max-width:580px;width:100%;background-color:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.37);">
+            <tr>
+              <td style="padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <h1 style="color:#ffffff;margin:0 0 16px;font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:28px;font-weight:700;letter-spacing:0.5px;">Route 2 Migrate</h1>
+                <span style="display:inline-block;font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:8px 16px;border-radius:20px;">${escapeHtml(subtitle)}</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:48px 40px;">
+                <h2 style="margin:0 0 32px;color:#ffffff;font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:24px;line-height:1.4;text-align:center;font-weight:600;">${escapeHtml(title)}</h2>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="inner-panel" style="font-size:14px;color:rgba(255,255,255,0.85);background-color:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">
+                  ${content}
+                </table>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
+                  <tr>
+                    <td align="center">
+                      <a href="${escapeHtml(ctaLink)}" style="background-color:#ffffff;color:#7f1d1d;text-decoration:none;padding:14px 36px;border-radius:999px;font-size:14px;font-weight:700;display:inline-block;border:1px solid rgba(255,255,255,0.6);box-shadow:0 4px 12px rgba(0,0,0,0.2);">${escapeHtml(ctaText)} &rarr;</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:32px 40px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+                <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">This is an automated notification sent from the Route 2 Migrate WebMail Service.</p>
+                <p style="margin:16px 0 0;font-size:12px;color:rgba(255,255,255,0.5);">
+                  Designed and Engineered with <span style="color:#ef4444;">&#10084;</span> by
+                  <a href="https://www.linkedin.com/in/farbista/" style="color:#ffffff;text-decoration:none;font-weight:600;">Foyaj Ahmmad Farabi</a>
+                </p>
+              </td>
+            </tr>
           </table>
-        </td>
-      </tr>
-      <!-- Footer -->
-      <tr>
-        <td style="background-color: #08080f; padding: 25px 40px; border-top: 1px solid #1e293b; text-align: center;">
-          <p style="margin: 0; font-size: 12px; color: #94a3b8;">This is an automated notification sent from the Route2Migrate WebMail Service.</p>
-          <p style="margin: 10px 0 0; font-size: 12px; color: #94a3b8;">
-            Designed and Engineered with <span style="color: #ef4444;">&#10084;</span> by 
-            <a href="https://www.linkedin.com/in/farbista/" style="color: #3b82f6; text-decoration: none; font-weight: 600;">Foyaj Ahmmad Farabi</a>
-          </p>
-        </td>
-      </tr>
-    </table>
-  </div>
-`;
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
 
 router.post("/subscribe", async (req, res): Promise<void> => {
   try {
@@ -109,7 +165,6 @@ router.post("/subscribe", async (req, res): Promise<void> => {
       return;
     }
 
-    // Honeypot
     const honeypot = typeof req.body?.company === "string" ? req.body.company.trim() : "";
     if (honeypot) {
       res.status(200).json({ success: true, message: "Subscribed successfully" });
@@ -152,25 +207,31 @@ router.post("/subscribe", async (req, res): Promise<void> => {
       return;
     }
 
-    // Insert into database (ignoring conflicts if email already exists)
-    await sql`
+    const result = await sql`
       INSERT INTO newsletter (email, source)
       VALUES (${email}, 'website')
       ON CONFLICT (email) DO NOTHING
+      RETURNING email
     `;
+    const isDuplicate = result.length === 0;
 
-    // Send beautiful email notification (Premium Design)
     const emailContent = `
       <tr>
-        <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9;">
-          <strong style="display: inline-block; width: 120px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Email Address:</strong>
-          <a href="mailto:${email}" style="color: #2563eb; text-decoration: none;">${email}</a>
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email Address</span>
+          <a href="mailto:${escapeHtml(email)}" style="color:#ffffff;text-decoration:none;font-weight:500;font-size:14px;">${escapeHtml(email)}</a>
         </td>
       </tr>
       <tr>
-        <td style="padding: 12px 0;">
-          <strong style="display: inline-block; width: 120px; color: #1e3a8a; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Source:</strong>
-          Website Newsletter Form
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Source</span>
+          <span style="color:#ffffff;font-weight:500;font-size:14px;">Website Newsletter Form</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px;">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span>
+          <span style="color:#ffffff;font-weight:500;font-size:14px;">${isDuplicate ? "Already Subscribed" : "New Subscriber"}</span>
         </td>
       </tr>
     `;
@@ -178,7 +239,7 @@ router.post("/subscribe", async (req, res): Promise<void> => {
     await sendNotificationEmail({
       to: process.env.NOTIFICATION_EMAIL || "contact@rmigrate.ca",
       subject: `New Newsletter Subscriber: ${email}`,
-      html: generateEmailTemplate("New Newsletter Subscription", emailContent),
+      html: generateEmailTemplate("New Subscription Confirmed", "Newsletter Signup", emailContent, `mailto:${email}`, "Welcome Subscriber"),
     });
 
     res.status(200).json({ success: true, message: "Subscribed successfully" });

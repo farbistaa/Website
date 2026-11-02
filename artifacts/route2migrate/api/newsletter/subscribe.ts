@@ -1,14 +1,17 @@
-// artifacts/route2migrate/api/newsletter/subscribe.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { neon } from "@neondatabase/serverless";
 import { resolveMx, resolve4, resolve6 } from "dns/promises";
 import { createRequire } from "module";
+import { Resend } from "resend";
+
+// ── Email config ───────────────────────────────────────────────────
+const FROM_ADDRESS = "WebMail Notification <farabi@rmigrate.ca>";
+const DEFAULT_TO = "contact@rmigrate.ca";
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // ── Config ─────────────────────────────────────────────────────────
 const MAX_ATTEMPTS_PER_HOUR = 10;
 
-// Well-known disposable domains missing from (or added later than) the npm blocklist.
-// Extend this freely — anything here is blocked instantly.
 const CUSTOM_DISPOSABLE = [
   "tempmail.com", "temp-mail.org", "tempmail.plus", "tempmailo.com",
   "tmailor.com", "tmpmail.org", "tmpmail.net", "tempmail.dev",
@@ -19,12 +22,6 @@ const CUSTOM_DISPOSABLE = [
   "yopmail.com", "yopmail.net", "cool.fr.nf", "jetable.org", "nospam.ze.tc",
 ];
 
-// The disposable-email-domains package's entry point is a raw .json file.
-// Node's ESM loader refuses to import JSON without `with { type: "json" }`
-// (ERR_IMPORT_ATTRIBUTE_MISSING), which crashes the function on Vercel.
-// Loading it via CJS require handles JSON natively and works regardless of
-// how the function is bundled. Wrapped in try/catch so the function stays
-// alive even if the list fails to load (CUSTOM_DISPOSABLE still applies).
 const require = createRequire(import.meta.url);
 
 let disposableList: string[] = [];
@@ -38,12 +35,10 @@ try {
 
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-// npm blocklist (121k+ domains) + our custom list, deduped by the Set
 const disposableSet = new Set(
   [...disposableList, ...CUSTOM_DISPOSABLE].map((d) => d.toLowerCase())
 );
 
-// Common misspelled domains → suggested correction
 const TYPO_DOMAINS: Record<string, string> = {
   "gmai.com": "gmail.com", "gmial.com": "gmail.com", "gnail.com": "gmail.com",
   "gmail.co": "gmail.com", "gmail.cm": "gmail.com", "gmaill.com": "gmail.com",
@@ -60,11 +55,6 @@ function getClientIp(req: VercelRequest): string {
   return req.socket?.remoteAddress ?? "unknown";
 }
 
-/**
- * Lowercase/trim. For Gmail only: strip dots and +tags
- * (Gmail ignores them — same inbox). NEVER touch other providers:
- * dots/+ are real characters there (john.smith@yahoo.com ≠ johnsmith@).
- */
 function normalizeEmail(raw: string): string {
   const email = raw.trim().toLowerCase();
   const at = email.lastIndexOf("@");
@@ -92,7 +82,6 @@ function basicValidate(email: string): string | null {
   return null;
 }
 
-/** Can this domain actually receive email? (MX record, with A/AAAA fallback) */
 async function domainCanReceiveMail(domain: string): Promise<boolean> {
   try {
     const mx = await resolveMx(domain);
@@ -100,15 +89,130 @@ async function domainCanReceiveMail(domain: string): Promise<boolean> {
   } catch (err: unknown) {
     const code = (err as { code?: string })?.code;
     if (code === "ENODATA") {
-      // Domain exists but no MX — check direct A/AAAA delivery (RFC 5321)
       const [a, aaaa] = await Promise.all([
         resolve4(domain).catch(() => [] as string[]),
         resolve6(domain).catch(() => [] as string[]),
       ]);
       return a.length > 0 || aaaa.length > 0;
     }
-    if (code === "ENOTFOUND") return false; // domain doesn't exist
-    return true; // transient DNS problem — don't block a possibly-real user
+    if (code === "ENOTFOUND") return false;
+    return true;
+  }
+}
+
+// ── Email template (maroon glassmorphism — matches StudyPermit CTA) ──
+function escapeHtml(s: string): string {
+  return (s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function generateEmailTemplate(
+  title: string,
+  subtitle: string,
+  content: string,
+  ctaLink: string,
+  ctaText: string
+): string {
+  return `<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+  </style>
+  <title>Route 2 Migrate — ${escapeHtml(title)}</title>
+  <!--[if mso]>
+  <xml>
+    <o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings>
+  </xml>
+  <style>
+    .glass-card { background-color:#5a1818 !important; border:1px solid #8a3838 !important; }
+    .inner-panel { background-color:#4d1414 !important; border:1px solid #6a2a2a !important; }
+    .pattern-overlay { display:none !important; }
+  </style>
+  <![endif]-->
+</head>
+<body style="margin:0;padding:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+  <!--[if mso]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="gradient" color="#3b0a0a" color2="#7f1d1d" angle="135" />
+  </v:background>
+  <![endif]-->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#3b0a0a;background-image:linear-gradient(135deg, #3b0a0a 0%, #7f1d1d 50%, #3b0a0a 100%);padding:48px 24px;">
+    <tr>
+      <td align="center">
+        <div style="position:relative;max-width:580px;margin:0 auto;">
+          <div style="position:absolute;inset:0;opacity:0.1;background-image:repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 12px);background-size:12px 12px;pointer-events:none;border-radius:24px;" aria-hidden="true"></div>
+          <table role="presentation" width="580" cellpadding="0" cellspacing="0" class="glass-card" style="position:relative;z-index:1;max-width:580px;width:100%;background-color:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.37);">
+            <tr>
+              <td style="padding:40px 40px 32px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.1);">
+                <h1 style="color:#ffffff;margin:0 0 16px;font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:28px;font-weight:700;letter-spacing:0.5px;">Route 2 Migrate</h1>
+                <span style="display:inline-block;font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:8px 16px;border-radius:20px;">${escapeHtml(subtitle)}</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:48px 40px;">
+                <h2 style="margin:0 0 32px;color:#ffffff;font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:24px;line-height:1.4;text-align:center;font-weight:600;">${escapeHtml(title)}</h2>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="inner-panel" style="font-size:14px;color:rgba(255,255,255,0.85);background-color:rgba(255,255,255,0.04);border-radius:12px;border:1px solid rgba(255,255,255,0.1);">
+                  ${content}
+                </table>
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:40px;">
+                  <tr>
+                    <td align="center">
+                      <a href="${escapeHtml(ctaLink)}" style="background-color:#ffffff;color:#7f1d1d;text-decoration:none;padding:14px 36px;border-radius:999px;font-size:14px;font-weight:700;display:inline-block;border:1px solid rgba(255,255,255,0.6);box-shadow:0 4px 12px rgba(0,0,0,0.2);">${escapeHtml(ctaText)} &rarr;</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:32px 40px;border-top:1px solid rgba(255,255,255,0.1);text-align:center;">
+                <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">This is an automated notification sent from the Route 2 Migrate WebMail Service.</p>
+                <p style="margin:16px 0 0;font-size:12px;color:rgba(255,255,255,0.5);">
+                  Designed and Engineered with <span style="color:#ef4444;">&#10084;</span> by
+                  <a href="https://www.linkedin.com/in/farbista/" style="color:#ffffff;text-decoration:none;font-weight:600;">Foyaj Ahmmad Farabi</a>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+async function sendNotificationEmail(params: { subject: string; html: string }): Promise<void> {
+  if (!resend) {
+    console.warn("[mailer] RESEND_API_KEY is missing — skipping email notification.");
+    return;
+  }
+  const to = process.env.NOTIFICATION_EMAIL || DEFAULT_TO;
+  try {
+    const { data, error } = await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: [to],
+      subject: params.subject,
+      html: params.html,
+    });
+    if (error) {
+      console.error("[mailer] Resend returned an error:", error);
+      return;
+    }
+    console.log(`[mailer] Email sent to ${to} (ID: ${data?.id})`);
+  } catch (error) {
+    console.error("[mailer] Failed to send notification email:", error);
   }
 }
 
@@ -126,8 +230,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const sql = neon(databaseUrl);
 
-    // 1) Honeypot — hidden field humans never fill. If filled → bot.
-    //    Return fake success so bots move on, without touching the DB.
     const honeypot =
       typeof req.body?.company === "string" ? req.body.company.trim() : "";
     if (honeypot) {
@@ -137,13 +239,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const rawEmail = typeof req.body?.email === "string" ? req.body.email : "";
     const ip = getClientIp(req);
 
-    // Occasional cleanup of old attempt rows (keeps table small, 7-day window)
     if (Math.random() < 0.1) {
       await sql`DELETE FROM newsletter_attempts WHERE created_at < now() - interval '7 days'`;
     }
 
-    // 2) Rate limit: max attempts per IP per hour (counts ALL attempts,
-    //    including invalid ones, so probing scripts get throttled too)
     const rateRows = await sql`
       SELECT COUNT(*)::int AS count FROM newsletter_attempts
       WHERE ip = ${ip} AND created_at > now() - interval '1 hour'
@@ -155,7 +254,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const logAttempt = (email: string, outcome: string) =>
       sql`INSERT INTO newsletter_attempts (ip, email, outcome) VALUES (${ip}, ${email}, ${outcome})`;
 
-    // 3) Format validation
     if (!rawEmail) {
       await logAttempt("", "invalid");
       return res.status(400).json({ error: "Please enter your email address." });
@@ -169,44 +267,76 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const domain = email.slice(email.lastIndexOf("@") + 1);
 
-    // 4) Typo check ("did you mean…?")
     const typo = TYPO_DOMAINS[domain];
     if (typo) {
       await logAttempt(email, "invalid");
       return res.status(400).json({ error: `Did you mean @${typo}? Please check the spelling.` });
     }
 
-    // 5) Disposable/temporary domain blocklist (npm list + custom list)
     if (disposableSet.has(domain)) {
       await logAttempt(email, "blocked");
       return res.status(400).json({ error: "Temporary or disposable email addresses are not allowed." });
     }
 
-    // 6) MX check — domain must be able to receive mail
     const canReceive = await domainCanReceiveMail(domain);
     if (!canReceive) {
       await logAttempt(email, "invalid");
       return res.status(400).json({ error: "This email domain can't receive mail. Please check for typos." });
     }
 
-    // 7) Normalize (Gmail only) and insert
     const normalized = normalizeEmail(email);
+    let isDuplicate = false;
     try {
       await sql`
         INSERT INTO newsletter (email, source) VALUES (${normalized}, 'website')
       `;
       await logAttempt(normalized, "success");
-      return res.status(200).json({ success: true });
     } catch (err: unknown) {
       const e = err as { code?: string; message?: string };
       const isUniqueViolation =
         e?.code === "23505" || /duplicate key|unique constraint/i.test(e?.message ?? "");
       if (isUniqueViolation) {
+        isDuplicate = true;
         await logAttempt(normalized, "duplicate");
-        return res.status(200).json({ success: true, alreadySubscribed: true });
+      } else {
+        throw err;
       }
-      throw err;
     }
+
+    // ── Send notification email (even for duplicates — useful signal) ──
+    const emailContent = `
+      <tr>
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Email Address</span>
+          <a href="mailto:${escapeHtml(email)}" style="color:#ffffff;text-decoration:none;font-weight:500;font-size:14px;">${escapeHtml(email)}</a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.08);">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Source</span>
+          <span style="color:#ffffff;font-weight:500;font-size:14px;">Website Newsletter Form</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:16px 24px;">
+          <span style="display:inline-block;width:140px;color:rgba(255,255,255,0.5);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Status</span>
+          <span style="color:#ffffff;font-weight:500;font-size:14px;">${isDuplicate ? "Already Subscribed" : "New Subscriber"}</span>
+        </td>
+      </tr>
+    `;
+
+    await sendNotificationEmail({
+      subject: `New Newsletter Subscriber: ${email}`,
+      html: generateEmailTemplate(
+        "New Subscription Confirmed",
+        "Newsletter Signup",
+        emailContent,
+        `mailto:${email}`,
+        "Welcome Subscriber"
+      ),
+    });
+
+    return res.status(200).json({ success: true, ...(isDuplicate ? { alreadySubscribed: true } : {}) });
   } catch (error) {
     console.error("Newsletter Subscribe Error:", error);
     return res.status(500).json({ error: "Something went wrong. Please try again." });
